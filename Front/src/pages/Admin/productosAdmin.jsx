@@ -2,7 +2,7 @@
 
 import { Box, Button, Divider, Grid, Input, TextField } from '@mui/material';
 import Footer from '../../components/footer/footer';
-import NavBar from '../../components/navbar/navBar';
+import NavBar from '../../components/navbar/NavBar.jsx'
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import CurrentRifasAdmin from '../../components/currentRifasAdmin/CurrentRifasAdmin.jsx';
