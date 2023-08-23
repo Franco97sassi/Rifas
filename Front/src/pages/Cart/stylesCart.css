@@ -1,0 +1,19 @@
+.circle {
+    background: rgb(7, 7, 7);
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+    font-size: 1rem;
+    color: white;
+}
+.circlesPositions{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-top: 20px;
+}
+.boxPosition{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
