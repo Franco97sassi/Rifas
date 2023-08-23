@@ -9,7 +9,7 @@ import { getRifaDetail } from '../../store/state/actions/rifas';
 //-------------------- Components --------------------------
 import Footer from '../../components/footer/footer';
  import RifaDetailCard from '../../components/rifaDetailCard/RifaDetailCard';
-import NavBar from '../../components/navbar/navBar';
+ import NavBar from '../../components/navbar/NavBar.jsx';
 
 const RifaDetail = () => {
  const { id } = useParams();

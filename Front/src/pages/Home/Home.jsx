@@ -2,7 +2,7 @@ import { Box } from '@mui/material';
 
 //-------------------- Components --------------------------
 import Footer from '../../components/footer/footer';
-import NavBar from '../../components/navbar/navBar';
+import NavBar from '../../components/navbar/NavBar.jsx';
 import CurrentRifas from '../../components/currentRifas/CurrentRifas';
 import Carrousel from '../../components/Carrousel/Carrousel';
 ////////////////////////

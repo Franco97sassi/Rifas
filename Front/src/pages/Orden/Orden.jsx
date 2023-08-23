@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Box, Button, Container, Grid, ListItem, ListItemText, Typography } from '@mui/material';
 import Footer from '../../components/footer/footer';
-import NavBar from '../../components/navbar/navBar';
+import NavBar from '../../components/navbar/NavBar.jsx';
 import { Link } from 'react-router-dom';
 import OrdenesDetail from './OrdenDetail';
 import OrdenCard from '../Admin/OrdenCard';

@@ -8,7 +8,7 @@ import { confirmAccount } from '../../store/state/actions/user';
 
 //-------------------- Components --------------------------
 import Footer from '../../components/footer/footer';
-import NavBar from '../../components/navbar/NavBar';
+import NavBar from '../../components/navbar/NavBar.jsx';
 
 ////////////////////////////////
 const ActivateAccount = () => {

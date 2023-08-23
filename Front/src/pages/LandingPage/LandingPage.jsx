@@ -7,7 +7,7 @@ import LandingImg from '../../assets/Landing.jpg';
 
 //-------------------- Components --------------------------
  import Footer from '../../components/footer/footer.jsx';
-import NavBar from '../../components/navbar/navBar';
+import NavBar from '../../components/navbar/NavBar.jsx';
 
 /////////////////////
 const LandingPage = () => {
