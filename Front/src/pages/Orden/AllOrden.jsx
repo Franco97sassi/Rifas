@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Box, Button, Container, Grid, ListItem, ListItemText, Typography } from '@mui/material';
 import Footer from '../../components/footer/footer';
-import NavBar from '../../components/navbar/navBar';
+import NavBar from '../../components/navbar/NavBar.jsx';
 const host = import.meta.env.VITE_SV_HOST;
 
 const AllOrdenes = () => {
