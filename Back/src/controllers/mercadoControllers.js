@@ -5,7 +5,7 @@ const { v4: uuidv4 } = require('uuid');
 
 const {
   NOTIFICATION_MERCADOPAGO_FRONT,
-  NOTIFICATION_MERCADOPAGO_BACK,ACCESS_TOKEN_MP,CLIENT_PORT,PORT
+  NOTIFICATION_MERCADOPAGO_BACK,ACCESS_TOKEN_MP,CLIENT_PORT,SERVER_PORT
 } = process.env;
 
 
@@ -96,7 +96,7 @@ const {
   
             // Llamar a la ruta PUT buyRifa con los datos necesarios
             try {
-              const response = await axios.put('http://localhost:4000/rifas/buyRifa', {
+              const response = await axios.put(`${SERVER_PORT}/rifas/buyRifa`, {
                 rifaId,
                 number,
                 userId,

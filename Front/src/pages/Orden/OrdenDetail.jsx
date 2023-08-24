@@ -4,7 +4,8 @@ import { Box, Button, Container, Grid, ListItem, ListItemText, Typography } from
 import Footer from '../../components/footer/footer';
 import NavBar from '../../components/navbar/NavBar.jsx';
 import { useParams } from "react-router-dom";
- 
+const host = import.meta.env.VITE_SV_HOST;
+
 const OrdenesDetail = ( ) => {
     const [ordenes, setOrdenes] = useState([]);
     const userData = JSON.parse(sessionStorage.getItem('userData'));
@@ -20,7 +21,7 @@ const OrdenesDetail = ( ) => {
     console.log(userId)
 
     // Realizar la solicitud GET a las órdenes del usuario con el ID de usuario como parte de la URL
-    axios.get(`http://localhost:4000/rifas/ordenesAgregadas/${preferenceId}`)
+    axios.get(`${host}/ordenesAgregadas/${preferenceId}`)
       .then(response => {
         setOrdenes(response.data);
       })
