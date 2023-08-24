@@ -247,7 +247,7 @@ function RegisterForm() {
        ¿Ya tienes una cuenta?{' '}
        <Link
         to='/login'
-        style={{ textDecoration: 'underline', color: '#FFA840' }}>
+        style={{ textDecoration: "none", color: '#FFA840' }}>
         Iniciar sesión.
        </Link>
       </Typography>

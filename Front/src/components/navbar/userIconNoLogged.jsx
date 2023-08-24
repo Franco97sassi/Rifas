@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Button, Menu, MenuItem, IconButton, useTheme } from '@mui/material';
 
 import { AccountCircleRounded } from '@mui/icons-material';
+import { Box } from '@mui/system';
 
 const UserIconNoLogged = ({ onLoginClick, onRegisterClick }) => {
  const [anchorEl, setAnchorEl] = useState(null);
@@ -37,6 +38,7 @@ const UserIconNoLogged = ({ onLoginClick, onRegisterClick }) => {
   <>
    <IconButton onClick={handleMenuOpen}>
     <AccountCircleRounded sx={{ color: font, fontSize: '45px' }} />
+     
    </IconButton>
    
   </>

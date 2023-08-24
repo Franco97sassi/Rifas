@@ -243,7 +243,7 @@ function LogInForm() {
               }}
             >
               ¿No tienes una cuenta?{' '}
-              <Link to='/register' style={{ textDecoration: 'underline', color: '#FFA840' }}>
+              <Link to='/register' style={{ textDecoration: "none", color: '#FFA840' }}>
                 Crea una cuenta.
               </Link>
              </Typography>
@@ -256,7 +256,7 @@ function LogInForm() {
            }}>
            <Link
             to='/login'
-            style={{ textDecoration: 'underline', color: '#FFA840' }}>
+            style={{ textDecoration: "none", color: '#FFA840' }}>
             ¿Olvidaste tu contraseña?
            </Link>
           </Grid>

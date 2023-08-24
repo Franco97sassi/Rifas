@@ -13,6 +13,8 @@ import {
   Slide,
   CssBaseline,
   FormControl,
+  ThemeProvider,
+  createTheme,
 } from '@mui/material';
 import {
   Search,
@@ -29,7 +31,7 @@ import {
 import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket';
 // import { useDispatch, useSelector } from 'react-redux';
 // import { setMode } from '../../app/state/slices/modeSlice';
-import { useNavigate, Link as RouterLink } from 'react-router-dom';
+import { useNavigate, Link as RouterLink, Link, NavLink } from 'react-router-dom';
 
 //-------------------- Assets --------------------------
 import UserIcon from './userIcon';
@@ -60,7 +62,17 @@ const NavBar = ({ isUserAdmin }) => {
     navigate('/login');
   };
 
-
+  const theme2 = createTheme({
+    components: {
+      MuiCssBaseline: {
+        styleOverrides: `
+          a {
+            text-decoration: none !important;
+          }
+        `,
+      },
+    },
+  });
   const theme = useTheme();
   const neutralLight = theme.palette.neutral.light;
   const dark = theme.palette.neutral.dark;
@@ -75,7 +87,7 @@ const NavBar = ({ isUserAdmin }) => {
         // User Logged Navbar
         <AppBar position='static'>
           <CssBaseline />
-          
+
           {/* despues de iniciar sesion */}
           <Box
             display='flex'
@@ -148,12 +160,12 @@ const NavBar = ({ isUserAdmin }) => {
                     }}>CARRITO</Typography>
                   </IconButton>
                 </RouterLink>
-                
+
                 {isUserAdmin &&
                   <RouterLink to='/admin'>
 
                     <IconButton>
-                      
+
                     </IconButton>
                   </RouterLink>
                 }
@@ -226,12 +238,12 @@ const NavBar = ({ isUserAdmin }) => {
           </Box>
         </AppBar>
       ) : (
-        
+
 
         // User No Logged Navbar
 
-<AppBar position='static'>
-                    {/* antes de iniciar sesion */}
+        <AppBar position='static'>
+          {/* antes de iniciar sesion */}
 
           <CssBaseline />
           <Box
@@ -322,7 +334,7 @@ const NavBar = ({ isUserAdmin }) => {
                 </IconButton>
               )
             }
-            
+
             {/* MOBILE NAV */}
             {!isNonMobileScreens && isMobileMenuToggled && (
               <Drawer
@@ -348,8 +360,9 @@ const NavBar = ({ isUserAdmin }) => {
                     display='flex'
                     // justifyContent='flex-end'
                     p='1rem'>
-                    <IconButton onClick={handleCloseMenu}>
-                      <Close />
+                    <IconButton onClick={handleOpenMenu}>
+                      {/* <Close /> */}
+                      <MenuHamb />
                     </IconButton>
                   </Box>
 
@@ -365,11 +378,22 @@ const NavBar = ({ isUserAdmin }) => {
                       onLoginClick={handleLoginClick}
                       onRegisterClick={handleRegisterClick} isUserAdmin={isUserAdmin}
                     />
-                    <RouterLink to=''>
+                    {/* <RouterLink to='/register'>
                       <IconButton>
                         <Help sx={{ color: font, fontSize: '25px' }} />
                       </IconButton>
-                    </RouterLink>
+                    </RouterLink> */}
+                     <ThemeProvider theme={theme}>
+      <CssBaseline />
+                    <Box sx={{ display: "flex", flexDirection: "column", gap: "25px" }}>
+                    <NavLink  to='/register'style={{ textDecoration: "none", color: "inherit" }}  >
+  <Typography sx={{ color: "white"  }}>Registro</Typography>
+</NavLink >
+<NavLink  to='/login'style={{ textDecoration: "none", color: "inherit" }}>
+  <Typography sx={{ color: "white"   }}>Inicio Sesion</Typography>
+</NavLink >
+</Box>    </ThemeProvider>
+
                   </Box>
                 </Box>
               </Drawer>

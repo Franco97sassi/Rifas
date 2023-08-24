@@ -115,7 +115,7 @@ export const buyRifas = (cartItems) => async (dispatch) => {
 
 
   dispatch(clearCart());
-
+  
   // dispatch(setRifaDetail(/* Pass the appropriate data here */));
  } catch (err) {
   console.log(err.message);

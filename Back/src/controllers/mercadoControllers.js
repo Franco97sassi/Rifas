@@ -12,7 +12,7 @@ const {
   const postPagar = async (req, res) => {
     
     mercadopago.configure({
-    access_token:  `${ACCESS_TOKEN_MP}`
+    access_token:  "TEST-6737881947062154-062812-b4fb934fd9b7ffe0507e0e1d582fd58b-1409291527"
 });
 
     const preferenceId = uuidv4();

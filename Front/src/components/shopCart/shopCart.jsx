@@ -62,7 +62,7 @@ const ShopCart = ({isUserAdmin}) => {
   
 
   const handleBuyClick = () => {
-     
+     console.log(host);
     const { id } = createPreference();
 
     if (id) {
