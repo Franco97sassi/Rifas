@@ -51,7 +51,10 @@ const createRifa = async (req, res) => {
    }
   await Numero.bulkCreate(numbers);
 
-  res.json(rifa);
+  // res.json(rifa);
+  // res.status(200).json({ status: "success", msg: "El producto se creo exitosamente" });
+  res.status(200).json({ status: "success", msg: "El producto se creó exitosamente", rifa });
+
  } catch (err) {
   console.log(err.message);
  }
