@@ -29,7 +29,7 @@ const {
       const items = cart.map((producto) => ({
         title: `${producto.productName} - ${producto.number}`,
         quantity: 1,
-        currency_id: 'MXN',
+        currency_id: 'ARS',
         unit_price: producto.numbersPrice
         ,
       }));
