@@ -17,8 +17,6 @@ import { removeNumbersToCart, buyRifas } from "../../store/state/actions/rifas";
 import "./shopCart.css"; // Importa el archivo CSS para las transiciones
 import { initMercadoPago, Wallet } from "@mercadopago/sdk-react";
 import axios from "axios";
-const host = import.meta.env.VITE_SV_HOST;
-
 const ShopCart = ({isUserAdmin}) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -37,7 +35,7 @@ const ShopCart = ({isUserAdmin}) => {
   const createPreference = async () => {
     console.log(createPreference)
     try {
-      const response = await axios.post(`${host}/rifas/mercadoPago`, {
+      const response = await axios.post("http://localhost:4000/rifas/mercadoPago", {
         cart
 
       })
@@ -62,7 +60,7 @@ const ShopCart = ({isUserAdmin}) => {
   
 
   const handleBuyClick = () => {
-     console.log(host);
+     
     const { id } = createPreference();
 
     if (id) {
@@ -191,7 +189,7 @@ const ShopCart = ({isUserAdmin}) => {
                       flexDirection: "row",
                       paddingRight: "0.7rem", // Añade un poco de espacio en la parte inferior
                       paddingTop: "1.1rem", // Añade un poco de espacio en la parte inferior
- 
+
                     }}
                   >
                     <Box
@@ -228,27 +226,24 @@ const ShopCart = ({isUserAdmin}) => {
                       >
                         {item.numbers.map((number) => (
                           
-                          <Box
-                          display="flex"
-                          justifyContent="center"
-                          alignItems="center"
-                          width="46px
-                          "
-                          height="46px
-                          " 
-                          fontFamily="Work Sans, sans-serif"
-                          fontWeight="700"
-                          fontSize="20px"             borderRadius="50%"
-
-                          backgroundColor= 
-                                 '#423E3F'
-                            color="white"
-                          margin="0.25rem"
+                          <Button
+                            key={number}
+                            sx={{
+                              backgroundColor: "#423E3F",
+                              borderRadius: "50%",
+                              fontSize: "2rem",
+                              width: "4rem",
+                              height: "4rem",
+                              display: "flex",
+                              margin: "0.5rem",
+                              color: "#D9D9D9",
+                              "&:hover": {
+                                backgroundColor: "#423E3F",
+                              },
+                            }}
                           >
-                         {number}
-                        </Box>
-                             
-                           
+                            {number}
+                          </Button>
                         ))}
                       </Box>
                     </Box>
@@ -303,15 +298,14 @@ const ShopCart = ({isUserAdmin}) => {
       </TransitionGroup>
 
       {cart.length > 0 && (
-        <Box 
+        <Box
+          width="100%"
           sx={{
-            width:"100%",
-
             display: "flex",
             flexDirection: "column",
             justifyContent: "center",
             alignItems: "flex-end",
-            // marginLeft: "21.0rem",
+            marginLeft: "28.7rem",
           }}
         >
           <Box
@@ -323,12 +317,8 @@ const ShopCart = ({isUserAdmin}) => {
               backgroundPosition: "center",
               backgroundRepeat: "no-repeat",
               borderRadius: 2,
-              marginRight: "0.8rem",
+              marginRight: "14.6rem",
               paddingRight: "3.5rem",
-              display:"flex",
-              justifyContent:"flex-end",
-              alignItems:"center" // Alinear verticalmente en el centro
-              
             }}
           >
             <ListItemText

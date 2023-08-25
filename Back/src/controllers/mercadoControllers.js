@@ -1,4 +1,4 @@
- const mercadopago = require('mercadopago');
+const mercadopago = require('mercadopago');
 const axios = require("axios")
  const { Orden, User } = require('../db')
 const { v4: uuidv4 } = require('uuid');
@@ -12,7 +12,7 @@ const {
   const postPagar = async (req, res) => {
     
     mercadopago.configure({
-    access_token:  "TEST-6737881947062154-062812-b4fb934fd9b7ffe0507e0e1d582fd58b-1409291527"
+    access_token: "TEST-8021216670138113-070920-8fec9d16d8b40375f92b98e1eb06b24d-235741436"
 });
 
     const preferenceId = uuidv4();
@@ -29,7 +29,7 @@ const {
       const items = cart.map((producto) => ({
         title: `${producto.productName} - ${producto.number}`,
         quantity: 1,
-        currency_id: 'ARS',
+        currency_id: 'MXN',
         unit_price: producto.numbersPrice
         ,
       }));
