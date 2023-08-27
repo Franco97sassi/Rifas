@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Box, Button, Typography, useTheme } from '@mui/material';
+import { Box, Button, Typography, useMediaQuery, useTheme } from '@mui/material';
 
 //-------------------- Assets --------------------------
 import LandingImg from '../../assets/Landing.jpg';
@@ -13,6 +13,8 @@ import NavBar from '../../components/navbar/NavBar.jsx';
 const LandingPage = () => {
  const theme = useTheme();
  const background = theme.palette.background.login;
+ const theme1 = useTheme();
+  const isNonMobileScreens = useMediaQuery(theme1.breakpoints.up('md')); // Cambio de 'min-width' a 'up'
 
  return (
   <Box
@@ -22,6 +24,7 @@ const LandingPage = () => {
     flexDirection: 'column',
     backgroundImage: `url(${LandingImg})`,
     backgroundSize: 'cover',
+    backgroundRepeat: 'no-repeat',
     backgroundPosition: 'center',
    }}>
    <NavBar/>
@@ -30,8 +33,8 @@ const LandingPage = () => {
      backgroundColor: 'rgba(0, 0, 0, 0.65)',
      display: 'flex',
      flexDirection: 'column',
-     justifyContent: 'flex-start',
-     alignItems: 'flex-start',
+     justifyContent: isNonMobileScreens? "flex-start" :"center",
+     alignItems: isNonMobileScreens? "flex-start" :"center",
      flex: '1 1 auto',
      paddingLeft: '2em',
  
@@ -40,14 +43,14 @@ const LandingPage = () => {
      variant='h1'
      textAlign='center'
      marginTop='2.5em'
-      paddingLeft= '0.3em'
-
-     fontSize='4em'
+    paddingLeft={isNonMobileScreens ? '0.3em' : '0em'} // Ajuste del paddingLeft
+      fontSize='4em'
      color='whitesmoke'
      style={{
       textShadow: '2px 2px 4px rgba(0, 0, 0, 0.5)',
      }}>
-     Bienvenidos 
+   {/* {isNonMobileScreens?"Bienvenidos":"bd"}     */}
+   Bienvenidos
     </Typography>
     
     <Box
@@ -65,7 +68,7 @@ const LandingPage = () => {
         height: '40px',
         fontSize: '1rem',
         borderRadius: '2rem',
-        marginLeft: '3em',
+        marginLeft:isNonMobileScreens? '3em' :"0em",
         marginTop: '0.5em',
 
         backgroundColor: '#D68E30',

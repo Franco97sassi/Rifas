@@ -21,7 +21,9 @@ const OrdenesDetail = ( ) => {
     console.log(userId)
 
     // Realizar la solicitud GET a las órdenes del usuario con el ID de usuario como parte de la URL
-    axios.get(`${host}/ordenesAgregadas/${preferenceId}`)
+    // axios.get(`${host}/ordenesAgregadas/${preferenceId}`)
+    axios.get(`${host}/rifas/ordenesAgregadas/${preferenceId}`)
+
       .then(response => {
         setOrdenes(response.data);
       })
@@ -325,17 +327,7 @@ key={orden.id}>
                       borderWidth: "6px",
                     }}
                   />
-                  
-                  {/* <Typography
-                    sx={{
-                      fontSize: "13px",
-                      fontWeight: "600",
-                      color: "#FFFFFF",
-                    }}
-                  >
-                    $ {el.numbersPrice}
-                    
-                  </Typography> */}
+                   
                   <Box
        
 

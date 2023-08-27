@@ -1,6 +1,6 @@
  
 
-import { Box, Button, Divider, Grid, Input, TextField } from '@mui/material';
+import { Box, Button, Divider, Grid, Input, TextField, useMediaQuery } from '@mui/material';
 import Footer from '../../components/footer/footer';
 import NavBar from '../../components/navbar/NavBar.jsx'
 import { useEffect, useState } from 'react';
@@ -8,6 +8,7 @@ import axios from 'axios';
 import CurrentRifasAdmin from '../../components/currentRifasAdmin/CurrentRifasAdmin.jsx';
 import AllOrdenes from '../Orden/AllOrden';
 import { Link } from 'react-router-dom';
+import { useTheme } from '@emotion/react';
 
 const host = import.meta.env.VITE_SV_HOST;
 
@@ -17,7 +18,9 @@ const ProductosAdmin = () => {
   const [description, setDescription] = useState('');
   const [numbersPrice, setNumbersPrice] = useState('');
   const [totalNumbers, setTotalNumbers] = useState('');
-
+  const theme1 = useTheme();
+  const isNonMobileScreens = useMediaQuery(theme1.breakpoints.up('md')); // Cambio de 'min-width' a 'up'
+  
 
 
   const onSubmit = async () => {
@@ -68,13 +71,14 @@ const ProductosAdmin = () => {
       
        <Grid    > 
        <Box sx={{
-              display:"flex", justifyContent:"flexStart",paddingLeft:"4.5em"
+              display:"flex", justifyContent:isNonMobileScreens?"flexStart":"center"
+              // ,paddingLeft:"4.5em"
               }}> ,
  
              <h2  >Lista de Productos</h2></Box>
               
              <Box sx={{
-              display:"flex", justifyContent:"flex-end"
+              display:"flex", justifyContent:isNonMobileScreens?"flex-end":"center"
               }}> ,
 
             <Link to="/agregar">  
@@ -90,7 +94,7 @@ const ProductosAdmin = () => {
               borderRadius: "40px",
               color: "#423E3F",
               fontWeight: "700",
-              marginRight: "5rem",
+              marginRight: isNonMobileScreens?"5rem":"0rem",
             backgroundColor: "#D68E30",
               "&:hover": {
                 backgroundColor: "#630014",

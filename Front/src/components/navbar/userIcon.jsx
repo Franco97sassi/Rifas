@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { Button, Menu, MenuItem, IconButton, useTheme } from '@mui/material';
 import { AccountCircleRounded } from '@mui/icons-material';
 import { Box } from '@mui/system';
+import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket';
 
 //////////////////////////////////////////////////////////
 const UserIcon = ({ onLoginClick, onRegisterClick   }) => {
@@ -92,7 +93,10 @@ const UserIcon = ({ onLoginClick, onRegisterClick   }) => {
       sx={{
         display:"flex",justifyContent:"center" // Añade el estilo para centrar el texto
       }}
-    >Cerrar Sesion</MenuItem>  </Box>
+    >Cerrar Sesion</MenuItem> 
+    
+ 
+     </Box>
     {isUserAdmin ?  (
         <div> 
     <MenuItem onClick={handleOrdenes}   sx={{
@@ -107,8 +111,7 @@ const UserIcon = ({ onLoginClick, onRegisterClick   }) => {
         <MenuItem onClick={handleMisOrdenes}   sx={{
           display:"flex",justifyContent:"center" // Añade el estilo para centrar el texto
         }}>Mis Pedidos</MenuItem>
-         
-       
+        
     )}
    </Menu> 
   </>

@@ -80,6 +80,9 @@ const NavBar = ({ isUserAdmin }) => {
   const primaryLight = theme.palette.primary.light;
   const alt = theme.palette.background.alt;
   const font = theme.palette.others.font;
+  const theme1 = useTheme();
+  const isNonMobileScreens2 = useMediaQuery(theme1.breakpoints.up('md')); // Cambio de 'min-width' a 'up'
+
 
   return (
     <>
@@ -98,10 +101,12 @@ const NavBar = ({ isUserAdmin }) => {
             <Box
               display='flex'
 
-              justifyContent='space-around'
+              justifyContent='center'
               alignItems='center'
-              height='75px'
+              height='175px'
             >
+              <Box sx={{justifyContent:'space-between',
+              alignItems:'center'}}>  
               <Typography
                 fontWeight='bold'
                 fontSize='clamp(1rem, 2rem, 2.25rem)'
@@ -115,8 +120,7 @@ const NavBar = ({ isUserAdmin }) => {
                     borderRadius: '15px',
 
                   },
-                }}>
-
+                }}>  
                 {isNonMobileScreens ? (
                   <img
                     src={venado}
@@ -125,16 +129,22 @@ const NavBar = ({ isUserAdmin }) => {
                     height="50px"
                   />
                 ) : (
-                  <img
-                    src={venado}
-                    alt='img not found'
-                    width='max-width'
-                    height="50px"
+                  <>
+                    <img
+                      src={venado}
+                      alt='img not found'
+                      width='max-width'
+                      height="50px"
 
-                  />
+                    />   
+ 
+  
+
+                  </>
                 )}
-              </Typography>
-            </Box>
+               </Typography>  
+            </Box></Box>
+             
 
             {/* DESKTOP NAV */}
 
@@ -149,17 +159,21 @@ const NavBar = ({ isUserAdmin }) => {
               //  paddingLeft='1000px'
               >
 
-
-                <RouterLink to='/cart'>
+ 
+  <RouterLink to='/cart'>
                   <IconButton>
                     {/* <ShoppingBasketIcon sx={{ color: font, fontSize: '25px' }} /> */}
                     <Typography sx={{
                       // paddingLeft: '1000px'
                       // ,
                       color: font, fontSize: "15px", fontWeight: "1000", letterSpacing: '2px',
-                    }}>CARRITO</Typography>
+                    }}>   CARRITO
+
+                    </Typography>
                   </IconButton>
                 </RouterLink>
+                 
+              
 
                 {isUserAdmin &&
                   <RouterLink to='/admin'>
@@ -182,59 +196,67 @@ const NavBar = ({ isUserAdmin }) => {
             )}
 
             {/* MOBILE NAV */}
-            {!isNonMobileScreens && isMobileMenuToggled && (
-              <Drawer
-                anchor='right'
-                open={isMobileMenuToggled}
-                onClose={handleCloseMenu}
-                TransitionComponent={Slide}
-              // TransitionProps={{
-              //  direction: 'left',
-              //  timeout: { enter: 500, exit: 500 },
-              // }}
-              >
-                <Box
-                  position='fixed'
-                  right='0'
-                  bottom='0'
-                  height='100%'
-                  zIndex='10'
-                  maxWidth='500px'
-                  minWidth='250px'
-                  backgroundColor={alt}>
-                  {/* CLOSE ICON */}
+            {!isNonMobileScreens
+
+              && isMobileMenuToggled && (
+               
+ 
+                <Drawer
+                  anchor='right'
+                  open={isMobileMenuToggled}
+                  onClose={handleCloseMenu}
+                  TransitionComponent={Slide}
+                // TransitionProps={{
+                //  direction: 'left',
+                //  timeout: { enter: 500, exit: 500 },
+                // }}
+                >
                   <Box
-                    display='flex'
-                    justifyContent='flex-end'
-                    p='1rem'>
-                    <IconButton onClick={handleCloseMenu}>
-                      <Close />
-                    </IconButton>
+                    position='fixed'
+                    right='0'
+                    bottom='0'
+                    height='100%'
+                    zIndex='10'
+                    maxWidth='500px'
+                    minWidth='250px'
+                    backgroundColor={alt}>
+                    {/* CLOSE ICON */}
+                    
+                    <Box
+                      display='flex'
+                      justifyContent='flex-end'
+                      p='1rem'>
+                      <IconButton onClick={handleCloseMenu}>
+                        <Close />
+                      </IconButton>
+                    
+
+                    {/* MENU ITEMS */}
+                     </Box>
+                    <Box
+                      display='flex'
+                      flexDirection='column'
+                      justifyContent='center'
+                      gap='3rem'
+                      // backgroundColor={white}
+                      alignItems='center'
+
+                    >
+                      <UserIcon
+                        onLoginClick={handleLoginClick}
+                        onRegisterClick={handleRegisterClick}
+
+
+                      />
+ <RouterLink to='/cart'>
+                  <IconButton>
+                    <ShoppingBasketIcon sx={{ color: font, fontSize: '25px' }} />
+                  </IconButton>
+                </RouterLink>
+                    </Box>
                   </Box>
-
-                  {/* MENU ITEMS */}
-
-                  <Box
-                    display='flex'
-                    flexDirection='column'
-                    justifyContent='center'
-                    gap='3rem'
-                    // backgroundColor={white}
-                    alignItems='center'
-
-                  >
-                    <UserIcon
-                      onLoginClick={handleLoginClick}
-                      onRegisterClick={handleRegisterClick}
-
-
-                    />
-
-
-                  </Box>
-                </Box>
-              </Drawer>
-            )}
+                </Drawer>
+              )}
           </Box>
         </AppBar>
       ) : (
@@ -262,6 +284,7 @@ const NavBar = ({ isUserAdmin }) => {
               alignItems='center'
             // marginLeft={"10px"}
             >
+              
               <Typography
                 fontWeight='bold'
                 fontSize='clamp(1rem, 2rem, 2.25rem)'
@@ -274,6 +297,7 @@ const NavBar = ({ isUserAdmin }) => {
                     cursor: 'pointer',
                     borderRadius: '15px',
                   },
+                  
                 }}>
                 {isNonMobileScreens ? (
                   <img
@@ -383,16 +407,16 @@ const NavBar = ({ isUserAdmin }) => {
                         <Help sx={{ color: font, fontSize: '25px' }} />
                       </IconButton>
                     </RouterLink> */}
-                     <ThemeProvider theme={theme}>
-      <CssBaseline />
-                    <Box sx={{ display: "flex", flexDirection: "column", gap: "25px" }}>
-                    <NavLink  to='/register'style={{ textDecoration: "none", color: "inherit" }}  >
-  <Typography sx={{ color: "white"  }}>Registro</Typography>
-</NavLink >
-<NavLink  to='/login'style={{ textDecoration: "none", color: "inherit" }}>
-  <Typography sx={{ color: "white"   }}>Inicio Sesion</Typography>
-</NavLink >
-</Box>    </ThemeProvider>
+                    <ThemeProvider theme={theme}>
+                      <CssBaseline />
+                      <Box sx={{ display: "flex", flexDirection: "column", gap: "25px" }}>
+                        <NavLink to='/register' style={{ textDecoration: "none", color: "inherit" }}  >
+                          <Typography sx={{ color: "white" }}>Registro</Typography>
+                        </NavLink >
+                        <NavLink to='/login' style={{ textDecoration: "none", color: "inherit" }}>
+                          <Typography sx={{ color: "white" }}>Inicio Sesion</Typography>
+                        </NavLink >
+                      </Box>    </ThemeProvider>
 
                   </Box>
                 </Box>

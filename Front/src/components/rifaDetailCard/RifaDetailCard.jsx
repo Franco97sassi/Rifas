@@ -7,6 +7,7 @@ import { Box, Typography, Button, Grid, useMediaQuery, Autocomplete, TextField, 
 
 //-------------------- Actions --------------------------
 import { addNumbersToCart } from '../../store/state/actions/rifas';
+import { useTheme } from '@emotion/react';
 
 //-------------------- Components --------------------------
 
@@ -22,9 +23,12 @@ const RifaDetailCard = ({ rifaDetail }) => {
 
  /* Parte del Responsive del texto */
 
- const isSmallScreen = useMediaQuery('(max-width: 1550px)');
- const isExtraSmallScreen = useMediaQuery('(max-width: 1200px)');
-
+//  const isSmallScreen = useMediaQuery('(max-width: 1550px)');
+//  const isExtraSmallScreen = useMediaQuery('(max-width: 1200px)');
+const isSmallScreen = useMediaQuery((theme) => theme.breakpoints.down('sm'));
+const isExtraSmallScreen = useMediaQuery((theme) =>
+  theme.breakpoints.down('xs')
+);
  let typographyVariant = 'h4';
  let imgSize = { width: '30rem' };
 
@@ -69,18 +73,21 @@ const RifaDetailCard = ({ rifaDetail }) => {
  const filteredNumeros = sortedNumeros.filter(element =>
   element.number.toString().includes(searchTerm)
 );
- 
+const theme1 = useTheme();
+const isNonMobileScreens = useMediaQuery(theme1.breakpoints.up('md')); // Cambio de 'min-width' a 'up'
+
  return (
   <>
    {Object.keys(rifaDetail).length > 0 ? (
     /// TIENE QUE IR CON RESPONSIVE
+    
     <Box
      margin='2rem'
      boxShadow='12px 12px 12px -5px rgba(0,0,0,0.75)'
      borderRadius='0.5rem'
      padding='3em'
      display='flex'
-     flexDirection="row"
+     flexDirection= {isNonMobileScreens?"row":"column"}
       gap="2em"
       sx={{
       bgcolor: '#FFFFFF',
@@ -194,7 +201,13 @@ const RifaDetailCard = ({ rifaDetail }) => {
        style={{ color: '#33333', textAlign: 'center' }}>
        Selecciona los números que desees comprar
       </Typography>
-      <Box sx={{ marginBottom: '1rem' }}>
+  <Box
+  sx={{
+    marginBottom: '1rem',
+    display: 'flex',
+    justifyContent: isNonMobileScreens ? 'flex-start' : 'center',
+  }}
+>
    
       <TextField
       type="text"
@@ -212,6 +225,7 @@ const RifaDetailCard = ({ rifaDetail }) => {
         padding: '2em',
          bgcolor: '#D9D9D9',     overflowY: 'scroll',  // Habilitar el scroll vertical
           height: '30rem',
+          overflowX: 'hidden',
        }}> 
        <Grid
         container

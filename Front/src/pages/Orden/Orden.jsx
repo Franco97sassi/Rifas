@@ -1,16 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { Box, Button, Container, Grid, ListItem, ListItemText, Typography } from '@mui/material';
+import { Box, Button, Container, Grid, ListItem, ListItemText, Typography, useMediaQuery } from '@mui/material';
 import Footer from '../../components/footer/footer';
 import NavBar from '../../components/navbar/NavBar.jsx';
 import { Link } from 'react-router-dom';
 import OrdenesDetail from './OrdenDetail';
 import OrdenCard from '../Admin/OrdenCard';
+import { useTheme } from '@emotion/react';
 const svHost = import.meta.env.VITE_SV_HOST;
 const OrdenesComponent = () => {
   const [ordenes, setOrdenes] = useState([]);
   const userData = JSON.parse(sessionStorage.getItem('userData'));
   const userId = userData?.user?.id;
+  const theme1 = useTheme();
+  const isNonMobileScreens = useMediaQuery(theme1.breakpoints.up('md')); // Cambio de 'min-width' a 'up'
 
   useEffect(() => {
     // Si no hay ID de usuario, detener la solicitud
@@ -42,7 +45,7 @@ const OrdenesComponent = () => {
       <Box marginBottom={2}>
         <Typography sx={{
           marginTop: "28px", fontWeight: "bold",
-          marginBottom: "28px", fontSize: "24px"
+          marginBottom: "28px", fontSize: "24px",textAlign:isNonMobileScreens?"left":"center",
         }} variant="h6" gutterBottom>
           Pedidos
         </Typography>
@@ -57,6 +60,8 @@ const OrdenesComponent = () => {
                   borderColor: '#ccc',
                   background: '#1E1E1E                    ',
                   boxShadow: '0px 2px 6px rgba(0, 0, 0, 0.1)',
+                   
+
                 }}
               >
                 <Typography variant="subtitle1" sx={{ color: '#FFFFFF', fontWeight: 'bold' }} gutterBottom>

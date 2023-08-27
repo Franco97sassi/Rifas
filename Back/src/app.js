@@ -43,9 +43,9 @@ server.use((err, req, res, next) => {
 });
 
 //mercado pago
-mercadopago.configure({
-    access_token:"TEST-2046136018984093-080112-a931cacc09a8158c6648a9973b5ab5f0-190722808"
-});
+// mercadopago.configure({
+//     access_token:"TEST-2046136018984093-080112-a931cacc09a8158c6648a9973b5ab5f0-190722808"
+// });
 server.post("/create_preference", (req, res) => {
     let preference = {
         items: [

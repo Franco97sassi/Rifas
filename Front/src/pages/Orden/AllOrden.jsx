@@ -1,14 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { Box, Button, Container, Grid, ListItem, ListItemText, Typography } from '@mui/material';
+import { Box, Button, Container, Grid, ListItem, ListItemText, Typography, useMediaQuery } from '@mui/material';
 import Footer from '../../components/footer/footer';
 import NavBar from '../../components/navbar/NavBar.jsx';
+import { useTheme } from '@emotion/react';
 const host = import.meta.env.VITE_SV_HOST;
 
 const AllOrdenes = () => {
   const [ordenes, setOrdenes] = useState([]);
   const userData = JSON.parse(sessionStorage.getItem('userData'));
   const userId = userData?.user?.id;
+  const theme1 = useTheme();
+  const isNonMobileScreens = useMediaQuery(theme1.breakpoints.up('md')); // Cambio de 'min-width' a 'up'
 
   useEffect(() => {
     // Si no hay ID de usuario, detener la solicitud
@@ -52,7 +55,7 @@ const handleDetalleClick = (id) =>{
             Últimas ordenes realizadas
           </Typography> */}
           <Box sx={{
-              display:"flex", justifyContent:"flexStart",
+              display:"flex", justifyContent:isNonMobileScreens?"flexStart":"center",
               paddingLeft:"2.5em"
 
               }}> ,

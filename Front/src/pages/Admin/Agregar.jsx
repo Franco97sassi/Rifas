@@ -1,4 +1,4 @@
-import { Box, Button, Divider, Grid, Input, TextField, Typography } from '@mui/material';
+import { Box, Button, Divider, Grid, Input, TextField, Typography, useMediaQuery } from '@mui/material';
 import Footer from '../../components/footer/footer';
 import NavBar from '../../components/navbar/NavBar.jsx';
 import { useEffect, useState } from 'react';
@@ -7,12 +7,15 @@ import CurrentRifasAdmin from '../../components/currentRifasAdmin/CurrentRifasAd
 import AllOrdenes from '../Orden/AllOrden';
  const host = import.meta.env.VITE_SV_HOST;
 import NavBarLogo from '../../assets/NavBarLogo.png';
+import { useTheme } from '@emotion/react';
 const Agregar = () => {
   const [product, setProduct] = useState('');
   const [imgProduct, setImgProduct] = useState(null);
   const [description, setDescription] = useState('');
   const [numbersPrice, setNumbersPrice] = useState('');
   const [totalNumbers, setTotalNumbers] = useState('');
+  const theme1 = useTheme();
+  const isNonMobileScreens = useMediaQuery(theme1.breakpoints.up('md')); // Cambio de 'min-width' a 'up'
 
 
 
@@ -55,76 +58,69 @@ const Agregar = () => {
   
   return (
     <>
-      <NavBar />
+       <NavBar />
       <Box
-     margin='2rem'
-     boxShadow='12px 12px 12px -5px rgba(0,0,0,0.75)'
-     borderRadius='0.5rem'
-     padding='3em'
-     display='flex'
-     flexDirection="row"
-      gap="2em"
-      // flexDirection='row'
-     sx={{
-      bgcolor: '#D9D9D9',
-     }}>
-      
-     <Box
-      display='flex'
-      gap="2em"
-       
-      flexDirection="column"> 
-       <Typography
-       variant='h1'        fontWeight="700"
-         fontSize="24px         "
-        style={{ color: '#333333', textAlign: 'center' }}>
-       Agregar Productos  
-      </Typography>
-       
-      
-     
-    
-
-    
-    <Box
-         sx={{
-          width: '230px',
-          height: '282px',
-          background:"black",
-          backgroundSize: 'contain',
-          backgroundPosition: 'center',
-          backgroundRepeat: 'no-repeat',
-          borderRadius: 6,
-          marginTop:'4em',
-      
-          padding: '1rem',
-          textAlign: 'center',
-          transition: '0.3s',
-          '&:hover': {
-           boxShadow: ' 0px 5px 61px 6px #FFA840',
-          },
-         }}
+        margin={isNonMobileScreens ? '2rem' : '1rem'}
+        boxShadow='12px 12px 12px -5px rgba(0,0,0,0.75)'
+        borderRadius='0.5rem'
+        padding={isNonMobileScreens ? '3em' : '1em'}
+        display='flex'
+        flexDirection={isNonMobileScreens ? 'row' : 'column'}
+        gap={isNonMobileScreens ? '2em' : '1em'}
+        bgcolor='#D9D9D9'
+      >
+        <Box
+          display='flex'
+          flexDirection='column'
+          
+          gap='2em'
+          alignItems={isNonMobileScreens ? 'center' : 'center'}
         >
-           
-           
+          <Typography
+            variant='h1'
+            fontWeight='700'
+            fontSize={isNonMobileScreens ? '24px' : '20px'}
+            style={{ color: '#333333', textAlign: 'center' }}
+          >
+            Agregar Productos
+          </Typography>
+
+          <Box
+            sx={{
+              width: isNonMobileScreens ? '230px' : '100%',
+              height: isNonMobileScreens ? '282px' : 'auto',
+              background: 'black',
+              backgroundSize: 'contain',
+              backgroundPosition: 'center',
+              backgroundRepeat: 'no-repeat',
+              borderRadius: 6,
+              marginTop: isNonMobileScreens ? '4em' : '1em',
+              padding: '1rem',
+              textAlign: 'center',
+              transition: '0.3s',
+              '&:hover': {
+                boxShadow: isNonMobileScreens ? '0px 5px 61px 6px #FFA840' : 'none',
+              },
+            }}
+          >
             <img
               src={NavBarLogo}
               style={{
-                width: '172px',
-                height: '178px',
+                width: isNonMobileScreens ? '172px' : '50%',
+                height: isNonMobileScreens ? '178px' : '50%',
                 marginBottom: '1rem',
                 borderRadius: 10,
               }}
             />
-         
-          <Typography sx={{ fontSize: "13px", fontWeight: "600", color: "#423E3F" }}>
+          
+          {/* <Typography sx={{ fontSize: "13px", fontWeight: "600", color: "#423E3F" }}>
             {product.numbersPrice}
-          </Typography>
+          </Typography> */}
         </Box>
-        <Typography sx={{fontSize:"13px", fontWeight:"600", color:"#423E3F"}}
+        {/* <Typography sx={{fontSize:"13px", fontWeight:"600", color:"#423E3F"}}
         >
-          {/* $ {rifaDetail.numbersPrice} */}{product.numbersPrice}
-        </Typography>  
+         $ {rifaDetail.numbersPrice}  {product.numbersPrice}
+        </Typography>   */}
 
     
           <Box
@@ -180,7 +176,7 @@ const Agregar = () => {
 
         
         <Grid container   display="flex" 
-                      paddingLeft="10rem"
+                      // paddingLeft="10rem"
                       alignItems="center"
                       
                          >
@@ -194,7 +190,7 @@ const Agregar = () => {
             name="name"
             value={product.name}
             onChange={(e) => setProduct(e.target.value)}
-            sx={{ width: 500  }}
+            sx={{width:isNonMobileScreens? 500:"100%"  }}
           /> 
          </Grid>    
           <Grid item xs={12}>
@@ -203,14 +199,14 @@ const Agregar = () => {
             name="name"
             value={product.name}
             onChange={(e) => setImgProduct(e.target.value)}
-            sx={{ width: 500  }}
+            sx={{width:isNonMobileScreens? 500:"100%"  }}
           /> </Grid>  
       <Grid item xs={12}>    <Typography variant="body1">Descripcion:</Typography>
            <TextField required
             name="name"
             value={product.name}
             onChange={(e) => setDescription(e.target.value)}
-            sx={{width: 500  }}
+            sx={{width:isNonMobileScreens? 500:"100%"  }}
           /> </Grid>
      
         {/* Numbers Price:
@@ -228,7 +224,7 @@ const Agregar = () => {
             name="name"
             value={product.name}
             onChange={(e) => setNumbersPrice(e.target.value)}
-            sx={{ width: 500  }}            
+            sx={{width:isNonMobileScreens? 500:"100%"  }}    
           />   
           
            </Grid>
@@ -238,10 +234,9 @@ const Agregar = () => {
             name="name"
             value={product.name}
             onChange={(e) => setTotalNumbers(e.target.value)}
-            sx={{ width: 500 }}
-          />    </Grid></Grid>
+            sx={{width:isNonMobileScreens? 500:"100%"  }}          />    </Grid></Grid>
            
-        </Grid> <Button  sx={{ marginLeft:"90px",background:"black" ,marginTop: '2rem'}}
+        </Grid> <Button  sx={{ marginLeft:isNonMobileScreens?"-100px":"0px",background:"black" ,marginTop: '2rem'}}
       type="submit" onClick={onSubmit} variant="contained"  >Crear Producto</Button>
          </Box>
      </div> 

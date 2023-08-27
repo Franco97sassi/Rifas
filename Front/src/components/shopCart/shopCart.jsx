@@ -7,6 +7,7 @@ import {
   ListItemText,
   IconButton,
   Button,
+  useMediaQuery,
 } from "@mui/material";
 import { useSelector, useDispatch } from "react-redux";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
@@ -15,8 +16,11 @@ import DeleteIcon from "@mui/icons-material/Delete";
 
 import { removeNumbersToCart, buyRifas } from "../../store/state/actions/rifas";
 import "./shopCart.css"; // Importa el archivo CSS para las transiciones
-import { initMercadoPago, Wallet } from "@mercadopago/sdk-react";
+import {  Wallet } from "@mercadopago/sdk-react";
 import axios from "axios";
+import { useTheme } from "@emotion/react";
+const host = import.meta.env.VITE_SV_HOST;
+
 const ShopCart = ({isUserAdmin}) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -25,17 +29,19 @@ const ShopCart = ({isUserAdmin}) => {
   const handleDeleteCart = (rifaId) => {
     dispatch(removeNumbersToCart(rifaId));
   };
-
+  const theme1 = useTheme();
+  const isNonMobileScreens = useMediaQuery(theme1.breakpoints.up('md')); // Cambio de 'min-width' a 'up'
+  
 
 
   //mercado pago
   const [preferenceId, setPreferenceId] = useState(null);
-  initMercadoPago("TEST-b3944798-0320-4a5f-9f12-f95c52c42fd5");
+  // initMercadoPago("TEST-b3944798-0320-4a5f-9f12-f95c52c42fd5");
 
   const createPreference = async () => {
     console.log(createPreference)
     try {
-      const response = await axios.post("http://localhost:4000/rifas/mercadoPago", {
+      const response = await axios.post(`${host}/rifas/mercadoPago` , {
         cart
 
       })
@@ -92,12 +98,15 @@ const ShopCart = ({isUserAdmin}) => {
   return (
     <Box
       display="flex"
-      flexDirection="column"
-      alignItems="center"
-      width="80%" // Añadido para reducir el ancho del componente
-      margin="0 auto" // Centra el componente horizontalmente
-      padding="2rem" 
+       flexDirection="column"  
+       alignItems= "center"
+       justifyContent="center"
+      // alignItems="center"
+      // width="80%" // Añadido para reducir el ancho del componente
+      // margin="0 auto" // Centra el componente horizontalmente
+       padding="2rem" 
       >
+         
       <Typography
         margin="1em"
         style={{ color: "#333333" }} // Aumenta el tamaño de la fuente
@@ -106,7 +115,8 @@ const ShopCart = ({isUserAdmin}) => {
       >
         Carrito de Compras
       </Typography>
-      <TransitionGroup component={List}>
+
+     <TransitionGroup component={List}>  
         
         {cart && cart.length > 0 ? (
           cart
@@ -121,26 +131,33 @@ const ShopCart = ({isUserAdmin}) => {
             }, [])
             .map((item) => (
               <CSSTransition key={item.rifaId} classNames="fade" timeout={300}>
-                <ListItem>
+                <ListItem  >
+                  <Box 
+                  sx={{
+                    display: "flex",
+                    flexDirection: "column",
+                    alignItems: "center",
+                    justifyContent: "center",
+                  }}
+                  > 
                   <Box
                     sx={{
-                      // width: "230px",
-                      // height: "282px",
- 
+                      width: "230px",
+                        height: "282px",
+                        display: "flex",
+                        flexDirection: "column",
+                        alignItems: "center",
+                        justifyContent: "center",
                       background: "#D9D9D9",
-                      backgroundSize: "contain",
-                      backgroundPosition: "center",
-                      backgroundRepeat: "no-repeat",
-                      borderRadius: 2,
-                      padding: "1rem",
-                      textAlign: "center",
-                      transition: "0.3s",
+                        borderRadius: 2,
+                      padding:  "1rem",
+                       transition: "0.3s",
                       "&:hover": {
                         boxShadow: " 0px 5px 61px 6px #D9D9D9",
                       },
                     }}
                   >
-                    <Typography
+                     <Typography
                       variant="body1"
                       fontSize="13px"
                       key={item.id}
@@ -164,7 +181,7 @@ const ShopCart = ({isUserAdmin}) => {
                         borderStyle: "solid",
                         borderWidth: "6px",
                       }}
-                    />
+                    /> 
                     <Typography
                       sx={{
                         fontSize: "13px",
@@ -173,49 +190,63 @@ const ShopCart = ({isUserAdmin}) => {
                       }}
                     >
                       $ {item.numbersPrice}
-                    </Typography>
+                    </Typography>  
                   </Box>
+
                   <Box
                     sx={{
-                      width: "50rem",
-                      height: "282px",
+                      width: "15rem",
+                      display:"flex",
+                      flexDirection: "column",
+                      justifyContent: "center", 
+                        
+                      alignItems: "center",
+                      height: "max-content",
                       background: "#D9D9D9",
                       backgroundSize: "contain",
                       backgroundPosition: "center",
                       backgroundRepeat: "no-repeat",
                       borderRadius: 2,
-                      margin: "1rem",
-                      display: "flex",
-                      flexDirection: "row",
-                      paddingRight: "0.7rem", // Añade un poco de espacio en la parte inferior
-                      paddingTop: "1.1rem", // Añade un poco de espacio en la parte inferior
+                      marginTop: "1rem",
+                      
+                      // paddingRight: "0.7rem", // Añade un poco de espacio en la parte inferior
+                      // paddingTop: "1.1rem", // Añade un poco de espacio en la parte inferior
 
                     }}
+
+
                   >
-                    <Box
+                     <Box
                       sx={{
                         display: "flex",
                         flexDirection: "column",
-                        justifyContent: "flex-start",
+                        justifyContent: "flex-start", 
+                        
                         alignItems: "center",
-                        paddingTop: "1px",
+
+                         paddingTop: "1px",
                         paddingBottom: "1rem", // Añade un poco de espacio en la parte inferior
                         maxHeight: "282", // Establece una altura máxima para la caja
                         // overflowY: "auto", // Habilita el desplazamiento vertical si el contenido excede la altura máxima
-                        paddingRight: "0.1rem", // Añade un poco de espacio en la parte derecha
+                        // paddingRight: "0.1rem", // Añade un poco de espacio en la parte derecha
                         // Añade un poco de espacio en la parte superior
                         // Añade un poco de espacio en la parte inferior
                       }}
                     >
                       <Typography
                         variant="body1"
-                        // paddingTop="10px"
-                        paddingLeft={5}
-
+                         paddingTop="10px"
+                        // paddingLeft={5}
+                           textAlign="center"
                         style={{ color: "#423E3F", fontWeight: "bold" }}
                       >
                         Números Seleccionados:
                       </Typography>
+ 
+
+
+
+
                       <Box
                         sx={{
                           display: "flex",
@@ -234,8 +265,7 @@ const ShopCart = ({isUserAdmin}) => {
                               fontSize: "2rem",
                               width: "4rem",
                               height: "4rem",
-                              display: "flex",
-                              margin: "0.5rem",
+                               
                               color: "#D9D9D9",
                               "&:hover": {
                                 backgroundColor: "#423E3F",
@@ -245,9 +275,17 @@ const ShopCart = ({isUserAdmin}) => {
                             {number}
                           </Button>
                         ))}
-                      </Box>
-                    </Box>
-                    <ListItemText
+                      </Box>  
+
+
+
+
+
+
+                    </Box>  
+
+
+                   <ListItemText
 
                       primary={
                         <Typography
@@ -256,36 +294,46 @@ const ShopCart = ({isUserAdmin}) => {
                             color: "#423E3F",
                             textAlign: "right",
                             display: "flex",
-                            flexDirection: "row",
-                            justifyContent: "flex-end",
-                            paddingTop: "235px",
-                            paddingRight: "1rem",
+                             flexDirection: "row",
+                             justifyContent: "center",
+                            alignItems: "center",
+                            
                             fontWeight: "bold",
                           }}
 
                         >
+
                           <Box
                           >
                             Subtotal: ${item.numbers.length * item.numbersPrice}
                           </Box>
+
                         </Typography>
                       }
                       style={{ textAlign: "right" }}
-                    />
-                    <IconButton
+                    />  
+
+
+
+                     <IconButton
                       onClick={() => handleDeleteCart(item.rifaId)}
                       edge="end"
                       padding="1rem"
-
+ 
                       aria-label="delete"
                     >
                       <DeleteIcon />
-                    </IconButton>{" "}
+                    </IconButton>{" "}  
+
+
+                  </Box>
                   </Box>
                 </ListItem>
-              </CSSTransition>
+             </CSSTransition>
             ))
         ) : (
+         
+         
           <Typography
             variant="body1"
             align="center"
@@ -295,80 +343,82 @@ const ShopCart = ({isUserAdmin}) => {
             Sin items
           </Typography>
         )}
-      </TransitionGroup>
+      </TransitionGroup>    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
       {cart.length > 0 && (
         <Box
-          width="100%"
+        width="100%"
+        marginTop="2rem"
+        display="flex"
+         
+        flexDirection="column"
+        alignItems="center"
+      >
+        <Box
+          width="230px"
           sx={{
+            background: "#D9D9D9",
+            padding: "0.5rem 2rem",
+            borderRadius: 2,
             display: "flex",
             flexDirection: "column",
+            alignItems: "center",
             justifyContent: "center",
-            alignItems: "flex-end",
-            marginLeft: "28.7rem",
+            
           }}
         >
-          <Box
-            sx={{
-              width: "50rem",
-              height: "65px",
-              background: "#D9D9D9",
-              backgroundSize: "contain",
-              backgroundPosition: "center",
-              backgroundRepeat: "no-repeat",
-              borderRadius: 2,
-              marginRight: "14.6rem",
-              paddingRight: "3.5rem",
-            }}
+          <Typography
+            variant="h4"
+            sx={{ color: "#423E3F", fontWeight: "bold" }}
           >
-            <ListItemText
-              primary={
-                <Typography
-                  variant="h4"
-                  style={{
-                    color: "#423E3F",
-                    fontWeight: "bold",
-                    paddingTop: "20px",
-                    paddingLeft: "400px",
-
-                  }}
-                >
-                  Total:
-                  <span
-                    children={
-                      "$" +
-                      cart.reduce((acc, item) => acc + item.numbersPrice, 0)
-                    }
-                  />
-                </Typography>
-              }
-              style={{ textAlign: "right" }}
-            />
-          </Box>
-
+            Total: {" $" + cart.reduce((acc, item) => acc + item.numbersPrice, 0)}
+          </Typography>
+               
           <Button
-            variant="contained"
-            sx={{
-              width: "10rem",
-              height: "44px",
-              fontSize: "1.05rem",
-              borderRadius: "40px",
-              color: "#423E3F",
-              fontWeight: "700",
-              margin: "2em",
-              marginRight: "9.5rem",
-              backgroundColor: "#D68E30",
-              "&:hover": {
-                backgroundColor: "#630014",
-              },
-            }}
-            onClick={() => {
-              // Realizar acción de compra
-              handleBuyClick();
-            }}
-          >
-            COMPRAR
-          </Button>
+              variant="contained"
+              sx={{
+                fontSize: "1.05rem",
+                borderRadius: "40px",
+                color: "#423E3F",
+                fontWeight: "700",
+                backgroundColor: "#D68E30",
+                "&:hover": {
+                  backgroundColor: "#630014",
+                },
+                marginTop: "1rem",
+              }}
+              onClick={() => {
+                handleBuyClick();
+              }}
+            >
+              COMPRAR
+            </Button>
+            </Box>
 
           {preferenceId && <Wallet initialization={{ preferenceId }} />}
         </Box>

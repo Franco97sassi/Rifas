@@ -1,14 +1,17 @@
 import React from "react";
 import Carousel from 'react-material-ui-carousel'
-import { Box, Typography } from '@mui/material';
+import { Box, Typography, useMediaQuery } from '@mui/material';
 
 import imagen1 from "../../assets/imagen1.png"
 import imagen2 from "../../assets/imagen2.png"
 import imagen3 from "../../assets/imagen3.png"
+import { useTheme } from "@emotion/react";
 
 
 const Carrousel = () => {
-
+    const theme1 = useTheme();
+    const isNonMobileScreens = useMediaQuery(theme1.breakpoints.up('md')); // Cambio de 'min-width' a 'up'
+  
     var items = [
         {
             name: "Random Name #1",
@@ -34,7 +37,7 @@ const Carrousel = () => {
                     items.map((item, i) =>
                         <>
                             <Box sx={{ display: "flex", justifyContent: "center" }} key={i} item={item}>
-                                <img src={item.img} style={{ height: "100%", maxHeight: "400px" }}></img>
+                                <img src={item.img} style={{ height: "100%" ,width:"100%" }}></img>
                                 <Typography sx={{ position: "absolute", fontSize: "28px", fontWeight: "600", color: "white", display: "flex", alignItems: "center", marginTop: "25%" }}>
                                     {item.description}</Typography>
                             </Box></>)
