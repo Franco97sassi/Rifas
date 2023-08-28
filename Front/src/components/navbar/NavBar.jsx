@@ -275,7 +275,7 @@ const NavBar = ({ isUserAdmin }) => {
             alignItems='center'
             height='75px'
 
-            paddingLeft='50px'
+            paddingLeft='0px'
             bgcolor={alt}>
 
             <Box
@@ -310,8 +310,8 @@ const NavBar = ({ isUserAdmin }) => {
                   <img
                     src={venado}
                     alt='img not found'
-                    width='125rem'
-                    height="75px"
+                    width='max-width'
+                    height="50px"
 
                   />
                 )}
@@ -409,15 +409,15 @@ const NavBar = ({ isUserAdmin }) => {
                     </RouterLink> */}
                     <ThemeProvider theme={theme}>
                       <CssBaseline />
-                      <Box sx={{ display: "flex", flexDirection: "column", gap: "25px" }}>
+                      {/* <Box sx={{ display: "flex", flexDirection: "column", gap: "25px" }}>
                         <NavLink to='/register' style={{ textDecoration: "none", color: "inherit" }}  >
-                          <Typography sx={{ color: "white" }}>Registro</Typography>
+                          <Typography sx={{ color: "white",fontWeight:"700" }}>Registro</Typography>
                         </NavLink >
                         <NavLink to='/login' style={{ textDecoration: "none", color: "inherit" }}>
-                          <Typography sx={{ color: "white" }}>Inicio Sesion</Typography>
+                          <Typography sx={{ color: "white",fontWeight:"700" }}>Inicio Sesion</Typography>
                         </NavLink >
-                      </Box>    </ThemeProvider>
-
+                      </Box>    */}
+ </ThemeProvider> 
                   </Box>
                 </Box>
               </Drawer>

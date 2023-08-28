@@ -149,7 +149,56 @@ const {
       res.status(500).json({ message: 'Error en el servidor.', error: error.message });
     }
   };
-   
+  
+  const pagination = async (req, res) => {
+    try {
+      const page = parseInt(req.query.page) ||1; // Página actual
+      const perPage = parseInt(req.query.perPage)  ||10  // Cantidad de posts por página
+      const searchQuery = req.query.search || ''; // Consulta de búsqueda por título o tag
+  
+      const offset = (page - 1) * perPage;
+  
+      const whereClause = {
+        [Op.or]: [
+          { titulo: { [Op.iLike]: `%${searchQuery}%` } },
+          { tags: { [Op.contains] : [searchQuery] } }
+        ]
+      };
+  
+      const { count, rows: posts } = await PostBlog.findAndCountAll({
+        where: whereClause,
+        offset,
+        limit: perPage,
+        include: [
+          {
+              model: User,
+              as: 'user',
+              attributes: ['imgPerfil', 'username', 'email'],
+          },
+      ],
+      },);
+  
+      if (count === 0) {
+        return res.status(404).json({ message: 'No se encontraron posts.' });
+      }
+  
+      const totalPages = Math.ceil(count / perPage);
+  
+      return res.status(200).json({
+        totalPages,
+        currentPage: page,
+        perPage,
+        posts,
+      });
+    } catch (error) {
+      console.error('Error al obtener blogs:', error);
+      return res.status(500).json({ error: 'Hubo un error al obtener los blogs.' });
+    }
+  
+        
+       
+ 
+  };
   const ordenesId = async (req, res) => {
 
     try {

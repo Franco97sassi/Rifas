@@ -1,7 +1,7 @@
 import React from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { useTheme } from '@mui/material';
+import { useMediaQuery, useTheme } from '@mui/material';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 import {
@@ -51,6 +51,8 @@ function RegisterForm() {
  const logininput = theme.palette.background.logininput;
  const navigate = useNavigate();
  const dispatch = useDispatch();
+ const theme1 = useTheme();
+  const isNonMobileScreens = useMediaQuery(theme1.breakpoints.up('md')); // Cambio de 'min-width' a 'up'
 
  // const handleSubmit = (event) => {
  //   event.preventDefault();
@@ -128,7 +130,7 @@ function RegisterForm() {
        mx: 4,
        display: 'flex',
        flexDirection: 'column',
-       paddingLeft: '3em',
+       paddingLeft:isNonMobileScreens?"3em":'0em',
 
       }}>
       <Typography

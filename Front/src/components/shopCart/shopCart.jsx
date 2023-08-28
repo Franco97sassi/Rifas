@@ -246,7 +246,6 @@ const ShopCart = ({ isUserAdmin }) => {
                         <Typography
                           variant="body1"
                           paddingTop="10px"
-                          // paddingLeft={5}
                           style={{ color: "#423E3F", fontWeight: "bold" }}
                         >
                           Números Seleccionados:
@@ -263,7 +262,10 @@ const ShopCart = ({ isUserAdmin }) => {
                             justifyContent: "center",
                             alignItems: "center",
                             gap: "0.5rem",
-                          }}
+                            marginLeft: isNonMobileScreens?"1rem":"0rem",
+                            marginTop: isNonMobileScreens?"0.5rem":"0rem",
+
+                           }}
                         >
                           {item.numbers.map((number) => (
 
@@ -401,7 +403,9 @@ const ShopCart = ({ isUserAdmin }) => {
       {cart.length > 0 && (
         <Box
           width="50rem"
-          marginTop="10rem"
+          marginTop="3rem"
+
+          marginBottom="1rem"
           display="flex" 
            marginLeft={isNonMobileScreens ? "15rem" : "0rem"}
           flexDirection="column"

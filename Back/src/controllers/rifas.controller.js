@@ -103,17 +103,42 @@ const buyRifa = async (req, res) => {
  }
 };
 
+// const rifaDetail = async (req, res) => {
+//  let { id } = req.params;
+//  try {
+//   const rifa = await Rifa.findByPk(id, { include: 'numeros' });
+//   console.log();
+//   res.status(200).json(rifa);
+//  } catch (error) {
+//   res.status(500).json({ 'Error en el servidor: ': error.message });
+//  }
+// };
+const NUMBERS_PER_PAGE = 100; // Número de números por página en los detalles de la rifa
+
 const rifaDetail = async (req, res) => {
- let { id } = req.params;
  try {
-  const rifa = await Rifa.findByPk(id, { include: 'numeros' });
-  console.log();
+  const { id } = req.params;
+  const page = req.query.page || 1;
+  const offset = (page - 1) * NUMBERS_PER_PAGE;
+  const numeroToSearch = req.query.numero || ''; // Obtén el número a buscar desde la query
+
+  const whereClause = numeroToSearch ? { '$numeros.number$': numeroToSearch } : {};
+
+  const rifa = await Rifa.findByPk(id, {
+    include: {
+      model: Numero,
+      as: 'numeros',
+      where: whereClause,
+      limit: NUMBERS_PER_PAGE,
+      offset: offset
+    }
+  });
+
   res.status(200).json(rifa);
  } catch (error) {
   res.status(500).json({ 'Error en el servidor: ': error.message });
  }
 };
-
 const deleteRifa = async (req, res) => {
   const { id } = req.params; // Destructuramos el id directamente del req.params
 

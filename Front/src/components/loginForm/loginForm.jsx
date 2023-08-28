@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
-import { useTheme } from '@mui/material';
+import { useMediaQuery, useTheme } from '@mui/material';
 import { useDispatch } from 'react-redux';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
@@ -50,6 +50,8 @@ function LogInForm() {
  const [loading, setLoading] = useState(false);
 
  const dispatch = useDispatch();
+ const theme1 = useTheme();
+  const isNonMobileScreens = useMediaQuery(theme1.breakpoints.up('md')); // Cambio de 'min-width' a 'up'
 
  // const handleSubmit = (event) => {
  //   event.preventDefault();
@@ -134,7 +136,7 @@ function LogInForm() {
                mx: 4,
               display: 'flex',  
               flexDirection: 'column',
-              paddingLeft: '7em',
+              paddingLeft: isNonMobileScreens? '7em':"0em",
              }}
           >
             <Typography

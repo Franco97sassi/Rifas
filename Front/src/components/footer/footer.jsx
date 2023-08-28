@@ -96,6 +96,7 @@ const Footer = () => {
      borderRadius='25px'>
      <img
        width='100rem'
+      src={FooterLogo}
      />
     </Box>
     {/* <Box
