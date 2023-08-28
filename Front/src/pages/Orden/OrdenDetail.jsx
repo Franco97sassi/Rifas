@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { Box, Button, Container, Grid, ListItem, ListItemText, Typography } from '@mui/material';
+import { Box, Button, Container, Grid, ListItem, ListItemText, Typography, useMediaQuery } from '@mui/material';
 import Footer from '../../components/footer/footer';
 import NavBar from '../../components/navbar/NavBar.jsx';
 import { useParams } from "react-router-dom";
+import { useTheme } from '@emotion/react';
 const host = import.meta.env.VITE_SV_HOST;
 
 const OrdenesDetail = ( ) => {
@@ -11,7 +12,9 @@ const OrdenesDetail = ( ) => {
     const userData = JSON.parse(sessionStorage.getItem('userData'));
     const userId = userData?.user?.id;
     const { preferenceId } = useParams();
-
+    const theme1 = useTheme();
+    const isNonMobileScreens = useMediaQuery(theme1.breakpoints.up('md')); // Cambio de 'min-width' a 'up'
+  
   useEffect(() => {
     // Si no hay ID de usuario, detener la solicitud
     if (!userId) {
@@ -72,18 +75,7 @@ const OrdenesDetail = ( ) => {
                  
               <Box sx={{ marginBottom: "100px" }}>
 
-                {/* <Grid
-item
-margin='1.5em'
-
-key={orden.id}>
-<Link
- style={{ textDecoration: 'none' }}
- to={`/orden/${orden.id}`}>
- <Orden orden={orden} />
-</Link>
-</Grid>
-))} */}
+                 
 
                 <Box
                   sx={{
@@ -133,162 +125,30 @@ key={orden.id}>
                   }}>  
                                          <Typography fontSize="16px" variant="h7" sx={{ color: 'black', fontWeight: 'bold' }}>   Orden ID: {ordenes.id}</Typography>  
 
-                   {/* <Typography variant="h7" sx={{ color: 'black', fontWeight: 'bold' }}  >
-                    Fecha: {ordenes.createdAt.slice(0, 10)}
-                  </Typography> */}
+                   
                   <Typography fontSize="16px" variant="h7" sx={{ color: 'black', fontWeight: 'bold' }}>
   Fecha y Hora: {ordenes.createdAt.slice(0, 10)} {ordenes.createdAt.slice(11, 19)}
 </Typography>
                            <Typography fontSize="16px" variant="h7" sx={{ color: 'black', fontWeight: 'bold' }}>  Estado: {ordenes.estado} </Typography>
-                          {/* <li> email:{orden.cart[0].email}</li> */}
-                          <Typography fontSize="16px" variant="h7" sx={{ color: 'black', fontWeight: 'bold' }}> Comprador:{ordenes.cart[0].username}</Typography>
+                           <Typography fontSize="16px" variant="h7" sx={{ color: 'black', fontWeight: 'bold' }}> Comprador:{ordenes.cart[0].username}</Typography>
                         </Box>
                       </Typography>
 
-                      {/* <Grid container spacing={0} display="flex" >
-                        <Grid
-                          item
-                          xs={12}
-                          sm={3}
-                          // container
-                          display="flex"
-                          justifyContent="center"
-                          alignItems="center"
-                        >
-                          <Typography variant="h4">Producto</Typography>
-                        </Grid>
-
-                        <Grid
-                          item
-                          xs={12}
-                          sm={3}
-                          // container
-                          display="flex"
-                          justifyContent="center"
-                          alignItems="center"
-                        >
-                          <Typography variant="h4">Numeros</Typography>
-                        </Grid>
-
-                        <Grid
-                          item
-                          xs={12}
-                          sm={2.5}
-                          display="flex"
-                          justifyContent="center"
-                          alignItems="center"
-                        >
-                          <Typography variant="h4">Producto</Typography>
-                        </Grid>
-
-                        <Grid
-                          item
-                          xs={12}
-                          sm={3.5}
-                          // container
-                          display="flex"
-                          justifyContent="center"
-                          alignItems="center"
-                        >
-                          <Typography variant="h4">Precio</Typography>
-                        </Grid>
-
-                      </Grid> */}
+                      
                       {ordenes?.cart?.map((el) => {
                         return (
                           <>
 
                             <>
-
-                              {/* <Grid container
-                                // spacing={3}
-                                display="flex" justifyContent="space-between">
-                                    
-                                <Grid
-                                  item
-                                  xs={12}
-                                  sm={3}
-                                  container
-                                  display="flex"
-                                  justifyContent="center"
-                                  alignItems="center"
-                                > 
-                                <Grid
-                                  item
-                                  xs={12}
-                                  sm={3}
-                                  container
-                                  display="flex"
-                                  justifyContent="center"
-                                  alignItems="center"
-                                >
-                                     
-                                    <div>
-                                      <img
-                                        src={el.imgProduct}
-                                        style={{
-                                          width: "100px",
-                                          height: "100px",
-                                          marginBottom: "1rem",
-                                          borderRadius: 10,
-                                        }}
-                                      />
-                                    </div></Grid>
-                                   
-                                </Grid> <Grid
-                                  item
-                                  xs={12}
-                                  sm={3}
-                                  container
-                                  display="flex"
-                                  justifyContent="center"
-                                  alignItems="center"
-
-                                >
-                                  <Typography variant="body1">
-                                    Numero: {el.number}
-                                  </Typography></Grid>
-                                <Grid
-                                  item
-                                  xs={12}
-                                  sm={3}
-                                  container
-                                  display="flex"
-                                  justifyContent="center"
-                                  alignItems="center"
-                                >
-                                  <Typography variant="body1">
-                                     {el.productName}
-                                  </Typography> 
-                                    
-                                  </Grid>
-                                  <Grid
-                                  item
-                                  xs={12}
-                                  sm={3}
-                                  container
-                                  display="flex"
-                                  justifyContent="center"
-                                  alignItems="center"
-                                >
-                                  <Typography variant="body1">
-                                  ${el.numbersPrice}
-                                  </Typography> 
-                                    
-                                  </Grid>
-                                
-
-                                
-
-                              </Grid>   */}
-
  
                <ListItem>
+                <Box sx={{display:"flex",
+                flexDirection:isNonMobileScreens?"row":"column"}}>  
                 <Box
                   sx={{
                     // width: "230px",
                     // height: "282px",
-
+ 
                     background: "rgba(30, 30, 30, 0.54)",
                     backgroundSize: "contain",
                     backgroundPosition: "center",
@@ -341,7 +201,7 @@ key={orden.id}>
         borderRadius: '20px',
         bgcolor: '#D9D9D9',
          height: "70px",
-         width:"224px",
+         width:"100%",
          background:"rgba(66, 62, 63, 1)" 
         // height: 300,
         // width: 300,
@@ -368,7 +228,7 @@ key={orden.id}>
                 </Box>
                 <Box
                   sx={{
-                    width: "50rem",
+                    width:isNonMobileScreens? "50rem":"100%",
                     height: "334px",
                     background: "rgba(30, 30, 30, 0.54) ",
                     backgroundSize: "contain",
@@ -377,7 +237,8 @@ key={orden.id}>
                     // borderRadius: 2,
                      display: "flex",
                     flexDirection: "row",
-                    paddingRight: "0.7rem", // Añade un poco de espacio en la parte inferior
+                    justifyContent: "center",
+                     paddingRight: "0.1rem", // Añade un poco de espacio en la parte inferior
                     paddingTop: "1.1rem", // Añade un poco de espacio en la parte inferior
 
                   }}
@@ -402,8 +263,9 @@ key={orden.id}>
                     <Typography
                       variant="body1"
                       // paddingTop="10px"
-                      paddingLeft={5}
+                      paddingLeft="5rem"
 fontSize={20}
+   
                       style={{ color: "#FFFFFF", fontWeight: "bold" }}
                     >
                       Números Seleccionados:
@@ -495,17 +357,8 @@ fontSize={20}
                     }
                     style={{ textAlign: "right" }}
                   />   
-                  {/* <IconButton
-                    onClick={() => handleDeleteCart(item.rifaId)}
-                    edge="end"
-                    padding="1rem"
-
-                    aria-label="delete"
-                  >
-                    <DeleteIcon />
-                  </IconButton>{" "} */}
-                {/* </Box> */} 
-                </Box>
+                   
+                </Box> </Box>
               </ListItem>
 
 

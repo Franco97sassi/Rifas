@@ -103,7 +103,7 @@ const NavBar = ({ isUserAdmin }) => {
 
               justifyContent='center'
               alignItems='center'
-              height='175px'
+              height='100px'
             >
               <Box sx={{justifyContent:'space-between',
               alignItems:'center'}}>  
