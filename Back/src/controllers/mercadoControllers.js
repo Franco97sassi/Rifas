@@ -12,7 +12,7 @@ const {
   const postPagar = async (req, res) => {
     
     mercadopago.configure({
-    access_token: "TEST-8021216670138113-070920-8fec9d16d8b40375f92b98e1eb06b24d-235741436"
+    access_token: ACCESS_TOKEN_MP
 });
 
     const preferenceId = uuidv4();
@@ -38,11 +38,11 @@ const {
         items: items,
 
         back_urls: {
-          success: `${CLIENT_PORT}/ordenes`,
-          pending: `${NOTIFICATION_MERCADOPAGO_FRONT}/success?preferenceId=${preferenceId}`,
-          failure: `${NOTIFICATION_MERCADOPAGO_FRONT}/success?preferenceId=${preferenceId}`,
+          success: `${NOTIFICATION_MERCADOPAGO_FRONT}ordenes`,
+          pending: `${NOTIFICATION_MERCADOPAGO_FRONT}success?preferenceId=${preferenceId}`,
+          failure: `${NOTIFICATION_MERCADOPAGO_FRONT}success?preferenceId=${preferenceId}`,
         },
-        notification_url: `https://7882-186-136-152-49.ngrok-free.app/rifas/webhook?preferenceId=${preferenceId}`,
+        notification_url: `${NOTIFICATION_MERCADOPAGO_FRONT}rifas/webhook?preferenceId=${preferenceId}`,
       };
 
 

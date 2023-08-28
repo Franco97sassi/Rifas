@@ -113,6 +113,7 @@ const buyRifa = async (req, res) => {
 //   res.status(500).json({ 'Error en el servidor: ': error.message });
 //  }
 // };
+ 
 const NUMBERS_PER_PAGE = 100; // Número de números por página en los detalles de la rifa
 
 const rifaDetail = async (req, res) => {
@@ -120,11 +121,12 @@ const rifaDetail = async (req, res) => {
   const { id } = req.params;
   const page = req.query.page || 1;
   const offset = (page - 1) * NUMBERS_PER_PAGE;
-  const numeroToSearch = req.query.numero || ''; // Obtén el número a buscar desde la query
+  const numeroToSearch = parseInt(req.query.numero)||  ''; // Obtén el número a buscar desde la query
 
-  const whereClause = numeroToSearch ? { '$numeros.number$': numeroToSearch } : {};
+  const whereClause = numeroToSearch ? { '$number$': numeroToSearch } : {};
 
   const rifa = await Rifa.findByPk(id, {
+    page,
     include: {
       model: Numero,
       as: 'numeros',

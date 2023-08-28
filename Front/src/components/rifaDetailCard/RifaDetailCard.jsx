@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { Box, Typography, Button, Grid, useMediaQuery, Autocomplete, TextField, Pagination } from '@mui/material';
-
+ import Stack from '@mui/material/Stack';
 //-------------------- Actions --------------------------
 import { addNumbersToCart } from '../../store/state/actions/rifas';
 import { useTheme } from '@emotion/react';
@@ -75,6 +75,7 @@ const RifaDetailCard = ({ rifaDetail }) => {
   );
   const theme1 = useTheme();
   const isNonMobileScreens = useMediaQuery(theme1.breakpoints.up('md')); // Cambio de 'min-width' a 'up'
+  const [page, setPage] = useState(1);
 
   return (
     <>
@@ -270,10 +271,12 @@ const RifaDetailCard = ({ rifaDetail }) => {
                       onClick={() => element.available && handleNumberClick(element)}>
                       {element.number}
                     </Box>
-
+                     
                   </Grid>
                 ))}
-
+  {/* <Stack spacing={2}>
+  <Pagination count={totalPages} page={page} onChange={(event, value) => setPage(value)} />
+</Stack> */}
               </Grid>
 
             </Box>
@@ -306,6 +309,7 @@ const RifaDetailCard = ({ rifaDetail }) => {
 
               </Button>
             </Box>
+           
           </Box>
         </Box>
       ) : (
