@@ -274,7 +274,7 @@ const RifaDetailCard = ({ rifaDetail }) => {
             "
                       fontFamily="Work Sans, sans-serif"
                       fontWeight="700"
-                      fontSize="20px"
+                      fontSize="15px"
                       color={
                         selectedNumbers.includes(element)
                           ? '#070707                '
