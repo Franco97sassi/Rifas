@@ -12,7 +12,8 @@ const {
   const postPagar = async (req, res) => {
     
     mercadopago.configure({
-    access_token: ACCESS_TOKEN_MP
+    access_token: ACCESS_TOKEN_MP,
+    sandbox:true
 });
 
     const preferenceId = uuidv4();
@@ -38,8 +39,8 @@ const {
         items: items,
 
         back_urls: {
-          success: `${NOTIFICATION_MERCADOPAGO_FRONT}ordenes`,
-          pending: `${NOTIFICATION_MERCADOPAGO_FRONT}success?preferenceId=${preferenceId}`,
+          success: `${NOTIFICATION_MERCADOPAGO_FRONT}home`,
+          pending: `${NOTIFICATION_MERCADOPAGO_FRONT}ordenes?preferenceId=${preferenceId}`,
           failure: `${NOTIFICATION_MERCADOPAGO_FRONT}success?preferenceId=${preferenceId}`,
         },
         notification_url: `${NOTIFICATION_MERCADOPAGO_FRONT}rifas/webhook?preferenceId=${preferenceId}`,

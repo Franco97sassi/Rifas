@@ -57,7 +57,7 @@ const CurrentRifas = () => {
      justifyContent='center'
      container
      columnSpacing={{ xs: 2, sm: 2, md: 4 }}>
-     {allRifas.map((rifa) => (
+     {allRifas?.map((rifa) => (
       <Grid
        item
        margin='1.5em'

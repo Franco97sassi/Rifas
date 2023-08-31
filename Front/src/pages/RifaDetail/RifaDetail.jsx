@@ -17,7 +17,7 @@ const RifaDetail = () => {
  const [loading, setLoading] = useState(true);
 
  useEffect(() => {
-  dispatch(getRifaDetail(id))
+  dispatch(getRifaDetail(id,1,""))
    .then(() => {
     setTimeout(() => {
      setLoading(false);

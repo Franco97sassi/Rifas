@@ -26,7 +26,7 @@ const ShopCart = ({ isUserAdmin }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const cart = useSelector((state) => state.rifas.cart);
-
+  console.log(cart)
   const handleDeleteCart = (rifaId) => {
     dispatch(removeNumbersToCart(rifaId));
   };
@@ -247,6 +247,8 @@ const ShopCart = ({ isUserAdmin }) => {
                         <Typography
                           variant="body1"
                           paddingTop="10px"
+                          padding={isNonMobileScreens ? "1rem":"1rem"}
+
                           style={{ color: "#423E3F", fontWeight: "bold" }}
                         >
                           Números Seleccionados:
@@ -339,7 +341,7 @@ const ShopCart = ({ isUserAdmin }) => {
                                 justifyContent: "flex-end",
                                 alignItems: "flex-end",
                                 marginTop: isNonMobileScreens ? "8rem" : "1rem",
-
+                                padding:isNonMobileScreens ? "0rem":"1rem",
 
                                 fontWeight: "bold",
                               }}
@@ -397,6 +399,7 @@ const ShopCart = ({ isUserAdmin }) => {
               alignItems: isNonMobileScreens ? "flex-end" : "center",
               justifyContent: "flex-end",
               width: isNonMobileScreens ? "50rem" : "15rem",
+              padding:isNonMobileScreens ? "0rem":"1rem",
              }}
           >
             <Typography
@@ -409,6 +412,7 @@ const ShopCart = ({ isUserAdmin }) => {
             <Button
               variant="contained"
               sx={{
+                 
                 fontSize: "1.05rem",
                 borderRadius: "40px",
                 color: "#423E3F",

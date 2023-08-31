@@ -86,10 +86,10 @@ const Footer = () => {
    <CssBaseline />
    <Box
     display='grid'
-    margin='2rem'
+    margin='0rem'
     justifyItems='center'
     gap='1rem'
-    padding='1rem'>
+    padding='0rem'>
     <Box
      display='block'
      padding='0.5rem'

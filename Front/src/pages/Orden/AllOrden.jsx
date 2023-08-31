@@ -90,7 +90,7 @@ const handleDetalleClick = (id) =>{
                     Fecha: {purchase.createdAt.slice(0, 10)}
                   </Typography>
                   <Typography variant="body2" sx={{ color: '#FFFFFF', fontWeight: 'bold' }} gutterBottom>
-                    Estado: {purchase.estado}
+                    {/* Estado: {purchase.estado}   */}
                   </Typography>
 
                   <Button  sx={{ color: '#FFFFFF', fontWeight: 'bold' }}

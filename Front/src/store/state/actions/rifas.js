@@ -22,9 +22,9 @@ export const getRifas = () => async (dispatch) => {
  }
 };
 
-export const getRifaDetail = (id) => async (dispatch) => {
+export const getRifaDetail = (id,page,numero) => async (dispatch) => {
  try {
-  let res = await axios.get(`${svHost}/rifas/detail/${id}`);
+  let res = await axios.get(`${svHost}/rifas/detail/${id}?page=${page}&numero=${numero}`);
   dispatch(setRifaDetail(res.data));
  } catch (err) {
   console.log(err.message);
@@ -47,9 +47,12 @@ export const addNumbersToCart =
   const numbersToAdd = [];
   selectedNumbers.forEach((number) => {
    // Verificar si el número ya existe en el carrito
-   const exists = cart.some(
-    (item) => item.rifaId === rifaId && item.number === number,
-   );
+   const exists = cart.some((item) => {
+    console.log(number, "soy number")
+  return item.rifaId === rifaId && item.number === number.number;
+});
+
+   console.log(exists, rifaId, numbersPrice )
 
    // Agregar el número al carrito solo si no existe
    if (!exists) {

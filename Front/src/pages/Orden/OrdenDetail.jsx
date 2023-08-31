@@ -60,8 +60,7 @@ const OrdenesDetail = () => {
               marginBottom: "28px",
               marginTop: "28px",
               borderRadius: "5px",
-
-            }}
+             }}
           >
 
 
@@ -82,12 +81,12 @@ const OrdenesDetail = () => {
 
                       // height: "282px",
 
-                      background: "rgba(66, 62, 63, 0.54)",
+                      // background: "rgba(66, 62, 63, 0.54)",
                       backgroundPosition: "center",
 
                       borderRadius: 2,
                       paddingTop: "0.5rem",
-                      textAlign: "center",
+                        textAlign: "center",
                       height: "61px",
 
                     }}
@@ -129,7 +128,7 @@ const OrdenesDetail = () => {
                       <Typography fontSize="16px" variant="h7" sx={{ color: 'black', fontWeight: 'bold' }}>
                         Fecha y Hora: {ordenes.createdAt.slice(0, 10)} {ordenes.createdAt.slice(11, 19)}
                       </Typography>
-                      <Typography fontSize="16px" variant="h7" sx={{ color: 'black', fontWeight: 'bold' }}>  Estado: {ordenes.estado} </Typography>
+                      {/* <Typography fontSize="16px" variant="h7" sx={{ color: 'black', fontWeight: 'bold' }}>  Estado: {ordenes.estado} </Typography> */}
                       <Typography fontSize="16px" variant="h7" sx={{ color: 'black', fontWeight: 'bold' }}> Comprador:{ordenes.cart[0].username}</Typography>
                     </Box>
                   </Typography>
@@ -144,14 +143,15 @@ const OrdenesDetail = () => {
                           <ListItem>
                             <Box sx={{
                               display: "flex",
-                              flexDirection: isNonMobileScreens ? "row" : "column"
+                              flexDirection: isNonMobileScreens ? "row" : "column",
+                              justifyContent:"center"
                             }}>
                               <Box
                                 sx={{
                                   width: isNonMobileScreens ? "230px" : "80%",
                                   // height: "282px",
 
-                                  background: "rgba(30, 30, 30, 0.54)",
+                                  background: isNonMobileScreens ?"rgba(30, 30, 30, 0.54)":null,
                                   backgroundSize: "contain",
                                   backgroundPosition: "center",
                                   backgroundRepeat: "no-repeat",
@@ -169,8 +169,9 @@ const OrdenesDetail = () => {
                                   fontSize="13px"
                                   // key={el.id}
                                   textOverflow="ellipsis"
+
                                   style={{
-                                    color: "#FFFFFF",
+                                     
                                     fontWeight: "600",
                                   }}
                                 >
@@ -203,7 +204,7 @@ const OrdenesDetail = () => {
                                     borderRadius: '20px',
                                     bgcolor: '#D9D9D9',
                                     height: "70px",
-                                    width: "100%",
+                                    width:isNonMobileScreens? "100%":"125%",
                                     background: "rgba(66, 62, 63, 1)"
                                     // height: 300,
                                     // width: 300,
@@ -234,13 +235,13 @@ const OrdenesDetail = () => {
                                 sx={{
                                   width: isNonMobileScreens ? "50rem" : "80%",
                                   height: "334px",
-                                  background: "rgba(30, 30, 30, 0.54) ",
+                                  background: isNonMobileScreens ?"rgba(30, 30, 30, 0.54) ":null,
                                   backgroundSize: "contain",
                                   backgroundPosition: "center",
                                   backgroundRepeat: "no-repeat",
                                   // borderRadius: 2,
                                   display: "flex",
-                                  flexDirection: "row",
+                                  flexDirection: isNonMobileScreens ?"row":"column",
                                   justifyContent: "center",
                                   // Añade un poco de espacio en la parte inferior
                                   paddingTop: "1.1rem", // Añade un poco de espacio en la parte inferior
@@ -267,10 +268,10 @@ const OrdenesDetail = () => {
                                   <Typography
                                     variant="body1"
                                     // paddingTop="10px"
-                                    paddingLeft="5rem"
+                                    // paddingLeft="5rem"
                                     fontSize={20}
 
-                                    style={{ color: "#FFFFFF", fontWeight: "bold" }}
+                                    style={{   fontWeight: "bold" }}
                                   >
                                     Números:
                                   </Typography>
@@ -304,6 +305,7 @@ const OrdenesDetail = () => {
                                       flexWrap: "wrap",
                                       justifyContent: "center",
                                       alignItems: "center",
+                                      textAlign: isNonMobileScreens? "right" :"center"
                                     }}
                                   >
                                     {/* {el.number.map((numbe) => (
@@ -339,14 +341,14 @@ const OrdenesDetail = () => {
                                     <Typography
                                       variant="h5"
                                       style={{
-                                        color: "#FFFFFF",
+                                        
                                         textAlign: "right",
                                         display: "flex",
                                         flexDirection: "row",
                                         justifyContent: "flex-end",
-                                        paddingTop: "235px",
+                                        paddingTop: isNonMobileScreens?"275px":"15px",
                                         fontSize: "20px",
-                                        paddingRight: "1rem",
+                                        // paddingRight: "1rem",
                                         fontWeight: "bold",
                                       }}
 
@@ -381,8 +383,8 @@ const OrdenesDetail = () => {
                   })}
 
                   <Typography variant="h5" sx={{
-                    textAlign: 'right', fontSize: "20px",
-                    paddingRight: '4rem', paddingBottom: "2rem", fontWeight: "bold"
+                    textAlign:  isNonMobileScreens? "right" :"center" , fontSize: "20px",
+                    paddingRight: '6rem', paddingBottom: "2rem", fontWeight: "bold"
                   }}>
                     Total: ${calcularTotalCompra(ordenes.cart).toFixed(2)}
                   </Typography>

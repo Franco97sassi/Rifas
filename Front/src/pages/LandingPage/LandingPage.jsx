@@ -36,13 +36,13 @@ const LandingPage = () => {
      justifyContent: isNonMobileScreens? "flex-start" :"center",
      alignItems: isNonMobileScreens? "flex-start" :"center",
      flex: '1 1 auto',
-     paddingLeft: '2em',
+     paddingLeft:isNonMobileScreens?'2em':"0",
  
     }}>
     <Typography
      variant='h1'
      textAlign='center'
-     marginTop='2.5em'
+     marginTop={isNonMobileScreens ?'2.5em':"0"}
     paddingLeft={isNonMobileScreens ? '0.3em' : '0em'} // Ajuste del paddingLeft
       fontSize='4em'
      color='whitesmoke'
