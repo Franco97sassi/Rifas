@@ -107,6 +107,7 @@ const ShopCart = ({ isUserAdmin }) => {
       // width="80%" // Añadido para reducir el ancho del componente
       // margin="0 auto" // Centra el componente horizontalmente
       padding="0rem"
+      width="100%"
     >
 
       <Typography
@@ -215,7 +216,7 @@ const ShopCart = ({ isUserAdmin }) => {
                         backgroundRepeat: "no-repeat",
                         borderRadius: 2,
                         marginTop: "1rem",
-                        margin: "1rem",
+                          margin: "1rem",
                         minHeight: "6rem",
                         height: isNonMobileScreens ? "max-content" : "max-content",
                         // paddingRight: "0.7rem", // Añade un poco de espacio en la parte inferior
@@ -375,34 +376,10 @@ const ShopCart = ({ isUserAdmin }) => {
         )}
       </TransitionGroup>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+ 
       {cart.length > 0 && (
         <Box
-          width="50rem"
+          width={isNonMobileScreens?"50rem":"0"}
           marginTop="3rem"
 
           marginBottom="1rem"

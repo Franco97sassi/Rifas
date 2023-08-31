@@ -55,21 +55,21 @@ module.exports = (sequelize) => {
   });
 
   // Función para eliminar órdenes no pagadas después de 12 horas
-//   const deleteUnpaidOrders = async () => {
-//     const twelveHoursAgo = new Date(Date.now() - 12 * 60 * 60 * 1000); // 12 horas en milisegundos
-//     await Orden.destroy({
-//       where: {
-//         estado: "NO PAGADO",
-//         createdAt: {
-//           [Op.lt]: twelveHoursAgo
-//         }
-//       }
-//     });
-//   };
+  const deleteUnpaidOrders = async () => {
+    const twelveHoursAgo = new Date(Date.now() - 12 * 60 * 60 * 1000); // 12 horas en milisegundos
+    await Orden.destroy({
+      where: {
+        estado: "NO PAGADO",
+        createdAt: {
+          [Op.lt]: twelveHoursAgo
+        }
+      }
+    });
+  };
 
-//   // Ejecutar la función cada cierto tiempo (por ejemplo, cada hora)
-//   setInterval(deleteUnpaidOrders, 60 * 60 * 1000); // Ejecutar cada hora
+  // Ejecutar la función cada cierto tiempo (por ejemplo, cada hora)
+  setInterval(deleteUnpaidOrders, 60 * 60 * 1000); // Ejecutar cada hora
 
-//   return Orden;
-//
+  return Orden;
+
  };

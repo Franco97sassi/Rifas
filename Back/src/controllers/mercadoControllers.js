@@ -150,55 +150,58 @@ const {
     }
   };
   
-  const pagination = async (req, res) => {
-    try {
-      const page = parseInt(req.query.page) ||1; // Página actual
-      const perPage = parseInt(req.query.perPage)  ||10  // Cantidad de posts por página
-      const searchQuery = req.query.search || ''; // Consulta de búsqueda por título o tag
-  
-      const offset = (page - 1) * perPage;
-  
-      const whereClause = {
-        [Op.or]: [
-          { titulo: { [Op.iLike]: `%${searchQuery}%` } },
-          { tags: { [Op.contains] : [searchQuery] } }
-        ]
-      };
-  
-      const { count, rows: posts } = await PostBlog.findAndCountAll({
-        where: whereClause,
-        offset,
-        limit: perPage,
-        include: [
-          {
-              model: User,
-              as: 'user',
-              attributes: ['imgPerfil', 'username', 'email'],
-          },
-      ],
-      },);
-  
-      if (count === 0) {
-        return res.status(404).json({ message: 'No se encontraron posts.' });
-      }
-  
-      const totalPages = Math.ceil(count / perPage);
-  
-      return res.status(200).json({
-        totalPages,
-        currentPage: page,
-        perPage,
-        posts,
-      });
-    } catch (error) {
-      console.error('Error al obtener blogs:', error);
-      return res.status(500).json({ error: 'Hubo un error al obtener los blogs.' });
-    }
-  
-        
-       
- 
-  };
+  // const NUMBERS_PER_PAGE = 100; // Número de números por página en los detalles de la rifa
+
+// const rifaDetail = async (req, res) => {
+//  try {
+//   const { id } = req.params;
+//   const page = req.query.page ? parseInt(req.query.page) : 1; // Parsea el número de página
+//   const offset = (page - 1) * NUMBERS_PER_PAGE;
+//   const numeroToSearch = parseInt(req.query.numero) || ''; // Parsea el número a buscar desde la query
+
+//   const whereClause = numeroToSearch ? { 'number': numeroToSearch } : {};
+
+//   const rifa = await Rifa.findByPk(id, {
+//     include: {
+//       model: Numero,
+//       as: 'numeros',
+//       where: whereClause,
+//       limit: NUMBERS_PER_PAGE,
+//       offset: offset
+//     }
+//   });
+
+//   // Obtén la cantidad total de números asociados a la rifa
+//   const totalNumeros = await Numero.count({ where: { RifaId: id } });
+
+//   // Calcula la cantidad total de páginas
+//   const totalPages = Math.ceil(totalNumeros / NUMBERS_PER_PAGE);
+
+//   // Crear el objeto de respuesta que incluye la rifa, la información de paginación y números
+//   const response = {
+//     rifa,
+//     pagination: {
+//       currentPage: page,
+//       totalPages,
+//       totalNumeros
+//     }
+//   };
+
+
+// console.log(response);
+//   res.status(200).json(response);
+//  } catch (error) {
+//   res.status(500).json({ 'Error en el servidor: ': error.message });
+//  }
+// };
+
+
+
+
+
+
+
+
   const ordenesId = async (req, res) => {
 
     try {

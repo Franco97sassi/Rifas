@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Button, Menu, MenuItem, IconButton, useTheme } from '@mui/material';
+import { Button, Menu, MenuItem, IconButton, useTheme, useMediaQuery } from '@mui/material';
 
 import { AccountCircleRounded } from '@mui/icons-material';
 import { Box } from '@mui/system';
@@ -33,18 +33,16 @@ const UserIconNoLogged = ({ onLoginClick, onRegisterClick }) => {
  };
 
  document.addEventListener('scroll', handleScroll);
+ const theme1 = useTheme();
+  const isNonMobileScreens = useMediaQuery(theme1.breakpoints.up('md')); // Cambio de 'min-width' a 'up'
 
  return (
   <>
+  {!isNonMobileScreens ?(  <>
    <IconButton onClick={handleMenuOpen}>
     <AccountCircleRounded sx={{ color: font, fontSize: '45px' }} />
      
    </IconButton>
-
-
-
-
-
 
 
    <Menu
@@ -83,7 +81,12 @@ const UserIconNoLogged = ({ onLoginClick, onRegisterClick }) => {
         }}>Registrarme</MenuItem>
         
   
-   </Menu> 
+   </Menu></>):(
+    <> 
+    <AccountCircleRounded sx={{ color: font, fontSize: '45px' }} />
+    </>
+   )
+    }
   </>
  );
 };
