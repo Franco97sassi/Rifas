@@ -195,6 +195,9 @@ const NavBar = ({ isUserAdmin }) => {
               </IconButton>
             )}
 
+
+
+
             {/* MOBILE NAV */}
             {!isNonMobileScreens
 
@@ -235,7 +238,7 @@ const NavBar = ({ isUserAdmin }) => {
                      </Box>
                     <Box
                       display='flex'
-                      flexDirection='column'
+                      flexDirection='row'
                       justifyContent='center'
                       gap='3rem'
                       // backgroundColor={white}
@@ -289,7 +292,7 @@ const NavBar = ({ isUserAdmin }) => {
                 fontWeight='bold'
                 fontSize='clamp(1rem, 2rem, 2.25rem)'
                 color='primary'
-                onClick={() => navigate('/home')}
+                onClick={() => navigate('/')}
                 sx={{
                   '&:hover': {
                     transition: '0.4s',
@@ -395,29 +398,32 @@ const NavBar = ({ isUserAdmin }) => {
                   <Box
                     display='flex'
                     flexDirection='column'
-                    // justifyContent='center'
+                     justifyContent='space-between'
                     gap='3rem'
+                     
                     alignItems='center'>
-                    <UserIconNoLogged
+                    {/* <UserIconNoLogged
                       onLoginClick={handleLoginClick}
                       onRegisterClick={handleRegisterClick} isUserAdmin={isUserAdmin}
-                    />
+                    /> */}
+                    {/* <UserIconNoLogged
+                      /> */}
                     {/* <RouterLink to='/register'>
                       <IconButton>
                         <Help sx={{ color: font, fontSize: '25px' }} />
                       </IconButton>
                     </RouterLink> */}
-                    <ThemeProvider theme={theme}>
-                      <CssBaseline />
-                      {/* <Box sx={{ display: "flex", flexDirection: "column", gap: "25px" }}>
+                    {/* <ThemeProvider theme={theme}> */}
+                      {/* <CssBaseline /> */}
+                        {/* <Box sx={{ display: "flex", flexDirection: "column" }}> */}
                         <NavLink to='/register' style={{ textDecoration: "none", color: "inherit" }}  >
-                          <Typography sx={{ color: "white",fontWeight:"700" }}>Registro</Typography>
+                          <Typography sx={{ color: "orange",fontWeight:"700" }}>Registro</Typography>
                         </NavLink >
                         <NavLink to='/login' style={{ textDecoration: "none", color: "inherit" }}>
-                          <Typography sx={{ color: "white",fontWeight:"700" }}>Inicio Sesion</Typography>
+                          <Typography sx={{ color: "orange",fontWeight:"700" }}>Inicio Sesion</Typography>
                         </NavLink >
-                      </Box>    */}
- </ThemeProvider> 
+                      {/* </Box>      */}
+ {/* </ThemeProvider>  */}
                   </Box>
                 </Box>
               </Drawer>

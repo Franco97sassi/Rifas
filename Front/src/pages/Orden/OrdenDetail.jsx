@@ -13,7 +13,8 @@ const OrdenesDetail = () => {
   const userId = userData?.user?.id;
   const { preferenceId } = useParams();
   const theme1 = useTheme();
-  const isNonMobileScreens = useMediaQuery(theme1.breakpoints.up('md')); // Cambio de 'min-width' a 'up'
+  // const isNonMobileScreens = useMediaQuery(theme1.breakpoints.up('md')); // Cambio de 'min-width' a 'up'
+  const isNonMobileScreens = useMediaQuery('(min-width: 1000px)');
 
   useEffect(() => {
     // Si no hay ID de usuario, detener la solicitud
@@ -51,12 +52,12 @@ const OrdenesDetail = () => {
           height: '100vh',
           display: 'flex',
           flexDirection: 'column',
-        }}>
+          }}>
         <Container>
           <Box
             style={{
               background: "#D9D9D9",
-
+ 
               marginBottom: "28px",
               marginTop: "28px",
               borderRadius: "5px",
@@ -88,17 +89,20 @@ const OrdenesDetail = () => {
                       paddingTop: "0.5rem",
                         textAlign: "center",
                       height: "61px",
+              alignContent:"center",
 
                     }}
                   >
+
                     <Typography
                       variant="h5"
                       fontWeight="700"
                       fontFamily={'TanPearl'}
                       fontSize={"2rem"}
-                      color="rgba(255, 255, 255, 1)"
+                      color="rgba(66, 62, 63, 1)
+                      "
                     >
-                      Detalle del  Pedido
+                    Detalle del  Pedido
                     </Typography>
                   </Box>
 
@@ -118,8 +122,8 @@ const OrdenesDetail = () => {
                         backgroundPosition: "center",
                         backgroundRepeat: "no-repeat",
                         borderRadius: 2,
-                        padding: "2rem",
-                        textAlign: "left",
+                        padding: isNonMobileScreens?"2rem":"0rem",
+                        textAlign: isNonMobileScreens?"left":"left",
 
                       }}>
                       <Typography fontSize="16px" variant="h7" sx={{ color: 'black', fontWeight: 'bold' }}>   Orden ID: {ordenes.id}</Typography>
@@ -128,7 +132,7 @@ const OrdenesDetail = () => {
                       <Typography fontSize="16px" variant="h7" sx={{ color: 'black', fontWeight: 'bold' }}>
                         Fecha y Hora: {ordenes.createdAt.slice(0, 10)} {ordenes.createdAt.slice(11, 19)}
                       </Typography>
-                      {/* <Typography fontSize="16px" variant="h7" sx={{ color: 'black', fontWeight: 'bold' }}>  Estado: {ordenes.estado} </Typography> */}
+                      <Typography fontSize="16px" variant="h7" sx={{ color: 'black', fontWeight: 'bold' }}>  Estado: {ordenes.estado} </Typography>  
                       <Typography fontSize="16px" variant="h7" sx={{ color: 'black', fontWeight: 'bold' }}> Comprador:{ordenes.cart[0].username}</Typography>
                     </Box>
                   </Typography>
@@ -144,7 +148,8 @@ const OrdenesDetail = () => {
                             <Box sx={{
                               display: "flex",
                               flexDirection: isNonMobileScreens ? "row" : "column",
-                              justifyContent:"center"
+                              justifyContent:"center",
+                              alignContent:"center"
                             }}>
                               <Box
                                 sx={{
@@ -156,20 +161,23 @@ const OrdenesDetail = () => {
                                   backgroundPosition: "center",
                                   backgroundRepeat: "no-repeat",
                                   // borderRadius: 2,
-                                  padding: "1rem",
+                                  padding: isNonMobileScreens ?"1rem":"0rem",
                                   textAlign: "center",
-                                  transition: "0.3s",
+                                  display:"flex",
+                                  flexDirection:"column",
+                                   transition: "0.3s",
                                   "&:hover": {
                                     boxShadow: " 0px 5px 61px 6px #D9D9D9",
                                   },
+
                                 }}
                               >
                                 <Typography
                                   variant="body1"
-                                  fontSize="13px"
+                                  fontSize="1.5rem"
                                   // key={el.id}
                                   textOverflow="ellipsis"
-
+                                  
                                   style={{
                                      
                                     fontWeight: "600",
@@ -184,10 +192,10 @@ const OrdenesDetail = () => {
                                     width: "172px",
                                     height: "190px",
                                     marginBottom: "1rem",
-                                    borderRadius: 10,
-                                    borderColor: "rgba(66, 62, 63, 1)",
-                                    borderStyle: "solid",
-                                    borderWidth: "6px",
+                                    // borderRadius: 10,
+                                    // borderColor: "rgba(66, 62, 63, 1)",
+                                    // borderStyle: "solid",
+                                    // borderWidth: "6px",
                                   }}
                                 />
 
@@ -203,7 +211,7 @@ const OrdenesDetail = () => {
                                     border: '0.2em solid #213911d2',
                                     borderRadius: '20px',
                                     bgcolor: '#D9D9D9',
-                                    height: "70px",
+                                    height: "60px",
                                     width:isNonMobileScreens? "100%":"125%",
                                     background: "rgba(66, 62, 63, 1)"
                                     // height: 300,
@@ -342,23 +350,24 @@ const OrdenesDetail = () => {
                                       variant="h5"
                                       style={{
                                         
-                                        textAlign: "right",
+                                        textAlign: "center",
                                         display: "flex",
                                         flexDirection: "row",
-                                        justifyContent: "flex-end",
+                                          justifyContent: "flex-end",
                                         paddingTop: isNonMobileScreens?"275px":"15px",
                                         fontSize: "20px",
                                         // paddingRight: "1rem",
                                         fontWeight: "bold",
+                                        
                                       }}
 
                                     >
-                                      <Box
-                                      >
+                                      {/* <Box
+                                      > */}
                                         Subtotal: ${
                                           // e.numbers.length * 
                                           el.numbersPrice}
-                                      </Box>
+                                      {/* </Box> */}
                                     </Typography>
                                   }
                                   style={{ textAlign: "right" }}
@@ -384,7 +393,7 @@ const OrdenesDetail = () => {
 
                   <Typography variant="h5" sx={{
                     textAlign:  isNonMobileScreens? "right" :"center" , fontSize: "20px",
-                    paddingRight: '6rem', paddingBottom: "2rem", fontWeight: "bold"
+                    paddingRight: isNonMobileScreens?'3.5rem':"6rem", paddingBottom: "2rem", fontWeight: "bold"
                   }}>
                     Total: ${calcularTotalCompra(ordenes.cart).toFixed(2)}
                   </Typography>

@@ -60,7 +60,7 @@ const CurrentRifas = () => {
      {allRifas?.map((rifa) => (
       <Grid
        item
-       margin='1.5em'
+       margin='2.4em'
        
        key={rifa.id}>
        <Link

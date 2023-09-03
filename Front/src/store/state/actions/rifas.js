@@ -70,6 +70,7 @@ export const addNumbersToCart =
    }
   });
 
+  
   if (numbersToAdd.length > 0) {
    //  console.log(numbersToAdd);
    await dispatch(setNumbersToCart(numbersToAdd));

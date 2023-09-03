@@ -6,6 +6,9 @@ import cardImg from '../../assets/cardImg.webp';
 
 //////////////////////////////////
 const RifaCard = ({ rifa }) => {
+    const textStyle = {
+        fontFamily: 'Work Sans, sans-serif', // Define la fuente "Work Sans" y proporciona alternativas genéricas.
+      };
  return (
   <Box
    sx={{
@@ -27,10 +30,10 @@ const RifaCard = ({ rifa }) => {
     
    <Typography
     variant='body1' // HACER RESPONSIVE CARD
-    fontSize='13px'
+    fontSize='13px'  
     textOverflow='ellipsis'
     style={{ color: '#423E3F', 
-    fontWeight:"600" ,
+    fontWeight:"600" ,...textStyle
 //     backgroundColor: 'rgba(0, 0, 0, 0.5)' 
 }}
 paddingBottom="0.5rem"
@@ -54,7 +57,7 @@ paddingBottom="0.5rem"
 
     }}
    />
-        <Typography sx={{fontSize:"13px", fontWeight:"600", color:'#423E3F'}}>$ {rifa.numbersPrice}</Typography>  
+        <Typography sx={{fontSize:"13px", ...textStyle,fontWeight:"600", color:'#423E3F'}}>$ {rifa.numbersPrice}</Typography>  
 
   </Box>
  );

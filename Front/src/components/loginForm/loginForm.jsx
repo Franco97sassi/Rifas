@@ -51,7 +51,8 @@ function LogInForm() {
 
  const dispatch = useDispatch();
  const theme1 = useTheme();
-  const isNonMobileScreens = useMediaQuery(theme1.breakpoints.up('md')); // Cambio de 'min-width' a 'up'
+  // const isNonMobileScreens = useMediaQuery(theme1.breakpoints.up('md')); // Cambio de 'min-width' a 'up'
+  const isNonMobileScreens = useMediaQuery('(min-width: 1000px)');
 
  // const handleSubmit = (event) => {
  //   event.preventDefault();
@@ -90,7 +91,7 @@ function LogInForm() {
     container
     component='main'
     sx={{ alignItems: 'center'   
-     ,background: loginbackground, padding: '1em' }}>
+     ,background: loginbackground  }}>
     <Grid
      item
      md={7}
@@ -112,7 +113,7 @@ function LogInForm() {
          maxWidth: '100%',
          maxHeight: '100%',
          width: 'auto',
-         height: 'auto',
+         height: '394px',
         }}
        />
       </Box>
@@ -125,7 +126,7 @@ function LogInForm() {
           sm={12}
           md={5}
           elevation={6} 
-          sx={{ justifyContent: 'flexStart', display: 'flex' }}
+          sx={{ justifyContent: isNonMobileScreens?'flexStart':"center", display: 'flex' }}
         >
           <Box
             sx={{
@@ -136,6 +137,7 @@ function LogInForm() {
                mx: 4,
               display: 'flex',  
               flexDirection: 'column',
+              
               paddingLeft: isNonMobileScreens? '7em':"0em",
              }}
           >
@@ -150,7 +152,7 @@ function LogInForm() {
                 textAlign: 'center',
               }}
             >
-              Iniciar sesión
+              Inicio sesión
             </Typography>
             
             <Box sx={{ mt: 1 }}>
@@ -175,7 +177,7 @@ function LogInForm() {
                     sx={{
                       display: 'flex',
                       flexDirection: 'column',
-                      justifyContent: 'flex-start', 
+                      justifyContent: 'flex-start'
                     }}
                   >
                     <Typography

@@ -23,7 +23,7 @@ const RifaCardAdmin = ({ rifa, handleNow }) => {
   return (
     <Box
     sx={{
-      background: "#423E3F",
+      background: "rgba(66, 62, 63, 0.72)",
       borderRadius: 2,
         margin: "1rem",
       display: "flex",
@@ -51,22 +51,22 @@ const RifaCardAdmin = ({ rifa, handleNow }) => {
           </Box>
         </Grid>  
  
-        <Grid item xs={12} sm={3}>
-          <Box sx={{ display: 'flex', justifyContent: 'center' }}>
-            <Typography sx={{ fontSize: '24px', fontWeight: "700", color: "#FFFFFF" }}>{rifa.description}</Typography>
+        <Grid item xs={12} sm={3} container alignItems="center" justifyContent="center">
+          <Box  >
+            <Typography sx={{ fontSize: '24px', fontWeight: "700", color: "#FFFFFF" }}>{rifa.product}</Typography>
           </Box>
         </Grid> 
 
-         <Grid item xs={12} sm={3}>
-          <Box sx={{ display: 'flex', justifyContent: 'center' }}>
+         <Grid item xs={12} sm={3} container alignItems="center" justifyContent="center">
+          <Box  >
             <Typography sx={{ fontSize: '24px', fontWeight: "700", color: "#FFFFFF" }}>
               ${rifa.numbersPrice}
             </Typography>
           </Box>
         </Grid>  
         
-     <Grid item xs={12} sm={3}>
-          <Box sx={{ display: 'flex', justifyContent: 'center' }}>
+     <Grid item xs={12} sm={3} container alignItems="center" justifyContent="center">
+          <Box >
             <IconButton
               onClick={() => onDelete(rifa.id)}
               edge="end"

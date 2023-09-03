@@ -19,8 +19,9 @@ const ProductosAdmin = () => {
   const [numbersPrice, setNumbersPrice] = useState('');
   const [totalNumbers, setTotalNumbers] = useState('');
   const theme1 = useTheme();
-  const isNonMobileScreens = useMediaQuery(theme1.breakpoints.up('md')); // Cambio de 'min-width' a 'up'
-  
+  // const isNonMobileScreens = useMediaQuery(theme1.breakpoints.up('md')); // Cambio de 'min-width' a 'up'
+  const isNonMobileScreens = useMediaQuery('(min-width: 1000px)');
+
 
 
   const onSubmit = async () => {
@@ -71,8 +72,8 @@ const ProductosAdmin = () => {
       
        <Grid    > 
        <Box sx={{
-              display:"flex", justifyContent:isNonMobileScreens?"flexStart":"center"
-              // ,paddingLeft:"4.5em"
+              display:"flex", justifyContent:isNonMobileScreens?"flexStart":"center",
+               paddingLeft:isNonMobileScreens?"3.25em":"0",
               }}> ,
  
              <h2  >Lista de Productos</h2></Box>

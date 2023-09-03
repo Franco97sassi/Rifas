@@ -29,7 +29,8 @@ const handleNow=()=>{
    dispatch(getRifas())
 }
 const theme1 = useTheme();
-const isNonMobileScreens = useMediaQuery(theme1.breakpoints.up('md')); // Cambio de 'min-width' a 'up'
+// const isNonMobileScreens = useMediaQuery(theme1.breakpoints.up('md')); // Cambio de 'min-width' a 'up'
+const isNonMobileScreens = useMediaQuery('(min-width: 1000px)');
 
 
  return (

@@ -31,7 +31,8 @@ const ShopCart = ({ isUserAdmin }) => {
     dispatch(removeNumbersToCart(rifaId));
   };
   const theme1 = useTheme();
-  const isNonMobileScreens = useMediaQuery(theme1.breakpoints.up('md')); // Cambio de 'min-width' a 'up'
+  // const isNonMobileScreens = useMediaQuery(theme1.breakpoints.up('md')); // Cambio de 'min-width' a 'up'
+  const isNonMobileScreens = useMediaQuery('(min-width: 1000px)');
 
 
 
@@ -112,13 +113,14 @@ const ShopCart = ({ isUserAdmin }) => {
 
       <Typography
         marginTop="1em"
+        paddingLeft={2.5}
+        fontWeight="700px"
         style={{ color: "#333333" }} // Aumenta el tamaño de la fuente
         variant="h2"
         gutterBottom
       >
         Carrito de Compras
       </Typography>
-
       <TransitionGroup component={List}>
 
         {cart && cart.length > 0 ? (
@@ -146,10 +148,11 @@ const ShopCart = ({ isUserAdmin }) => {
                   >
                     <Box
                       sx={{
-                        width: "15rem",
-                         height: "282px",
+                        width: "14.38rem",
+                        height: "282px",
                         display: "flex",
-                        flexDirection: "column",
+                        flexDirection: "column", marginTop: "5rem",
+                        marginLeft: isNonMobileScreens ? "2rem" : "0rem",
                         alignItems: "center",
                         justifyContent: "center",
                         background: "#D9D9D9",
@@ -180,10 +183,10 @@ const ShopCart = ({ isUserAdmin }) => {
                           width: "172px",
                           height: "178px",
                           marginBottom: "1rem",
-                          borderRadius: 10,
-                          borderColor: "#423E3F  ",
-                          borderStyle: "solid",
-                          borderWidth: "6px",
+                          // borderRadius: 10,
+                          // borderColor: "#423E3F  ",
+                          // borderStyle: "solid",
+                          // borderWidth: "6px",
                         }}
                       />
                       <Typography
@@ -215,8 +218,8 @@ const ShopCart = ({ isUserAdmin }) => {
                         backgroundPosition: "center",
                         backgroundRepeat: "no-repeat",
                         borderRadius: 2,
-                        marginTop: "1rem",
-                          margin: "1rem",
+                        marginLeft: isNonMobileScreens ? "5rem" : "0rem",
+                        marginTop: "5rem",
                         minHeight: "6rem",
                         height: isNonMobileScreens ? "max-content" : "max-content",
                         // paddingRight: "0.7rem", // Añade un poco de espacio en la parte inferior
@@ -231,9 +234,7 @@ const ShopCart = ({ isUserAdmin }) => {
                           display: "flex",
                           flexDirection: "column",
                           justifyContent: "center",
-
-                          alignItems: "center",
-
+                          paddingLeft: "20px",
                           paddingTop: "1px",
                           paddingBottom: "1rem", // Añade un poco de espacio en la parte inferior
                           // Establece una altura máxima para la caja
@@ -247,7 +248,10 @@ const ShopCart = ({ isUserAdmin }) => {
                         <Typography
                           variant="body1"
                           paddingTop="10px"
-                          padding={isNonMobileScreens ? "1rem":"1rem"}
+                          fontSize="20px"
+                          padding={isNonMobileScreens ? "0rem" : "1rem"}
+                          paddingLeft={isNonMobileScreens ? "2" : "0"}
+                          textAlign={isNonMobileScreens ? "left" : "center"}
 
                           style={{ color: "#423E3F", fontWeight: "bold" }}
                         >
@@ -262,13 +266,13 @@ const ShopCart = ({ isUserAdmin }) => {
                           sx={{
                             display: "flex",
                             flexWrap: "wrap",
-                            justifyContent: "center",
+                            justifyContent: isNonMobileScreens ? "flex-start" : "flex-start",
                             alignItems: "center",
                             gap: "0.5rem",
-                            marginLeft: isNonMobileScreens?"1rem":"0rem",
-                            marginTop: isNonMobileScreens?"0.5rem":"0rem",
+                            marginLeft: isNonMobileScreens ? "1rem" : "0rem",
+                            marginTop: isNonMobileScreens ? "0.5rem" : "0rem",
 
-                           }}
+                          }}
                         >
                           {item.numbers.map((number) => (
 
@@ -310,7 +314,7 @@ const ShopCart = ({ isUserAdmin }) => {
                       <Box
                         sx={{
                           display: "flex", flexDirection: "column",
-                          
+
                           alignItems: isNonMobileScreens ? "flex-end" : "center",
                         }}>
 
@@ -319,12 +323,17 @@ const ShopCart = ({ isUserAdmin }) => {
                         <IconButton
                           onClick={() => handleDeleteCart(item.rifaId)}
                           edge="end"
-                          padding="1rem"
+                          padding="5rem"
                           aria-label="delete"
-
                           sx={{
-                            marginTop: isNonMobileScreens ? "6rem" : "0rem",
+                            paddingTop: isNonMobileScreens ? "6.2rem" : "0rem",
                             // Agrega otros estilos necesarios aquí
+                            //                         display: "flex",
+                            // flexDirection: "column",
+                            // alignItems: "center", // Centra el contenido verticalmente
+                            // "& .MuiSvgIcon-root": {
+                            //   fontSize: " 2rem", // Tamaño del icono
+                            // },
                           }}                        >
                           <DeleteIcon />
                         </IconButton>
@@ -341,8 +350,8 @@ const ShopCart = ({ isUserAdmin }) => {
                                 justifyContent: "flex-end",
                                 alignItems: "flex-end",
                                 marginTop: isNonMobileScreens ? "8rem" : "1rem",
-                                padding:isNonMobileScreens ? "0rem":"1rem",
-
+                                padding: isNonMobileScreens ? "0rem" : "1rem",
+                                fontSize: "20px",
                                 fontWeight: "bold",
                               }}
 
@@ -370,6 +379,7 @@ const ShopCart = ({ isUserAdmin }) => {
           <Typography
             variant="body1"
             align="center"
+            fontSize="20px"
             color="textSecondary"
             style={{ margin: "1em 0" }}
           >
@@ -378,15 +388,15 @@ const ShopCart = ({ isUserAdmin }) => {
         )}
       </TransitionGroup>
 
- 
+
       {cart.length > 0 && (
         <Box
-          width={isNonMobileScreens?"50rem":"0"}
+          width={isNonMobileScreens ? "50rem" : "0"}
           marginTop="3rem"
 
           marginBottom="1rem"
-          display="flex" 
-           marginLeft={isNonMobileScreens ? "15rem" : "0rem"}
+          display="flex"
+          marginLeft={isNonMobileScreens ? "21.5rem" : "0rem"}
           flexDirection="column"
           alignItems={isNonMobileScreens ? "flex-end" : "center"}
         >
@@ -399,12 +409,15 @@ const ShopCart = ({ isUserAdmin }) => {
               alignItems: isNonMobileScreens ? "flex-end" : "center",
               justifyContent: "flex-end",
               width: isNonMobileScreens ? "50rem" : "15rem",
-              padding:isNonMobileScreens ? "0rem":"1rem",
-             }}
+              padding: isNonMobileScreens ? "0rem" : "1rem",
+              paddingRight: "30px"
+            }}
           >
             <Typography
-              variant="h4" 
-              sx={{ color: "#423E3F", fontWeight: "bold"     }}
+              variant="h4"
+              sx={{
+                color: "#423E3F", fontWeight: "bold"
+              }}
             >
               Total: {" $" + cart.reduce((acc, item) => acc + item.numbersPrice, 0)}
             </Typography>
@@ -412,7 +425,7 @@ const ShopCart = ({ isUserAdmin }) => {
             <Button
               variant="contained"
               sx={{
-                 
+
                 fontSize: "1.05rem",
                 borderRadius: "40px",
                 color: "#423E3F",

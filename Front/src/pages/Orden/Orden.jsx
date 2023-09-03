@@ -13,7 +13,8 @@ const OrdenesComponent = () => {
   const userData = JSON.parse(sessionStorage.getItem('userData'));
   const userId = userData?.user?.id;
   const theme1 = useTheme();
-  const isNonMobileScreens = useMediaQuery(theme1.breakpoints.up('md')); // Cambio de 'min-width' a 'up'
+  // const isNonMobileScreens = useMediaQuery(theme1.breakpoints.up('md')); // Cambio de 'min-width' a 'up'
+  const isNonMobileScreens = useMediaQuery('(min-width: 1000px)');
 
   useEffect(() => {
     // Si no hay ID de usuario, detener la solicitud

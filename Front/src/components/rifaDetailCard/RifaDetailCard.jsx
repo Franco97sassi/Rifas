@@ -97,8 +97,9 @@ const RifaDetailCard = ({ rifaDetail }) => {
 
 
   const theme1 = useTheme();
-  const isNonMobileScreens = useMediaQuery(theme1.breakpoints.up('md')); // Cambio de 'min-width' a 'up'
-  
+  // const isNonMobileScreens = useMediaQuery(theme1.breakpoints.up('md')); // Cambio de 'min-width' a 'up'
+  const isNonMobileScreens = useMediaQuery('(min-width: 1000px)');
+
   const [page, setPage] = useState(1);
   
  
@@ -123,12 +124,12 @@ const RifaDetailCard = ({ rifaDetail }) => {
 
           <Box
             display='flex'
-            gap="7em"
-
+            // gap="7em"
+            
             flexDirection="column">
             <Typography
               variant='h1' fontWeight="700"
-
+              
               style={{ color: '#333333', textAlign: 'center' }}>
               Finalizar
             </Typography>
@@ -143,7 +144,7 @@ const RifaDetailCard = ({ rifaDetail }) => {
                 backgroundPosition: 'center',
                 backgroundRepeat: 'no-repeat',
                 borderRadius: 6,
-                marginTop: '4em',
+                marginTop: '11em',
 
                 padding: '1rem',
                 textAlign: 'center',
@@ -191,7 +192,7 @@ const RifaDetailCard = ({ rifaDetail }) => {
                 flexDirection: 'column',
                 justifyContent: 'space-evenly',
                 alignItems: 'center',
-
+                marginTop:"2.25rem",
                 borderRadius: '20px',
                 bgcolor: '#D9D9D9',
                 height: "70px",
@@ -216,7 +217,7 @@ const RifaDetailCard = ({ rifaDetail }) => {
             <Typography
               variant='h1'
               marginTop='0em'
-              textAlign= {isNonMobileScreens ? "left" : "center"} 
+              textAlign= {isNonMobileScreens ? "center" : "center"} 
               fontWeight="700"
               style={{ color: '#333333' }}>
               Números Disponibles
@@ -254,6 +255,7 @@ const RifaDetailCard = ({ rifaDetail }) => {
                 padding: '2em',
                 bgcolor: '#D9D9D9', overflowY: 'scroll',  // Habilitar el scroll vertical
                 height: '30rem',
+                width:isNonMobileScreens?"60rem":"100%",
                 overflowX: 'hidden',
               }}>
               <Grid
