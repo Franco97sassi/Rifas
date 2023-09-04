@@ -5,6 +5,8 @@ import Footer from '../../components/footer/footer';
 import NavBar from '../../components/navbar/NavBar.jsx';
 import { useParams } from "react-router-dom";
 import { useTheme } from '@emotion/react';
+import '../../index.css'
+
 const host = import.meta.env.VITE_SV_HOST;
 
 const OrdenesDetail = () => {
@@ -100,6 +102,7 @@ const OrdenesDetail = () => {
                       fontFamily={'TanPearl'}
                       fontSize={"2rem"}
                       color="rgba(66, 62, 63, 1)
+                      fontFamily= 'Work Sans'
                       "
                     >
                     Detalle del  Pedido
@@ -126,14 +129,14 @@ const OrdenesDetail = () => {
                         textAlign: isNonMobileScreens?"left":"left",
 
                       }}>
-                      <Typography fontSize="16px" variant="h7" sx={{ color: 'black', fontWeight: 'bold' }}>   Orden ID: {ordenes.id}</Typography>
+                      <Typography fontSize="16px" variant="h7" sx={{ color: 'black', fontWeight: 'bold',fontFamily: 'Work Sans' }}>   Orden ID: {ordenes.id}</Typography>
 
 
-                      <Typography fontSize="16px" variant="h7" sx={{ color: 'black', fontWeight: 'bold' }}>
+                      <Typography fontSize="16px" variant="h7" sx={{ color: 'black', fontWeight: 'bold',fontFamily: 'Work Sans' }}>
                         Fecha y Hora: {ordenes.createdAt.slice(0, 10)} {ordenes.createdAt.slice(11, 19)}
                       </Typography>
-                      <Typography fontSize="16px" variant="h7" sx={{ color: 'black', fontWeight: 'bold' }}>  Estado: {ordenes.estado} </Typography>  
-                      <Typography fontSize="16px" variant="h7" sx={{ color: 'black', fontWeight: 'bold' }}> Comprador:{ordenes.cart[0].username}</Typography>
+                      <Typography fontSize="16px" variant="h7" sx={{ color: 'black', fontWeight: 'bold',fontFamily: 'Work Sans' }}>  Estado: {ordenes.estado} </Typography>  
+                      <Typography fontSize="16px" variant="h7" sx={{ color: 'black', fontWeight: 'bold',fontFamily: 'Work Sans' }}> Comprador:{ordenes.cart[0].username}</Typography>
                     </Box>
                   </Typography>
 
@@ -180,7 +183,7 @@ const OrdenesDetail = () => {
                                   
                                   style={{
                                      
-                                    fontWeight: "600",
+                                    fontWeight: "600", fontFamily: 'Work Sans'
                                   }}
                                 >
                                   {el.productName}
@@ -227,14 +230,14 @@ const OrdenesDetail = () => {
 
                                     style={{
                                       color: 'rgba(217, 217, 217, 0.9)',
-                                      textAlign: 'center', fontWeight: "700", fontSize: "20px"
+                                      textAlign: 'center', fontWeight: "700", fontSize: "20px",fontFamily: 'Work Sans'
                                     }}>
                                     Valor por número
                                   </Typography>
                                   <Typography
                                     variant='h6'
 
-                                    style={{ color: 'rgba(217, 217, 217, 0.9)', textAlign: 'center', fontWeight: "700", fontSize: "15px" }}>
+                                    style={{ color: 'rgba(217, 217, 217, 0.9)', textAlign: 'center', fontWeight: "700", fontSize: "15px",fontFamily: 'Work Sans' }}>
                                     ${el.numbersPrice}
                                   </Typography>
                                 </Box>
@@ -274,12 +277,12 @@ const OrdenesDetail = () => {
                                   }}
                                 >
                                   <Typography
-                                    variant="body1"
+                                    variant="body1" 
                                     // paddingTop="10px"
-                                    // paddingLeft="5rem"
+                                    // paddingLeft="5rem" 
                                     fontSize={20}
 
-                                    style={{   fontWeight: "bold" }}
+                                    style={{   fontWeight: "bold",fontFamily: 'Work Sans' }}
                                   >
                                     Números:
                                   </Typography>
@@ -358,7 +361,7 @@ const OrdenesDetail = () => {
                                         fontSize: "20px",
                                         // paddingRight: "1rem",
                                         fontWeight: "bold",
-                                        
+                                         fontFamily: 'Work Sans'
                                       }}
 
                                     >
@@ -393,7 +396,7 @@ const OrdenesDetail = () => {
 
                   <Typography variant="h5" sx={{
                     textAlign:  isNonMobileScreens? "right" :"center" , fontSize: "20px",
-                    paddingRight: isNonMobileScreens?'3.5rem':"6rem", paddingBottom: "2rem", fontWeight: "bold"
+                    paddingRight: isNonMobileScreens?'3.5rem':"6rem", paddingBottom: "2rem", fontWeight: "bold",fontFamily: 'Work Sans'
                   }}>
                     Total: ${calcularTotalCompra(ordenes.cart).toFixed(2)}
                   </Typography>

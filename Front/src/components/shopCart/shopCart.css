@@ -15,3 +15,14 @@
  opacity: 0;
  transition: opacity 300ms;
 }
+
+@font-face {
+    font-family: 'Work Sans';
+    font-style: normal;
+    font-weight: 400;
+    src:local('Work Sans'),local('WorkSans-Regular'),
+    url('../../assets/WorkSans-Bold.ttf')
+    /* src: local('Work Sans'), local('WorkSans-Regular'), */
+         /* url('./') format('woff2'), */
+         /* url('./ruta-a-tu-fuente/WorkSans-Regular.woff') format('woff'); */
+  }

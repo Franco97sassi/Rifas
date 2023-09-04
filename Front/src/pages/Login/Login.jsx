@@ -4,6 +4,7 @@ import { Box } from '@mui/material';
 import LoginForm from '../../components/loginForm/loginForm';
 import NavBar from '../../components/navbar/NavBar.jsx';
 import Footer from '../../components/footer/footer';
+import '../../index.css'
 
 //////////////////////
 const Login = () => {

@@ -8,6 +8,8 @@ import AllOrdenes from '../Orden/AllOrden';
 const host = import.meta.env.VITE_SV_HOST;
 import NavBarLogo from '../../assets/NavBarLogo.png';
 import { useTheme } from '@emotion/react';
+import '../../index.css'
+
 const Agregar = () => {
   const [product, setProduct] = useState('');
   const [imgProduct, setImgProduct] = useState(null);

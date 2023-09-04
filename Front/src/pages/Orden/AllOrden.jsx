@@ -4,6 +4,8 @@ import { Box, Button, Container, Grid, ListItem, ListItemText, Typography, useMe
 import Footer from '../../components/footer/footer';
 import NavBar from '../../components/navbar/NavBar.jsx';
 import { useTheme } from '@emotion/react';
+import '../../index.css'
+
 const host = import.meta.env.VITE_SV_HOST;
 
 const AllOrdenes = () => {
@@ -87,14 +89,14 @@ const handleDetalleClick = (id) =>{
                     boxShadow: '0px 2px 6px rgba(0, 0, 0, 0.1)',
                   }}
                 >
-                  <Typography variant="subtitle1" sx={{ color: '#FFFFFF', fontWeight: 'bold' }} gutterBottom>
+                  <Typography variant="subtitle1" sx={{ color: '#FFFFFF', fontWeight: 'bold',fontFamily: 'Work Sans' }} gutterBottom>
                     Fecha: {purchase.createdAt.slice(0, 10)}
                   </Typography>
-                  <Typography variant="body2" sx={{ color: '#FFFFFF', fontWeight: 'bold' }} gutterBottom>
-                    {/* Estado: {purchase.estado}   */}
+                  <Typography variant="body2" sx={{ color: '#FFFFFF', fontWeight: 'bold',fontFamily: 'Work Sans' }} gutterBottom>
+                    Estado: {purchase.estado}  
                   </Typography>
 
-                  <Button  sx={{ color: '#FFFFFF', fontWeight: 'bold' }}
+                  <Button  sx={{ color: '#FFFFFF', fontWeight: 'bold',fontFamily: 'Work Sans' }}
                   onClick={() => handleDetalleClick(purchase.preferenceId)}> ver detalles</Button>  
 
                 </Box>

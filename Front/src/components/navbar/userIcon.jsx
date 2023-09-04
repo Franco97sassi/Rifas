@@ -3,6 +3,7 @@ import { Button, Menu, MenuItem, IconButton, useTheme } from '@mui/material';
 import { AccountCircleRounded } from '@mui/icons-material';
 import { Box } from '@mui/system';
 import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket';
+import '../../index.css'
 
 //////////////////////////////////////////////////////////
 const UserIcon = ({ onLoginClick, onRegisterClick }) => {

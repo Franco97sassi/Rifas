@@ -39,7 +39,7 @@ const {
         items: items,
 
         back_urls: {
-            success: `${NOTIFICATION_MERCADOPAGO_FRONT}/ordenes`,
+            success: `${NOTIFICATION_MERCADOPAGO_FRONT}ordenes`,
           // success: `http://localhost:5173/ordenes`,
             pending: `${NOTIFICATION_MERCADOPAGO_FRONT}success?preferenceId=${preferenceId}`,
           // pending: `http://localhost:5173/success?preferenceId=${preferenceId}`,

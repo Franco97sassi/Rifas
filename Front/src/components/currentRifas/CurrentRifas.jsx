@@ -46,7 +46,10 @@ const CurrentRifas = () => {
      letterSpacing='0.1em'
      fontSize="28px"
      color='#433F40'
-     variant='h1'>
+     
+     variant='h1'
+     fontFamily= 'Work Sans'
+     >
         Rifas todas las semanas,prueba y gana!
     
         </Typography>

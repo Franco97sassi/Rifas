@@ -7,6 +7,8 @@ import { Link } from 'react-router-dom';
 import OrdenesDetail from './OrdenDetail';
 import OrdenCard from '../Admin/OrdenCard';
 import { useTheme } from '@emotion/react';
+import '../../index.css'
+
 const svHost = import.meta.env.VITE_SV_HOST;
 const OrdenesComponent = () => {
   const [ordenes, setOrdenes] = useState([]);
@@ -65,10 +67,10 @@ const OrdenesComponent = () => {
 
                 }}
               >
-                <Typography variant="subtitle1" sx={{ color: '#FFFFFF', fontWeight: 'bold' }} gutterBottom>
+                <Typography variant="subtitle1" sx={{ color: '#FFFFFF', fontWeight: 'bold',fontFamily: 'Work Sans' }} gutterBottom>
                   Fecha: {purchase.createdAt.slice(0, 10)}
                 </Typography>
-                <Typography variant="body2" sx={{ color: '#FFFFFF', fontWeight: 'bold' }} gutterBottom>
+                <Typography variant="body2" sx={{ color: '#FFFFFF', fontWeight: 'bold',fontFamily: 'Work Sans',fontFamily: 'Work Sans' }} gutterBottom>
                   Estado: {purchase.estado}
                 </Typography>
 

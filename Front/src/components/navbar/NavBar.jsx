@@ -32,6 +32,7 @@ import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket';
 // import { useDispatch, useSelector } from 'react-redux';
 // import { setMode } from '../../app/state/slices/modeSlice';
 import { useNavigate, Link as RouterLink, Link, NavLink } from 'react-router-dom';
+import '../../index.css'
 
 //-------------------- Assets --------------------------
 import UserIcon from './userIcon';

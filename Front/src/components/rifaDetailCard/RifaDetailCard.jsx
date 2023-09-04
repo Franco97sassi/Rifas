@@ -11,6 +11,7 @@ import { useTheme } from '@emotion/react';
 
 import { getRifaDetail } from '../../store/state/actions/rifas';
 //-------------------- Components --------------------------
+import '../../index.css'
 
 // implementar precio
 
@@ -76,10 +77,10 @@ const RifaDetailCard = ({ rifaDetail }) => {
     dispatch(
       addNumbersToCart(
         selectedNumbers,
-        rifaDetail.rifa.id,
-        rifaDetail.rifa.numbersPrice,
-        rifaDetail.rifa.product,
-        rifaDetail.rifa.imgProduct,
+        rifaDetail?.rifa?.id,
+        rifaDetail?.rifa?.numbersPrice,
+        rifaDetail?.rifa?.product,
+        rifaDetail?.rifa?.imgProduct,
       ),
     );
     setSelectedNumbers([]);
@@ -94,7 +95,7 @@ const RifaDetailCard = ({ rifaDetail }) => {
   const filteredNumeros = sortedNumeros.filter(element =>
     element.number.toString().includes(searchTerm)
   );
-
+console.log("filteredN",filteredNumeros);
 
   const theme1 = useTheme();
   // const isNonMobileScreens = useMediaQuery(theme1.breakpoints.up('md')); // Cambio de 'min-width' a 'up'
@@ -130,7 +131,7 @@ const RifaDetailCard = ({ rifaDetail }) => {
             <Typography
               variant='h1' fontWeight="700"
               
-              style={{ color: '#333333', textAlign: 'center' }}>
+              style={{fontFamily: 'Work Sans', color: '#333333', textAlign: 'center' }}>
               Finalizar
             </Typography>
 
@@ -160,9 +161,9 @@ const RifaDetailCard = ({ rifaDetail }) => {
                 variant='body1' // HACER RESPONSIVE CARD
                 fontSize='1epx'
                 textOverflow='ellipsis'
-                style={{
+                style={{fontFamily: 'Work Sans',
                   color: '#423E3F',
-                  fontWeight: "600"    // backgroundColor: 'rgba(0, 0, 0, 0.5)' 
+                      // backgroundColor: 'rgba(0, 0, 0, 0.5)' 
                 }}>
                 {rifaDetail?.rifa?.product}
               </Typography>
@@ -202,13 +203,13 @@ const RifaDetailCard = ({ rifaDetail }) => {
               <Typography
                 variant='h6'
 
-                style={{ color: '#333333', textAlign: 'center', fontWeight: "700", fontSize: "20px" }}>
+                style={{ color: '#333333', textAlign: 'center', fontWeight: "700", fontSize: "20px",fontFamily: 'Work Sans', }}>
                 Valor por número
               </Typography>
               <Typography
                 variant='h6'
 
-                style={{ color: '#333333', textAlign: 'center', fontWeight: "700", fontSize: "15px" }}>
+                style={{ color: '#333333', textAlign: 'center', fontWeight: "700", fontSize: "15px",fontFamily: 'Work Sans' }}>
                 ${rifaDetail?.rifa?.numbersPrice}
               </Typography>
             </Box></Box>
@@ -219,7 +220,7 @@ const RifaDetailCard = ({ rifaDetail }) => {
               marginTop='0em'
               textAlign= {isNonMobileScreens ? "center" : "center"} 
               fontWeight="700"
-              style={{ color: '#333333' }}>
+              style={{ fontFamily: 'Work Sans',color: '#333333' }}>
               Números Disponibles
             </Typography>
             <Typography
@@ -228,7 +229,7 @@ const RifaDetailCard = ({ rifaDetail }) => {
               marginTop='3rem'
               fontWeight="700"
 
-              style={{ color: '#33333', textAlign: 'center' }}>
+              style={{ fontFamily: 'Work Sans',color: '#33333', textAlign: 'center' }}>
               Selecciona los números que desees comprar
             </Typography>
             <Box
@@ -359,6 +360,43 @@ const RifaDetailCard = ({ rifaDetail }) => {
 //////////////////////////////
 
 export default RifaDetailCard;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 // import React from 'react';
 // import { useState } from 'react';

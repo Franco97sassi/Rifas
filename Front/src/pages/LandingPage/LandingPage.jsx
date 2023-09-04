@@ -1,6 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Box, Button, Typography, useMediaQuery, useTheme } from '@mui/material';
+import   "./index.css"
+import '../../index.css'
 
 //-------------------- Assets --------------------------
 import LandingImg from '../../assets/Landing.jpg';
@@ -64,7 +66,7 @@ const LandingPage = () => {
       alignItems: 'center',
       marginTop: '0.1em',
      }}>
-     <Link to='/home'>
+     <Link to='/home' className='no-underline'>
       <Button
        variant='contained'
        sx={{

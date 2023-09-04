@@ -9,6 +9,7 @@ import CurrentRifasAdmin from '../../components/currentRifasAdmin/CurrentRifasAd
 import AllOrdenes from '../Orden/AllOrden';
 import { Link } from 'react-router-dom';
 import { useTheme } from '@emotion/react';
+import '../../index.css'
 
 const host = import.meta.env.VITE_SV_HOST;
 
