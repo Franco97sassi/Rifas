@@ -74,7 +74,7 @@ const ProductosAdmin = () => {
        <Grid    > 
        <Box sx={{
               display:"flex", justifyContent:isNonMobileScreens?"flexStart":"center",
-               paddingLeft:isNonMobileScreens?"3.25em":"0",
+               paddingLeft:isNonMobileScreens?"3.25em":"0",fontFamily: "Work Sans"
               }}> ,
  
              <h2  >Lista de Productos</h2></Box>
@@ -88,7 +88,7 @@ const ProductosAdmin = () => {
             variant="contained"
             sx={{
               
-              
+              fontFamily: "Work Sans",
 
               width: "10rem",
               height: "44px",

@@ -159,7 +159,7 @@ console.log("filteredN",filteredNumeros);
 
               <Typography
                 variant='body1' // HACER RESPONSIVE CARD
-                fontSize='1epx'
+                fontSize='1.4rem'
                 textOverflow='ellipsis'
                 style={{fontFamily: 'Work Sans',
                   color: '#423E3F',

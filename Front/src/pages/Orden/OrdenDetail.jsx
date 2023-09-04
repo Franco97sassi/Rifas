@@ -38,13 +38,15 @@ const OrdenesDetail = () => {
       });
   }, [preferenceId]);
 
-
-
-
-  const calcularTotalCompra = (cart) => {
+const calcularTotalCompra = (cart) => {
     return cart.reduce((total, el) => total + el.numbersPrice, 0);
   };
   console.log(ordenes)
+
+
+
+
+
 
   return (
     <>
@@ -54,15 +56,17 @@ const OrdenesDetail = () => {
           height: '100vh',
           display: 'flex',
           flexDirection: 'column',
-          }}>
-        <Container>
+           
+           }}>
+        <Container >
           <Box
             style={{
               background: "#D9D9D9",
  
               marginBottom: "28px",
               marginTop: "28px",
-              borderRadius: "5px",
+              borderRadius: "5px", 
+              
              }}
           >
 
@@ -91,7 +95,9 @@ const OrdenesDetail = () => {
                       paddingTop: "0.5rem",
                         textAlign: "center",
                       height: "61px",
-              alignContent:"center",
+                      display:"flex",
+                      flexDirection:"column",
+              alignContent:"center"  
 
                     }}
                   >
@@ -101,9 +107,9 @@ const OrdenesDetail = () => {
                       fontWeight="700"
                       fontFamily={'TanPearl'}
                       fontSize={"2rem"}
-                      color="rgba(66, 62, 63, 1)
-                      fontFamily= 'Work Sans'
-                      "
+                      color="rgba(66, 62, 63, 1)"
+                       
+                       sx={{fontFamily: "Work Sans" }}
                     >
                     Detalle del  Pedido
                     </Typography>
@@ -126,15 +132,16 @@ const OrdenesDetail = () => {
                         backgroundRepeat: "no-repeat",
                         borderRadius: 2,
                         padding: isNonMobileScreens?"2rem":"0rem",
-                        textAlign: isNonMobileScreens?"left":"left",
+                        textAlign: isNonMobileScreens?"left":"center",
+                        alignContent:"center",
 
                       }}>
-                      <Typography fontSize="16px" variant="h7" sx={{ color: 'black', fontWeight: 'bold',fontFamily: 'Work Sans' }}>   Orden ID: {ordenes.id}</Typography>
+                      <Typography fontSize="16px" variant="h7" sx={{ color: 'black', fontWeight: 'bold',fontFamily: 'Work Sans' }}>   Órden ID: {ordenes.id}</Typography>
 
 
                       <Typography fontSize="16px" variant="h7" sx={{ color: 'black', fontWeight: 'bold',fontFamily: 'Work Sans' }}>
                         Fecha y Hora: {ordenes.createdAt.slice(0, 10)} {ordenes.createdAt.slice(11, 19)}
-                      </Typography>
+                      </Typography> 
                       <Typography fontSize="16px" variant="h7" sx={{ color: 'black', fontWeight: 'bold',fontFamily: 'Work Sans' }}>  Estado: {ordenes.estado} </Typography>  
                       <Typography fontSize="16px" variant="h7" sx={{ color: 'black', fontWeight: 'bold',fontFamily: 'Work Sans' }}> Comprador:{ordenes.cart[0].username}</Typography>
                     </Box>
@@ -167,7 +174,8 @@ const OrdenesDetail = () => {
                                   padding: isNonMobileScreens ?"1rem":"0rem",
                                   textAlign: "center",
                                   display:"flex",
-                                  flexDirection:"column",
+                                  flexDirection:"column", justifyContent:"center",
+                                  alignContent:"center",
                                    transition: "0.3s",
                                   "&:hover": {
                                     boxShadow: " 0px 5px 61px 6px #D9D9D9",
@@ -179,10 +187,9 @@ const OrdenesDetail = () => {
                                   variant="body1"
                                   fontSize="1.5rem"
                                   // key={el.id}
-                                  textOverflow="ellipsis"
-                                  
-                                  style={{
-                                     
+                                  textOverflow="ellipsis" 
+                                   style={{
+                                      
                                     fontWeight: "600", fontFamily: 'Work Sans'
                                   }}
                                 >
@@ -253,7 +260,7 @@ const OrdenesDetail = () => {
                                   // borderRadius: 2,
                                   display: "flex",
                                   flexDirection: isNonMobileScreens ?"row":"column",
-                                  justifyContent: "center",
+                                  justifyContent: "center",  
                                   // Añade un poco de espacio en la parte inferior
                                   paddingTop: "1.1rem", // Añade un poco de espacio en la parte inferior
 
@@ -361,7 +368,8 @@ const OrdenesDetail = () => {
                                         fontSize: "20px",
                                         // paddingRight: "1rem",
                                         fontWeight: "bold",
-                                         fontFamily: 'Work Sans'
+                                         fontFamily: 'Work Sans',
+                                         paddingRight:"5px"
                                       }}
 
                                     >
@@ -396,9 +404,9 @@ const OrdenesDetail = () => {
 
                   <Typography variant="h5" sx={{
                     textAlign:  isNonMobileScreens? "right" :"center" , fontSize: "20px",
-                    paddingRight: isNonMobileScreens?'3.5rem':"6rem", paddingBottom: "2rem", fontWeight: "bold",fontFamily: 'Work Sans'
+                    paddingRight: isNonMobileScreens?'5.0rem':"6rem", paddingBottom: "2rem", fontWeight: "bold",fontFamily: 'Work Sans'
                   }}>
-                    Total: ${calcularTotalCompra(ordenes.cart).toFixed(2)}
+                    Total: ${parseInt(calcularTotalCompra(ordenes.cart).toFixed(2))}
                   </Typography>
 
                   <hr />

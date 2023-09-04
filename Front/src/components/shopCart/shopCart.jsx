@@ -166,7 +166,7 @@ const ShopCart = ({ isUserAdmin }) => {
                     >
                       <Typography
                         variant="body1"
-                        fontSize="13px"
+                        fontSize="1.4rem"
                         key={item.id}
                         textOverflow="ellipsis"
                         style={{
@@ -383,7 +383,7 @@ const ShopCart = ({ isUserAdmin }) => {
             color="textSecondary"
             style={{ margin: "1em 0" }}
           >
-            Sin items
+            Sin ítems
           </Typography>
         )}
       </TransitionGroup>
@@ -425,7 +425,7 @@ const ShopCart = ({ isUserAdmin }) => {
             <Button
               variant="contained"
               sx={{
-
+                fontFamily: "Work Sans",
                 fontSize: "1.05rem",
                 borderRadius: "40px",
                 color: "#423E3F",

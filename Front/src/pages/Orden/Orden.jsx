@@ -45,13 +45,23 @@ const OrdenesComponent = () => {
   return (
     <>
       <NavBar />
-      <Box marginBottom={2}>
-        <Typography sx={{
-          marginTop: "28px", fontWeight: "bold",
-          marginBottom: "28px", fontSize: "24px",textAlign:isNonMobileScreens?"left":"center",
-        }} variant="h6" gutterBottom>
-          Pedidos
-        </Typography>
+      <Box sx={{fontFamily: "Work Sans",
+              display:"flex", justifyContent:isNonMobileScreens?"flexStart":"center",
+              paddingLeft:isNonMobileScreens?"2.5em":"0em"
+
+              }}>  
+         <h2>Pedidos</h2></Box>
+         <Box
+     margin='2rem'
+     boxShadow='12px 12px 12px -5px rgba(0,0,0,0.75)'
+     borderRadius='0.5rem'
+     padding='3em'
+      
+      gap="2em"
+      // flexDirection='row'
+     sx={{
+      bgcolor: '#D9D9D9',      
+     }}> 
         <Grid container spacing={2}>
           {ordenes?.map((purchase) => (
             <Grid item key={purchase.id} xs={12} sm={6} md={4} lg={3}>
@@ -61,7 +71,7 @@ const OrdenesComponent = () => {
                 borderRadius={8}
                 style={{
                   borderColor: '#ccc',
-                  background: '#1E1E1E                    ',
+                  background: " rgba(30, 30, 30, 0.64)" ,                 
                   boxShadow: '0px 2px 6px rgba(0, 0, 0, 0.1)',
                    
 
@@ -74,7 +84,7 @@ const OrdenesComponent = () => {
                   Estado: {purchase.estado}
                 </Typography>
 
-                <Button onClick={() => handleDetalleClick(purchase.preferenceId)} sx={{ color: '#FFFFFF' }}> ver detalles</Button>
+                <Button onClick={() => handleDetalleClick(purchase.preferenceId)} sx={{ color: '#FFFFFF',fontFamily: 'Work Sans' }}> ver detalles</Button>
 
               </Box>
             </Grid>

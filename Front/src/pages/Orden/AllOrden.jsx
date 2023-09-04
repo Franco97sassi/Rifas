@@ -57,11 +57,11 @@ const handleDetalleClick = (id) =>{
           {/* <Typography sx={{marginTop:"28px", marginBottom:"28px"}} variant="h6" gutterBottom>
             Últimas ordenes realizadas
           </Typography> */}
-          <Box sx={{
+          <Box sx={{fontFamily: "Work Sans",
               display:"flex", justifyContent:isNonMobileScreens?"flexStart":"center",
               paddingLeft:isNonMobileScreens?"2.5em":"0em"
 
-              }}> ,
+              }}>  
  
              <h2>Pedidos</h2></Box>
              <Box

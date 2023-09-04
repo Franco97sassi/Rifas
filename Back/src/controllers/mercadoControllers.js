@@ -89,7 +89,7 @@ const {
   
         const orden = await Orden.findOne({ where: { preferenceId: preferenceId } });
         if (orden && data.body.status === 'approved') {
-          orden.estado = 'PAGADO CON EXITO';
+          orden.estado = 'PAGADO CON ÉXITO';
           orden.idCompra = payment['data.id']; // numero de id compra q nos da mercadopago
   
           await orden.save();
@@ -215,7 +215,7 @@ const {
       const orden = await Orden.findOne({ where: { preferenceId: preferenceId } });
 
       if (!orden) {
-        return res.status(404).json({ error: 'Orden no encontrada' });
+        return res.status(404).json({ error: 'Órden no encontrada' });
       }
 
       return res.json(orden);

@@ -72,14 +72,14 @@ const Agregar = () => {
  
         display='flex'
         flexDirection={isNonMobileScreens ? 'row' : 'column'}
-         
+        marginTop="5rem"
         gap={isNonMobileScreens ? '4em' : '1em'}
         bgcolor='#D9D9D9'
       >
         <Box
           display='flex'
           flexDirection='column'
-
+ 
           gap='1em'
           alignItems={isNonMobileScreens ? 'center' : 'center'}
         >
@@ -87,7 +87,7 @@ const Agregar = () => {
             variant='h1'
             fontWeight='700'
             fontSize={isNonMobileScreens ? '24px' : '20px'}
-            style={{ color: '#333333', textAlign: 'center' }}
+            style={{fontFamily: "Work Sans", color: '#333333', textAlign: 'center' }}
           >
             Agregar Productos
           </Typography>
@@ -151,13 +151,13 @@ const Agregar = () => {
 
             <Typography
               variant='h6'
-              style={{ color: '#333333', textAlign: 'center', fontWeight: "700", fontSize: "20px" }}>
+              style={{ fontFamily: "Work Sans",color: '#333333', textAlign: 'center', fontWeight: "700", fontSize: "20px" }}>
               Valor por número
             </Typography>
             <Typography
               variant='h6'
 
-              style={{ color: '#333333', textAlign: 'center', fontWeight: "700", fontSize: "15px" }}>
+              style={{ fontFamily: "Work Sans",color: '#333333', textAlign: 'center', fontWeight: "700", fontSize: "15px" }}>
               {/* ${rifaDetail.numbersPrice} */}{product.numbersPrice}
             </Typography>
           </Box> </Box>
@@ -195,7 +195,9 @@ const Agregar = () => {
 
                 {/* <Box sx={{display:"flex",flexDirection:"column"}}>   */}
                 <Grid item xs={12}>
-                  <Typography variant="body1">Producto:</Typography>
+                  <Typography sx={
+                  {  fontFamily: "Work Sans"}
+                  } variant="body1">Producto:</Typography>
                   <TextField required
                     name="name"
                     value={product.name}
@@ -204,14 +206,18 @@ const Agregar = () => {
                   />
                 </Grid>
                 <Grid item xs={12}>
-                  <Typography variant="body1">Imagen URL:</Typography>
+                  <Typography sx={
+                  {  fontFamily: "Work Sans"}
+                  } variant="body1">Imagen URL:</Typography>
                   <TextField required
                     name="name"
                     value={product.name}
                     onChange={(e) => setImgProduct(e.target.value)}
                     sx={{ width: isNonMobileScreens ? 500 : "100%" }}
                   /> </Grid>
-                <Grid item xs={12}>    <Typography variant="body1">Descripcion:</Typography>
+                <Grid item xs={12}>    <Typography sx={
+                  {  fontFamily: "Work Sans"}
+                  } variant="body1">Descripción:</Typography>
                   <TextField required
                     name="name"
                     value={product.name}
@@ -229,7 +235,9 @@ const Agregar = () => {
           />
         </Grid> */}
                 <Grid item xs={12}>
-                  <Typography variant="body1">Precio:</Typography>
+                  <Typography sx={
+                  {  fontFamily: "Work Sans"}
+                  } variant="body1">Precio:</Typography>
                   <TextField required
                     name="name"
                     value={product.name}
@@ -239,14 +247,16 @@ const Agregar = () => {
 
                 </Grid>
                 <Grid item xs={12}>
-                  <Typography variant="body1">Numeros:</Typography>
+                  <Typography sx={
+                  {  fontFamily: "Work Sans"}
+                  } variant="body1">Números:</Typography>
                   <TextField required
                     name="name"
                     value={product.name}
                     onChange={(e) => setTotalNumbers(e.target.value)}
                     sx={{ width: isNonMobileScreens ? 500 : "100%" }} />    </Grid></Grid>
 
-            </Grid> <Button sx={{ marginLeft: isNonMobileScreens ? "310px" : "0px", background: "black", marginTop: '2rem' }}
+            </Grid> <Button sx={{fontFamily: "Work Sans", marginLeft: isNonMobileScreens ? "310px" : "0px", background: "black", marginTop: '2rem' }}
               type="submit" onClick={onSubmit} variant="contained"  >Crear Producto</Button>
           </Box>
         </div>

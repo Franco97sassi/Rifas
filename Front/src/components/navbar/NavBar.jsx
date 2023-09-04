@@ -111,7 +111,7 @@ const NavBar = ({ isUserAdmin }) => {
               <Typography
                 fontWeight='bold'
                 fontSize='clamp(1rem, 2rem, 2.25rem)'
-                color='primary'
+                color='primary' 
                 onClick={() => navigate('/home')}
                 sx={{
                   '&:hover': {
@@ -418,10 +418,10 @@ const NavBar = ({ isUserAdmin }) => {
                       {/* <CssBaseline /> */}
                         {/* <Box sx={{ display: "flex", flexDirection: "column" }}> */}
                         <NavLink to='/register' style={{ textDecoration: "none", color: "inherit" }}  >
-                          <Typography sx={{ color: "orange",fontWeight:"700" }}>Registro</Typography>
+                          <Typography sx={{ color: "orange",fontWeight:"700" }}>Registrarme</Typography>
                         </NavLink >
                         <NavLink to='/login' style={{ textDecoration: "none", color: "inherit" }}>
-                          <Typography sx={{ color: "orange",fontWeight:"700" }}>Inicio Sesion</Typography>
+                          <Typography sx={{ color: "orange",fontWeight:"700" }}>Inicio Sesión</Typography>
                         </NavLink >
                       {/* </Box>      */}
  {/* </ThemeProvider>  */}

@@ -51,7 +51,7 @@ const userSignIn = async (req, res) => {
   const emailCreate = await User.findOne({ where: { email: email } });
 
   if (usernameCreate) {
-   res.status(400).send({ message: 'El nombre de usuario ya esta en uso' });
+   res.status(400).send({ message: 'El nombre de usuario ya está en uso' });
   } else if (emailCreate) {
    res.status(400).send({ message: 'Email en uso, por favor elige otro' });
   } else if (!usernameCreate && !emailCreate) {
@@ -87,7 +87,7 @@ const userLogIn = async (req, res) => {
   } else {
    if (user.banned) {
     throw new Error(
-     'No estas autorizado para acceder al sitio web, deberas esperar a que un administrador habilite tu cuenta.',
+     'No estás autorizado para acceder al sitio web, deberas esperar a que un administrador habilite tu cuenta.',
     );
    } else if (!user.emailVerified) {
     throw new Error(

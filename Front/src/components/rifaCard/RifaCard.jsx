@@ -30,7 +30,7 @@ const RifaCard = ({ rifa }) => {
     
    <Typography
     variant='body1' // HACER RESPONSIVE CARD
-    fontSize='13px'  
+    fontSize='1.4rem'  
     textOverflow='ellipsis'
     style={{ color: '#423E3F', 
     fontWeight:"600" ,...textStyle

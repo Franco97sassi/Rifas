@@ -3,6 +3,7 @@ import { Box, Button, Divider, Grid, IconButton, Typography } from '@mui/materia
 import DeleteIcon from "@mui/icons-material/Delete";
 import { useState } from 'react';
 import axios from 'axios';
+import "../../index.css"
 //-------------------- Assets --------------------------
 import cardImg from '../../assets/cardImg.webp';
 const host = import.meta.env.VITE_SV_HOST;
@@ -53,13 +54,13 @@ const RifaCardAdmin = ({ rifa, handleNow }) => {
  
         <Grid item xs={12} sm={3} container alignItems="center" justifyContent="center">
           <Box  >
-            <Typography sx={{ fontSize: '24px', fontWeight: "700", color: "#FFFFFF" }}>{rifa.product}</Typography>
+            <Typography sx={{ fontFamily: "Work Sans",fontSize: '24px', fontWeight: "700", color: "#FFFFFF" }}>{rifa.product}</Typography>
           </Box>
         </Grid> 
 
          <Grid item xs={12} sm={3} container alignItems="center" justifyContent="center">
           <Box  >
-            <Typography sx={{ fontSize: '24px', fontWeight: "700", color: "#FFFFFF" }}>
+            <Typography sx={{ fontFamily: "Work Sans",fontSize: '24px', fontWeight: "700", color: "#FFFFFF" }}>
               ${rifa.numbersPrice}
             </Typography>
           </Box>
