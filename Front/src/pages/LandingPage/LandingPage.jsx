@@ -66,7 +66,9 @@ const LandingPage = () => {
       alignItems: 'center',
       marginTop: '0.1em',
      }}>
-     <Link to='/home' className='no-underline'>
+     <Link to='/home' 
+    //  className='no-underline'
+     >
       <Button
        variant='contained'
        sx={{

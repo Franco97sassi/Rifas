@@ -41,13 +41,17 @@ import venado from '../../assets/venado.png';
 import UserIconAdmin from './userIconAdmin';
 /////////////////////////
 const NavBar = ({ isUserAdmin }) => {
+      // e.preventDefault(); // Evita el comportamiento predeterminado del navegador
+
   const [isMobileMenuToggled, setIsMobileMenuToggled] = useState(false);
   const userData = JSON.parse(sessionStorage.getItem('userData'));
   //  const dispatch = useDispatch();
   const navigate = useNavigate();
   const isNonMobileScreens = useMediaQuery('(min-width: 1000px)');
 
-  const handleOpenMenu = () => {
+  const handleOpenMenu = (e) => {
+    e.preventDefault(); // Evita el comportamiento predeterminado del navegador
+
     setIsMobileMenuToggled(true);
   };
 
@@ -184,10 +188,10 @@ const NavBar = ({ isUserAdmin }) => {
                     </IconButton>
                   </RouterLink>
                 }
-                <UserIcon
+                  <UserIcon
                   onLoginClick={handleLoginClick}
                   onRegisterClick={handleRegisterClick}
-                />
+                />  
 
               </Box>
             ) : (
