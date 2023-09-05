@@ -162,17 +162,7 @@ const Agregar = () => {
             </Typography>
           </Box> </Box>
 
-
-
-        {/* <Typography
-       variant='h1'
-       marginTop='0em'
-       textAlign='left'
-       fontWeight="700"
-       style={{ color: '#333333'  }}>
-       Números Disponibles
-      </Typography> */}
-
+ 
 
         <div>
           <Box sx={{
