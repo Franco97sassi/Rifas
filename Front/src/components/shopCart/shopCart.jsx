@@ -109,7 +109,7 @@ const ShopCart = (
       // width="80%" // Añadido para reducir el ancho del componente
       // margin="0 auto" // Centra el componente horizontalmente
       padding="0rem"
-      width="100%"
+      width="100%"  
     >
 
       <Typography
@@ -379,16 +379,16 @@ const ShopCart = (
             ))
         ) : (
 
-
+ <Box sx={{height:"100vh"}}  >  
           <Typography
             variant="body1"
             align="center"
             fontSize="20px"
             color="textSecondary"
             style={{ margin: "1em 0" }}
-          >
+           >
             Sin ítems
-          </Typography>
+          </Typography> </Box>
         )}
       </TransitionGroup>
 

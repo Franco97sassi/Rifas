@@ -302,7 +302,7 @@ const calcularTotalCompra = (cart) => {
                                     justifyContent="center"
                                     alignItems="center"
                                   >
-                                    {el.number}
+                                      {el.number} 
 
                                   </Box>
                                   <Box

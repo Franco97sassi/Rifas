@@ -28,6 +28,8 @@ import {
   AccountCircleRounded,
   LocalPlay,
 } from '@mui/icons-material';
+import MenuIcon from '@mui/icons-material/Menu';
+
 import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket';
 // import { useDispatch, useSelector } from 'react-redux';
 // import { setMode } from '../../app/state/slices/modeSlice';
@@ -50,7 +52,7 @@ const NavBar = ({ isUserAdmin }) => {
   const isNonMobileScreens = useMediaQuery('(min-width: 1000px)');
 
   const handleOpenMenu = (e) => {
-    e.preventDefault(); // Evita el comportamiento predeterminado del navegador
+    // e.preventDefault(); // Evita el comportamiento predeterminado del navegador
 
     setIsMobileMenuToggled(true);
   };
@@ -87,8 +89,11 @@ const NavBar = ({ isUserAdmin }) => {
   const font = theme.palette.others.font;
   const theme1 = useTheme();
   const isNonMobileScreens2 = useMediaQuery(theme1.breakpoints.up('md')); // Cambio de 'min-width' a 'up'
-
-
+   
+  const [open, setOpen] = useState(false);
+  const handleDrawerOpen = () => {
+    setOpen(true);
+  };
   return (
     <>
       {userData ? (
@@ -196,8 +201,8 @@ const NavBar = ({ isUserAdmin }) => {
               </Box>
             ) : (
               <IconButton onClick={handleOpenMenu}>
-                <MenuHamb />
-              </IconButton>
+ <MenuIcon
+             />              </IconButton>
             )}
 
 
@@ -360,12 +365,27 @@ const NavBar = ({ isUserAdmin }) => {
               </Box>
             )
               :
+
+
+
+
               (
-                <IconButton onClick={handleOpenMenu}>
-                  <MenuHamb />
-                </IconButton>
+                // <IconButton  onTouchStart={handleOpenMenu}>
+                //   <MenuHamb />  
+                // </IconButton>
+                <IconButton
+            color="black"
+            aria-label="open drawer"
+             onClick={handleOpenMenu}          
+          >
+            <MenuIcon
+             />
+          </IconButton>
               )
-            }
+           
+           
+           
+           }
 
             {/* MOBILE NAV */}
             {!isNonMobileScreens && isMobileMenuToggled && (
@@ -394,8 +414,8 @@ const NavBar = ({ isUserAdmin }) => {
                     p='1rem'>
                     <IconButton onClick={handleOpenMenu}>
                       {/* <Close /> */}
-                      <MenuHamb />
-                    </IconButton>
+                      <MenuIcon
+             />                    </IconButton>
                   </Box>
 
                   {/* MENU ITEMS */}

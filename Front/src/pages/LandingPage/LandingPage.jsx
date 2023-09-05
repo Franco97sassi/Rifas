@@ -67,7 +67,7 @@ const LandingPage = () => {
       marginTop: '0.1em',
      }}>
      <Link to='/home' 
-    //  className='no-underline'
+      className='no-underline'
      >
       <Button
        variant='contained'
