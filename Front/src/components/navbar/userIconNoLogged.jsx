@@ -73,7 +73,7 @@ const UserIconNoLogged = ({ onLoginClick, onRegisterClick }) => {
      
     <MenuItem  onClick={handleLogin}   sx={{
     display:"flex",justifyContent:"center" // Añade el estilo para centrar el texto
-  }} >  Inicio Sesión</MenuItem>
+  }} >  Iniciar Sesión</MenuItem>
     </div>
     
        

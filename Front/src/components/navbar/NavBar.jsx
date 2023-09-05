@@ -353,7 +353,7 @@ const NavBar = ({ isUserAdmin }) => {
                   <RouterLink
                     to='/login'
                     style={{ textDecoration: 'none' }}>
-                    <Typography sx={{ color: font, fontSize: "15px", fontWeight: "1000", letterSpacing: '2px' }}>INICIO SESION</Typography>
+                    <Typography sx={{ color: font, fontSize: "15px", fontWeight: "1000", letterSpacing: '2px' }}>INICIAR SESION</Typography>
                   </RouterLink>
                   {/* </Box> */}
                   {/* <Box   display='flex' justifyContent='flex-end'> */}
