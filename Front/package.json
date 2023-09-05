@@ -18,6 +18,7 @@
   "@mui/system": "^5.14.4",
   "@popperjs/core": "^2.11.8",
   "@reduxjs/toolkit": "^1.9.5",
+  "@types/react-transition-group": "^4.4.6",
   "axios": "^1.4.0",
   "bootstrap": "^5.3.0",
   "formik": "^2.4.2",

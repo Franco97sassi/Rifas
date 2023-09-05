@@ -24,7 +24,7 @@ const OrdenesComponent = () => {
       return;
     }
 
-    console.log(userId)
+    // console.log(userId)
 
     // Realizar la solicitud GET a las órdenes del usuario con el ID de usuario como parte de la URL
     axios.get(`${svHost}/rifas/ordenes/${userId}`)
@@ -38,7 +38,7 @@ const OrdenesComponent = () => {
   const calcularTotalCompra = (cart) => {
     return cart.reduce((total, el) => total + el.numbersPrice, 0);
   };
-  console.log(ordenes)
+  // console.log(ordenes)
   const handleDetalleClick = (id) => {
     window.location.href = `/ordenes/${id}`;
   }
@@ -80,7 +80,7 @@ const OrdenesComponent = () => {
                 <Typography variant="subtitle1" sx={{ color: '#FFFFFF', fontWeight: 'bold',fontFamily: 'Work Sans' }} gutterBottom>
                   Fecha: {purchase.createdAt.slice(0, 10)}
                 </Typography>
-                <Typography variant="body2" sx={{ color: '#FFFFFF', fontWeight: 'bold',fontFamily: 'Work Sans',fontFamily: 'Work Sans' }} gutterBottom>
+                <Typography variant="body2" sx={{ color: '#FFFFFF', fontWeight: 'bold',fontFamily: 'Work Sans' }} gutterBottom>
                   Estado: {purchase.estado}
                 </Typography>
 

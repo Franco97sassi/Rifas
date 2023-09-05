@@ -14,7 +14,7 @@ const RifaCardAdmin = ({ rifa, handleNow }) => {
   const onDelete = async (rifaId) => {
     try {
       const res = await axios.delete(`${host}/rifas/deleteRifa/${rifaId}`);
-      console.log(res);
+      // console.log(res);
       handleNow();
     } catch (error) {
       console.error(error);

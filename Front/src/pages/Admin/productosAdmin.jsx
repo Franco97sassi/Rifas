@@ -25,32 +25,41 @@ const ProductosAdmin = () => {
 
 
 
-  const onSubmit = async () => {
-    if (!product || !imgProduct || !description || !numbersPrice || !totalNumbers) {
-      console.error('Todos los campos deben completarse');
-      return;
-    }
+  // const onSubmit = async () => {
+  //   if (!product || !imgProduct || !description || !numbersPrice || !totalNumbers) {
+  //     console.error('Todos los campos deben completarse');
+  //     return;
+  //   }
 
-    const data = {
-      product: product,
-      imgProduct: imgProduct,
-      description: description,
-      numbersPrice: numbersPrice,
-      totalNumbers: totalNumbers,
-    };
+  //   const data = {
+  //     product: product,
+  //     imgProduct: imgProduct,
+  //     description: description,
+  //     numbersPrice: numbersPrice,
+  //     totalNumbers: totalNumbers,
+  //   };
 
-    console.log(data)
-    try {
-      const res = await axios.post(`${host}/rifas/createRifa`, data);
-      console.log(res);
-    } catch (error) {
-      console.error(error);
-    }
-  };
-  const [otherRifas, setOtherRifas] = useState([]);
+  //   // console.log(data)
+  //   try {
+  //     const res = await axios.post(`${host}/rifas/createRifa`, data);
+  //     console.log(res);
+  //   } catch (error) {
+  //     if (error.response) {
+  //       console.error('Respuesta del servidor con estado:', error.response.status);
+  //       console.error('Datos de respuesta:', error.response.data);
+  //     } else if (error.request) {
+  //       console.error('No se pudo realizar la solicitud:', error.request);
+  //     } else {
+  //       console.error('Error:', error.message);
+  //     }
+  //   }
+  // };
+    const [otherRifas, setOtherRifas] = useState([]);
+
   const loadOtherRifas = async () => {
     try {
-      const res = await axios.get(`${host}/rifas/otherRifas`);
+      // const res = await axios.get(`${host}/rifas/otherRifas`);
+      const res = await axios.get(`${host}/rifas/checkRifas`);
       setOtherRifas(res.data); // Actualiza el estado con las rifas de otros usuarios
     } catch (error) {
       console.error(error);

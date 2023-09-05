@@ -21,7 +21,7 @@ const {
 //-------------------- Rifas Controllers --------------------------
 
 const createRifa = async (req, res) => {
-  console.log(req.body)
+  // console.log(req.body)
 
  const { product, imgProduct, description, numbersPrice, totalNumbers } =
   req.body;

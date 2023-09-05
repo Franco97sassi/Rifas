@@ -36,12 +36,12 @@ const Carrousel = () => {
             <Carousel indicators={false}>
                 {
                     items.map((item, i) =>
-                        <>
+                        <div key={i}>
                             <Box sx={{ display: "flex", justifyContent: "center" }} key={i} item={item}>
                                 <img src={item.img} style={{ height: "100%" ,width:"100%" }}></img>
                                 <Typography sx={{ position: "absolute", fontSize: "28px", fontWeight: "600", color: "white", display: "flex", alignItems: "center", marginTop: "25%" }}>
                                     {item.description}</Typography>
-                            </Box></>)
+                            </Box></div>)
                 }
             </Carousel>
         </div>

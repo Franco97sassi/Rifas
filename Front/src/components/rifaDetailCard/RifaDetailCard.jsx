@@ -20,7 +20,7 @@ const RifaDetailCard = ({ rifaDetail }) => {
 
   const navigate = useNavigate();
   const dispatch = useDispatch();
-  console.log(rifaDetail);
+  // console.log(rifaDetail);
   const [searchTerm, setSearchTerm] = useState("");
 
   /* Parte del Responsive del texto */
@@ -91,11 +91,11 @@ const RifaDetailCard = ({ rifaDetail }) => {
   const sortedNumeros = [...rifaDetail?.rifa?.numeros].sort(
     (a, b) => a.number - b.number,
   );
-  console.log(rifaDetail)
+  // console.log(rifaDetail)
   const filteredNumeros = sortedNumeros.filter(element =>
     element.number.toString().includes(searchTerm)
   );
-console.log("filteredN",filteredNumeros);
+// console.log("filteredN",filteredNumeros);
 
   const theme1 = useTheme();
   // const isNonMobileScreens = useMediaQuery(theme1.breakpoints.up('md')); // Cambio de 'min-width' a 'up'

@@ -24,7 +24,7 @@ const OrdenesDetail = () => {
       return;
     }
 
-    console.log(userId)
+    // console.log(userId)
 
     // Realizar la solicitud GET a las órdenes del usuario con el ID de usuario como parte de la URL
     // axios.get(`${host}/ordenesAgregadas/${preferenceId}`)
@@ -41,7 +41,7 @@ const OrdenesDetail = () => {
 const calcularTotalCompra = (cart) => {
     return cart.reduce((total, el) => total + el.numbersPrice, 0);
   };
-  console.log(ordenes)
+  // console.log(ordenes)
 
 
 
@@ -148,11 +148,10 @@ const calcularTotalCompra = (cart) => {
                   </Typography>
 
 
-                  {ordenes?.cart?.map((el) => {
+                  {ordenes?.cart?.map((el,i) => {
                     return (
-                      <>
-
-                        <>
+                      <div key={i}> 
+                      
 
                           <ListItem>
                             <Box sx={{
@@ -202,10 +201,7 @@ const calcularTotalCompra = (cart) => {
                                     width: "172px",
                                     height: "190px",
                                     marginBottom: "1rem",
-                                    // borderRadius: 10,
-                                    // borderColor: "rgba(66, 62, 63, 1)",
-                                    // borderStyle: "solid",
-                                    // borderWidth: "6px",
+                                     
                                   }}
                                 />
 
@@ -293,15 +289,7 @@ const calcularTotalCompra = (cart) => {
                                   >
                                     Números:
                                   </Typography>
-                                  {/* <Typography
-                      variant="body1"
-                      // paddingTop="10px"
-                      paddingLeft={5}
-                         fontSize="20px"
-                      style={{ color: "#FFFFFF", fontWeight: "bold" }}
-                    >
-                     {el.number}
-                    </Typography> */}
+                                   
                                   <Box
                                     color="#D9D9D9"
                                     backgroundColor='#423E3F'
@@ -326,27 +314,7 @@ const calcularTotalCompra = (cart) => {
                                       textAlign: isNonMobileScreens? "right" :"center"
                                     }}
                                   >
-                                    {/* {el.number.map((numbe) => (
-                        
-                        <Button
-                          //  key={number}
-                          sx={{
-                            backgroundColor: "#423E3F",
-                            borderRadius: "50%",
-                            fontSize: "2rem",
-                            width: "4rem",
-                            height: "4rem",
-                            display: "flex",
-                            margin: "0.5rem",
-                            color: "#D9D9D9",
-                            "&:hover": {
-                              backgroundColor: "#423E3F",
-                            },
-                          }}
-                        >
-                          {number}
-                        </Button>
-                      ))}  */}
+                                   
                                   </Box>
 
                                 </Box>
@@ -397,8 +365,7 @@ const calcularTotalCompra = (cart) => {
 
 
 
-                        </>
-                      </>
+                          </div>
                     )
                   })}
 
@@ -409,7 +376,7 @@ const calcularTotalCompra = (cart) => {
                     Total: ${parseInt(calcularTotalCompra(ordenes.cart).toFixed(2))}
                   </Typography>
 
-                  <hr />
+                  <hr /> 
                 </Box>
 
 

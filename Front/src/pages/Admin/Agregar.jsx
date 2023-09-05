@@ -36,10 +36,10 @@ const Agregar = () => {
       totalNumbers: totalNumbers,
     };
 
-    console.log(data)
+    // console.log(data)
     try {
       const res = await axios.post(`${host}/rifas/createRifa`, data);
-      console.log(res);
+      // console.log(res);
       window.location.href = '/productosAdmin';
 
     } catch (error) {
@@ -49,7 +49,7 @@ const Agregar = () => {
   const [otherRifas, setOtherRifas] = useState([]);
   const loadOtherRifas = async () => {
     try {
-      const res = await axios.get(`${host}/rifas/otherRifas`);
+      const res = await axios.get(`${host}/rifas/checkRifas`);
       setOtherRifas(res.data); // Actualiza el estado con las rifas de otros usuarios
     } catch (error) {
       console.error(error);

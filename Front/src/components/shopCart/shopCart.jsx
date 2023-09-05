@@ -22,11 +22,13 @@ import axios from "axios";
 import { useTheme } from "@emotion/react";
  const host = import.meta.env.VITE_SV_HOST;
 
-const ShopCart = ({ isUserAdmin }) => {
+const ShopCart = (
+  { isUserAdmin }
+  ) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const cart = useSelector((state) => state.rifas.cart);
-  console.log(cart)
+  // console.log(cart)
   const handleDeleteCart = (rifaId) => {
     dispatch(removeNumbersToCart(rifaId));
   };
@@ -41,14 +43,14 @@ const ShopCart = ({ isUserAdmin }) => {
   // initMercadoPago("TEST-b3944798-0320-4a5f-9f12-f95c52c42fd5");
 
   const createPreference = async () => {
-    console.log(createPreference)
+    // console.log(createPreference)
     try {
       const response = await axios.post(`${host}/rifas/mercadoPago`, {
         cart
 
       })
       const { id } = response.data;
-      console.log("soy response", response)
+      // console.log("soy response", response)
       if (response.data.response && response.data.response.body) {
         if (isUserAdmin) {
           // Si el usuario es un administrador, redirige a la página de inicio
@@ -57,7 +59,7 @@ const ShopCart = ({ isUserAdmin }) => {
         } else {
           const initPoint = response.data.response.body.sandbox_init_point
 
-          console.log("soy initPoint", initPoint)
+          // console.log("soy initPoint", initPoint)
           window.location.href = initPoint
         }
       }
@@ -83,13 +85,13 @@ const ShopCart = ({ isUserAdmin }) => {
         userId: item.userId,
       };
     });
-    console.log("filtrado", filteredCart);
+    // console.log("filtrado", filteredCart);
     // Llamar a la acción buyRifas con el carrito filtrado
     dispatch(buyRifas(filteredCart));
     // navigate("");
 
   };
-  console.log("soy cart", cart)
+  // console.log("soy cart", cart)
 
 
 
@@ -135,7 +137,9 @@ const ShopCart = ({ isUserAdmin }) => {
               return acc;
             }, [])
             .map((item) => (
-              <CSSTransition key={item.rifaId} classNames="fade" timeout={300}>
+              <CSSTransition key={item.rifaId}   classNames="fade"   ref={(node) => (this.item = node)} 
+               timeout={300}  
+               >
                 <ListItem  >
 
                   <Box

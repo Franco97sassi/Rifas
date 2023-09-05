@@ -1,6 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit';
 import {
- persistReducer,
+
  FLUSH,
  REHYDRATE,
  PAUSE,
@@ -9,6 +9,7 @@ import {
  REGISTER,
 } from 'redux-persist';
 import { combineReducers } from 'redux';
+import { persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
 import user from './state/slices/userSlice';
 // import admin from './state/slices/adminSlice';
@@ -55,9 +56,11 @@ export const store = configureStore({
  reducer: persistReducer(localStorageConfig, rootReducer),
  middleware: (getDefaultMiddleware) =>
   getDefaultMiddleware({
-   serializableCheck: {
-    ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
-   },
+    immutableCheck: false,
+    serializableCheck: false,
+      //  {
+  //   ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+  //  },
   }),
 });
 
@@ -65,8 +68,10 @@ export const sessionStore = configureStore({
  reducer: sessionReducer,
  middleware: (getDefaultMiddleware) =>
   getDefaultMiddleware({
-   serializableCheck: {
-    ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
-   },
+    immutableCheck: false,
+   serializableCheck: false
+  //  {
+  //   ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
+  //  },
   }),
 });

@@ -374,7 +374,7 @@ const NavBar = ({ isUserAdmin }) => {
                 open={isMobileMenuToggled}
                 onClose={handleCloseMenu}
                 TransitionComponent={Slide}
-                TransitionProps={{
+                transitionprops={{
                   direction: 'left',
                   timeout: { enter: 500, exit: 500 },
                 }}>

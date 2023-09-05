@@ -52,7 +52,7 @@ export const addNumbersToCart =
   return item.rifaId === rifaId && item.number === number.number;
 });
 
-   console.log(exists, rifaId, numbersPrice )
+  //  console.log(exists, rifaId, numbersPrice )
 
    // Agregar el número al carrito solo si no existe
    if (!exists) {

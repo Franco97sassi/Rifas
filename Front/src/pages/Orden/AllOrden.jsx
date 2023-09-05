@@ -22,7 +22,7 @@ const AllOrdenes = () => {
       return;
     }
 
-    console.log(userId)
+    // console.log(userId)
 
     // Realizar la solicitud GET a las órdenes del usuario con el ID de usuario como parte de la URL
     // axios.get(`http://localhost:4000/rifas/allordenes`)
@@ -39,7 +39,7 @@ const AllOrdenes = () => {
   const calcularTotalCompra = (cart) => {
     return cart.reduce((total, el) => total + el.numbersPrice, 0);
   };
-  console.log(ordenes)
+  // console.log(ordenes)
  
 const handleDetalleClick = (id) =>{
     window.location.href = `/ordenes/${id}`;

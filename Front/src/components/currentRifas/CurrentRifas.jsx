@@ -16,13 +16,13 @@ const CurrentRifas = () => {
  const dispatch = useDispatch();
 
  const { allRifas } = useSelector((state) => state.rifas);
- console.log(allRifas);
+//  console.log(allRifas);
 
  useEffect(() => {
   dispatch(getRifas());
  }, []);
 
- //  console.log(allRifas);
+  
 
 
 
