@@ -56,6 +56,7 @@ const calcularTotalCompra = (cart) => {
           height: '100vh',
           display: 'flex',
           flexDirection: 'column',
+          
            
            }}>
         <Container >
@@ -132,8 +133,12 @@ const calcularTotalCompra = (cart) => {
                         backgroundRepeat: "no-repeat",
                         borderRadius: 2,
                         padding: isNonMobileScreens?"2rem":"0rem",
+ 
                         textAlign: isNonMobileScreens?"left":"center",
+                        
                         alignContent:"center",
+                        paddingLeft: isNonMobileScreens?"2.7rem":"0rem",
+
 
                       }}>
                       <Typography fontSize="16px" variant="h7" sx={{ color: 'black', fontWeight: 'bold',fontFamily: 'Work Sans' }}>   Órden ID: {ordenes.id}</Typography>
@@ -150,10 +155,15 @@ const calcularTotalCompra = (cart) => {
 
                   {ordenes?.cart?.map((el,i) => {
                     return (
-                      <div key={i}> 
+                      <div key={i} > 
                       
 
-                          <ListItem>
+                          <ListItem
+                          sx={{
+                            display: "flex",
+                            flexDirection: isNonMobileScreens ? "row" : "column",
+                            justifyContent:"center",
+                            alignContent:"center"}}>
                             <Box sx={{
                               display: "flex",
                               flexDirection: isNonMobileScreens ? "row" : "column",
@@ -162,7 +172,7 @@ const calcularTotalCompra = (cart) => {
                             }}>
                               <Box
                                 sx={{
-                                  width: isNonMobileScreens ? "230px" : "80%",
+                                  width: isNonMobileScreens ? "230px" : "100%",
                                   // height: "282px",
 
                                   background: isNonMobileScreens ?"rgba(30, 30, 30, 0.54)":null,
@@ -218,7 +228,7 @@ const calcularTotalCompra = (cart) => {
                                     borderRadius: '20px',
                                     bgcolor: '#D9D9D9',
                                     height: "60px",
-                                    width:isNonMobileScreens? "100%":"125%",
+                                    width:isNonMobileScreens? "100%":"100%",
                                     background: "rgba(66, 62, 63, 1)"
                                     // height: 300,
                                     // width: 300,
@@ -247,7 +257,7 @@ const calcularTotalCompra = (cart) => {
                               </Box>
                               <Box
                                 sx={{
-                                  width: isNonMobileScreens ? "50rem" : "80%",
+                                  width: isNonMobileScreens ? "50rem" : "100%",
                                   height: "334px",
                                   background: isNonMobileScreens ?"rgba(30, 30, 30, 0.54) ":null,
                                   backgroundSize: "contain",
@@ -369,9 +379,36 @@ const calcularTotalCompra = (cart) => {
                     )
                   })}
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                   <Typography variant="h5" sx={{
                     textAlign:  isNonMobileScreens? "right" :"center" , fontSize: "20px",
-                    paddingRight: isNonMobileScreens?'5.0rem':"6rem", paddingBottom: "2rem", fontWeight: "bold",fontFamily: 'Work Sans'
+                    paddingRight: isNonMobileScreens?'3.5rem':"0rem", paddingBottom: "2rem", fontWeight: "bold",fontFamily: 'Work Sans'
                   }}>
                     Total: ${parseInt(calcularTotalCompra(ordenes.cart).toFixed(2))}
                   </Typography>

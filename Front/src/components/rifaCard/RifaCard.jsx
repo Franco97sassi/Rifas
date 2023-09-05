@@ -57,7 +57,7 @@ paddingBottom="0.5rem"
 
     }}
    />
-        <Typography sx={{fontSize:"13px", ...textStyle,fontWeight:"600", color:'#423E3F'}}>$ {rifa.numbersPrice}</Typography>  
+        <Typography sx={{fontSize:"1rem", ...textStyle,fontWeight:"600", color:'#423E3F'}}>$ {rifa.numbersPrice}</Typography>  
 
   </Box>
  );

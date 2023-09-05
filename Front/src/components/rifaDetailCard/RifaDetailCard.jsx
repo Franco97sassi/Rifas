@@ -181,7 +181,7 @@ const RifaDetailCard = ({ rifaDetail }) => {
 
                 }}
               />
-              <Typography sx={{ fontSize: "13px", fontWeight: "600", color: "#423E3F" }}>$ {rifaDetail?.rifa?.numbersPrice}</Typography>
+              <Typography sx={{ fontSize: "1rem", fontWeight: "600", color: "#423E3F" }}>$ {rifaDetail?.rifa?.numbersPrice}</Typography>
 
             </Box>
 
@@ -209,7 +209,7 @@ const RifaDetailCard = ({ rifaDetail }) => {
               <Typography
                 variant='h6'
 
-                style={{ color: '#333333', textAlign: 'center', fontWeight: "700", fontSize: "15px",fontFamily: 'Work Sans' }}>
+                style={{ color: '#333333', textAlign: 'center', fontWeight: "700", fontSize: "1rem",fontFamily: 'Work Sans' }}>
                 ${rifaDetail?.rifa?.numbersPrice}
               </Typography>
             </Box></Box>

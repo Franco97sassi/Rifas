@@ -162,7 +162,7 @@ const ShopCart = (
                         background: "#D9D9D9",
                         borderRadius: 2,
                         padding: "1rem",
-                        transition: "0.3s",
+                        transition: "0.3s",  paddingTop: "0rem",
                         "&:hover": {
                           boxShadow: " 0px 5px 61px 6px #D9D9D9",
                         },
@@ -175,7 +175,9 @@ const ShopCart = (
                         textOverflow="ellipsis"
                         style={{
                           color: "#423E3F",
-                          fontWeight: "600", fontFamily: 'Work Sans'
+                          fontWeight: "600", fontFamily: 'Work Sans',
+                           // Agrega el marginTop aquí
+
                         }}
                       >
                         {item.productName}
@@ -186,7 +188,9 @@ const ShopCart = (
                         style={{
                           width: "172px",
                           height: "178px",
-                          marginBottom: "1rem",
+                          marginTop: "1.5rem",
+
+                          marginBottom: "1.5rem",
                           // borderRadius: 10,
                           // borderColor: "#423E3F  ",
                           // borderStyle: "solid",
@@ -195,9 +199,10 @@ const ShopCart = (
                       />
                       <Typography
                         sx={{
-                          fontSize: "13px", fontFamily: 'Work Sans',
+                          fontSize: "1rem", fontFamily: 'Work Sans',
                           fontWeight: "600",
                           color: "#423E3F",
+                           
                         }}
                       >
                         $ {item.numbersPrice}
@@ -414,7 +419,7 @@ const ShopCart = (
               justifyContent: "flex-end",
               width: isNonMobileScreens ? "50rem" : "15rem",
               padding: isNonMobileScreens ? "1rem" : "1rem",
-              paddingRight: "30px"
+              paddingRight: isNonMobileScreens ?"30px":"20px"
             }}
           >
             <Typography
