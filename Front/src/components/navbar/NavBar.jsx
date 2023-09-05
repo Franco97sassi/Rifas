@@ -200,7 +200,7 @@ const NavBar = ({ isUserAdmin }) => {
 
               </Box>
             ) : (
-              <IconButton onClick={handleOpenMenu}>
+              <IconButton onTouchStart={handleOpenMenu}>
  <MenuIcon
              />              </IconButton>
             )}
@@ -376,7 +376,7 @@ const NavBar = ({ isUserAdmin }) => {
                 <IconButton
             color="black"
             aria-label="open drawer"
-             onClick={handleOpenMenu}          
+            onTouchStart={handleOpenMenu}          
           >
             <MenuIcon
              />
