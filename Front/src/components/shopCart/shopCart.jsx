@@ -137,7 +137,7 @@ const ShopCart = (
               return acc;
             }, [])
             .map((item) => (
-              <CSSTransition key={item.rifaId}   classNames="fade"   in={true.toString()} ref={(node) => (this.item = node)} 
+              <CSSTransition key={item.rifaId}   classNames="fade"   
                timeout={300}  
                >
                 <ListItem  >
