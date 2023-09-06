@@ -396,126 +396,82 @@ const NavBar = ({ isUserAdmin }) => {
             }
 
             {/* MOBILE NAV */}
-            {!isNonMobileScreens && isMobileMenuToggled && (
-              // <Drawer
-              //   anchor='right'
-              //   open={isMobileMenuToggled}
-              //   onClose={handleCloseMenu}
-              //   TransitionComponent={Slide}
-              //   ModalProps={{
-              //     disableScrollLock: true,
-              //     disableBackdropClick: true,
-              //     disableEscapeKeyDown: true,
-              //   }}
-              // //  transitionprops={{
-              // //    direction: 'left',
-              // //    timeout: { enter: 500, exit: 500 },
-              //   }}>
-              //   <Box
-              //     position='fixed'
-              //     right='0'
-              //     bottom='0'
-              //     height='100%'
-              //     zIndex='10'
-              //     maxWidth='500px'
-              //     minWidth='250px'
-              //     backgroundColor={alt}>
-              //     {/* CLOSE ICON */}
-              //     <Box
-              //       display='flex'
-              //       justifyContent='flex-end'
-              //       padding='1rem'>
-              //       <IconButton onClick={handleCloseMenu}>
-              //         {/* <Close /> */}
-              //         <MenuIcon />      
-              //         </IconButton>
-                                    
-              //     </Box>
-
-              //     {/* MENU ITEMS */}
-
-              //     <Box
-              //       display='flex'
-              //       flexDirection='column'
-              //       justifyContent='space-between'
-              //       gap='3rem'
-
-              //       alignItems='center'>
-              //       {/* <UserIconNoLogged
-              //         onLoginClick={handleLoginClick}
-              //         onRegisterClick={handleRegisterClick} isUserAdmin={isUserAdmin}
-              //       /> */}
-              //       {/* <UserIconNoLogged
-              //         />  
-              //       {/* <RouterLink to='/register'>
-              //         <IconButton>
-              //           <Help sx={{ color: font, fontSize: '25px' }} />
-              //         </IconButton>
-              //       </RouterLink> */}
-              //      <ThemeProvider theme={theme}> 
-              //       {/* <Box sx={{ display: "flex", flexDirection: "column" }}> */}
-              //       <NavLink to='/register' style={{ textDecoration: "none", color: "inherit" }}  >
-              //         <Typography sx={{ color: "orange", fontWeight: "700" }}>Registrarme</Typography>
-              //       </NavLink >
-              //       <NavLink to='/login' style={{ textDecoration: "none", color: "inherit" }}>
-              //         <Typography sx={{ color: "orange", fontWeight: "700" }}>Iniciar Sesión</Typography>
-              //       </NavLink >
-              //       {/* </Box>      */}
-              //         </ThemeProvider>   
-              //     </Box>  
-              //   </Box>
-              // </Drawer>
-
-
+             {!isNonMobileScreens && isMobileMenuToggled && (
               <Drawer
-              anchor='right'
-              open={isMobileMenuToggled}
-              onClose={handleCloseMenu}
-              TransitionComponent={Slide}
-              TransitionProps={{
-               direction: 'left',
-               timeout: { enter: 500, exit: 500 },
-              }}>
-              <Box
-               position='fixed'
-               right='0'
-               bottom='0'
-               height='100%'
-               zIndex='10'
-               maxWidth='500px'
-               minWidth='250px'
-               backgroundColor={alt}>
-               {/* CLOSE ICON */}
-               <Box
-                display='flex'
-                justifyContent='flex-end'
-                p='1rem'>
-                <IconButton onClick={handleCloseMenu}>
-                 <Close />
-                </IconButton>
-               </Box>
-      
-               {/* MENU ITEMS */}
-      
-               <Box
-                display='flex'
-                flexDirection='column'
-                justifyContent='center'
-                gap='3rem'
-                alignItems='center'>
-                <UserIconNoLogged
-                 onLoginClick={handleLoginClick}
-                 onRegisterClick={handleRegisterClick}
-                />
-      
-                <RouterLink to=''>
-                 <IconButton>
-                  <Help sx={{ color: font, fontSize: '25px' }} />
-                 </IconButton>
-                </RouterLink>
-               </Box>
-              </Box>
-             </Drawer>
+                anchor='right'
+                open={isMobileMenuToggled}
+                onClose={handleCloseMenu}
+                TransitionComponent={Slide}
+                ModalProps={{
+                  disableScrollLock: true,
+                  disableBackdropClick: true,
+                  disableEscapeKeyDown: true,
+                }}
+                transitionprops={{
+                  direction: 'left',
+                  timeout: { enter: 500, exit: 500 },
+                }}>
+                 <Box
+                  // position='fixed'
+                  right='0'
+                  bottom='0'
+                  height='100%'
+                  // zIndex='10'
+                  maxWidth='31.25rem'
+                  minWidth='15.63rem'
+                  backgroundColor={alt}>  
+                  {/* CLOSE ICON */}
+                  {/* <Box
+                    display='flex'
+                    justifyContent='flex-end'
+                    p='1rem'>
+                    <IconButton onClick={handleCloseMenu}>
+                     <Close />  
+                      <MenuIcon />      
+                      </IconButton>
+                                    
+                  </Box> */}
+
+                  {/* MENU ITEMS */}
+
+                  <Box
+                    display='flex'
+                    flexDirection='column'
+                    justifyContent='space-between'
+                    gap='3rem'
+
+                    alignItems='center'>
+                    {/* <UserIconNoLogged
+                      onLoginClick={handleLoginClick}
+                      onRegisterClick={handleRegisterClick} isUserAdmin={isUserAdmin}
+                    /> */}
+                    {/* <UserIconNoLogged
+                      /> */}
+                    {/* <RouterLink to='/register'>
+                      <IconButton>
+                        <Help sx={{ color: font, fontSize: '25px' }} />
+                      </IconButton>
+                    </RouterLink> */}
+                    {/* <ThemeProvider theme={theme}> */}
+                    {/* <CssBaseline /> */}
+                    {/* <Box sx={{ display: "flex", flexDirection: "column" }}> */}
+                   
+                   
+                   
+                    {/* <NavLink to='/register' style={{ textDecoration: "none", color: "inherit" }}  >
+                      <Typography sx={{ color: "orange", fontWeight: "700" }}>Registrarme</Typography>
+                    </NavLink >
+                    <NavLink to='/login' style={{ textDecoration: "none", color: "inherit" }}>
+                      <Typography sx={{ color: "orange", fontWeight: "700" }}>Iniciar Sesión</Typography>
+                    </NavLink >
+                     */}
+                    
+                    
+                    {/* </Box>      */}
+                    {/* </ThemeProvider>  */}
+                  </Box>   
+                </Box>
+              </Drawer>
             )}
           </Box>
         </AppBar>
