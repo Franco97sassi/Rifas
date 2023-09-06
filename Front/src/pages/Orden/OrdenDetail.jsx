@@ -107,7 +107,7 @@ const calcularTotalCompra = (cart) => {
                       variant="h5"
                       fontWeight="700"
                       fontFamily={'TanPearl'}
-                      fontSize={"2rem"}
+                      fontSize= {isNonMobileScreens?"2rem":"1rem"} 
                       color="rgba(66, 62, 63, 1)"
                        
                        sx={{fontFamily: "Work Sans" }}

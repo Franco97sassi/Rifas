@@ -10,6 +10,7 @@ import AllOrdenes from '../Orden/AllOrden';
 import { Link } from 'react-router-dom';
 import { useTheme } from '@emotion/react';
 import '../../index.css'
+import   "./index.css"
 
 const host = import.meta.env.VITE_SV_HOST;
 
@@ -92,7 +93,7 @@ const ProductosAdmin = () => {
               display:"flex", justifyContent:isNonMobileScreens?"flex-end":"center"
               }}> ,
 
-            <Link to="/agregar">  
+            <Link to="/agregar" className='no-underline'>  
              <Button
             variant="contained"
             sx={{
