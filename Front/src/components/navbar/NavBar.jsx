@@ -43,7 +43,7 @@ import venado from '../../assets/venado.png';
 import UserIconAdmin from './userIconAdmin';
 /////////////////////////
 const NavBar = ({ isUserAdmin }) => {
-      // e.preventDefault(); // Evita el comportamiento predeterminado del navegador
+  // e.preventDefault(); // Evita el comportamiento predeterminado del navegador
 
   const [isMobileMenuToggled, setIsMobileMenuToggled] = useState(false);
   const userData = JSON.parse(sessionStorage.getItem('userData'));
@@ -51,7 +51,7 @@ const NavBar = ({ isUserAdmin }) => {
   const navigate = useNavigate();
   const isNonMobileScreens = useMediaQuery('(min-width: 1000px)');
 
-  const handleOpenMenu = (e) => {
+  const handleOpenMenu = ( ) => {
     // e.preventDefault(); // Evita el comportamiento predeterminado del navegador
 
     setIsMobileMenuToggled(true);
@@ -89,11 +89,12 @@ const NavBar = ({ isUserAdmin }) => {
   const font = theme.palette.others.font;
   const theme1 = useTheme();
   const isNonMobileScreens2 = useMediaQuery(theme1.breakpoints.up('md')); // Cambio de 'min-width' a 'up'
-   
+
   const [open, setOpen] = useState(false);
   const handleDrawerOpen = () => {
     setOpen(true);
   };
+ 
   return (
     <>
       {userData ? (
@@ -115,46 +116,48 @@ const NavBar = ({ isUserAdmin }) => {
               alignItems='center'
               height='75px'
             >
-              <Box sx={{justifyContent:'space-between',
-              alignItems:'center'}}>  
-              <Typography
-                fontWeight='bold'
-                fontSize='clamp(1rem, 2rem, 2.25rem)'
-                color='primary' 
-                onClick={() => navigate('/home')}
-                sx={{
-                  '&:hover': {
-                    transition: '0.4s',
-                    backgroundColor: dark,
-                    cursor: 'pointer',
-                    borderRadius: '15px',
+              <Box sx={{
+                justifyContent: 'space-between',
+                alignItems: 'center'
+              }}>
+                <Typography
+                  fontWeight='bold'
+                  fontSize='clamp(1rem, 2rem, 2.25rem)'
+                  color='primary'
+                  onClick={() => navigate('/home')}
+                  sx={{
+                    '&:hover': {
+                      transition: '0.4s',
+                      backgroundColor: dark,
+                      cursor: 'pointer',
+                      borderRadius: '15px',
 
-                  },
-                }}>  
-                {isNonMobileScreens ? (
-                  <img
-                    src={venado}
-                    alt='img not found'
-                    width='max-width'
-                    height="50px"
-                  />
-                ) : (
-                  <>
+                    },
+                  }}>
+                  {isNonMobileScreens ? (
                     <img
                       src={venado}
                       alt='img not found'
                       width='max-width'
                       height="50px"
+                    />
+                  ) : (
+                    <>
+                      <img
+                        src={venado}
+                        alt='img not found'
+                        width='max-width'
+                        height="50px"
 
-                    />   
- 
-  
+                      />
 
-                  </>
-                )}
-               </Typography>  
-            </Box></Box>
-             
+
+
+                    </>
+                  )}
+                </Typography>
+              </Box></Box>
+
 
             {/* DESKTOP NAV */}
 
@@ -169,8 +172,8 @@ const NavBar = ({ isUserAdmin }) => {
               //  paddingLeft='1000px'
               >
 
- 
-  <RouterLink to='/cart'>
+
+                <RouterLink to='/cart'>
                   <IconButton>
                     {/* <ShoppingBasketIcon sx={{ color: font, fontSize: '25px' }} /> */}
                     <Typography sx={{
@@ -182,8 +185,8 @@ const NavBar = ({ isUserAdmin }) => {
                     </Typography>
                   </IconButton>
                 </RouterLink>
-                 
-              
+
+
 
                 {isUserAdmin &&
                   <RouterLink to='/admin'>
@@ -193,16 +196,16 @@ const NavBar = ({ isUserAdmin }) => {
                     </IconButton>
                   </RouterLink>
                 }
-                  <UserIcon
+                <UserIcon
                   onLoginClick={handleLoginClick}
                   onRegisterClick={handleRegisterClick}
-                />  
+                />
 
               </Box>
             ) : (
-              <IconButton onTouchStart={handleOpenMenu}>
- <MenuIcon
-             />              </IconButton>
+              <IconButton onClick={handleOpenMenu}>
+                <MenuIcon
+                />              </IconButton>
             )}
 
 
@@ -212,17 +215,23 @@ const NavBar = ({ isUserAdmin }) => {
             {!isNonMobileScreens
 
               && isMobileMenuToggled && (
-               
- 
+
+
                 <Drawer
                   anchor='right'
                   open={isMobileMenuToggled}
                   onClose={handleCloseMenu}
                   TransitionComponent={Slide}
                 // TransitionProps={{
-                //  direction: 'left',
-                //  timeout: { enter: 500, exit: 500 },
-                // }}
+                //   direction: 'left',
+                //    timeout: { enter: 5500, exit: 5500 },
+                //   }}
+                // Usa la propiedad ModalProps para permitir la interacción táctil
+                ModalProps={{
+                  disableScrollLock: true,
+                  disableBackdropClick: true,
+                  disableEscapeKeyDown: true,
+                }}
                 >
                   <Box
                     position='fixed'
@@ -234,7 +243,7 @@ const NavBar = ({ isUserAdmin }) => {
                     minWidth='250px'
                     backgroundColor={alt}>
                     {/* CLOSE ICON */}
-                    
+
                     <Box
                       display='flex'
                       justifyContent='flex-end'
@@ -242,10 +251,10 @@ const NavBar = ({ isUserAdmin }) => {
                       <IconButton onClick={handleCloseMenu}>
                         <Close />
                       </IconButton>
-                    
 
-                    {/* MENU ITEMS */}
-                     </Box>
+
+                      {/* MENU ITEMS */}
+                    </Box>
                     <Box
                       display='flex'
                       flexDirection='row'
@@ -261,11 +270,11 @@ const NavBar = ({ isUserAdmin }) => {
 
 
                       />
- <RouterLink to='/cart'>
-                  <IconButton>
-                    <ShoppingBasketIcon sx={{ color: font, fontSize: '25px' }} />
-                  </IconButton>
-                </RouterLink>
+                      <RouterLink to='/cart'>
+                        <IconButton>
+                          <ShoppingBasketIcon sx={{ color: font, fontSize: '25px' }} />
+                        </IconButton>
+                      </RouterLink>
                     </Box>
                   </Box>
                 </Drawer>
@@ -297,7 +306,7 @@ const NavBar = ({ isUserAdmin }) => {
               alignItems='center'
             // marginLeft={"10px"}
             >
-              
+
               <Typography
                 fontWeight='bold'
                 fontSize='clamp(1rem, 2rem, 2.25rem)'
@@ -310,7 +319,7 @@ const NavBar = ({ isUserAdmin }) => {
                     cursor: 'pointer',
                     borderRadius: '15px',
                   },
-                  
+
                 }}>
                 {isNonMobileScreens ? (
                   <img
@@ -374,18 +383,18 @@ const NavBar = ({ isUserAdmin }) => {
                 //   <MenuHamb />  
                 // </IconButton>
                 <IconButton
-            color="black"
-            aria-label="open drawer"
-            onTouchStart={handleOpenMenu}          
-          >
-            <MenuIcon
-             />
-          </IconButton>
+                  color="black"
+                  aria-label="open drawer"
+                  onTouchStart={handleOpenMenu}
+                >
+                  <MenuIcon
+                  />
+                </IconButton>
               )
-           
-           
-           
-           }
+
+
+
+            }
 
             {/* MOBILE NAV */}
             {!isNonMobileScreens && isMobileMenuToggled && (
@@ -414,8 +423,9 @@ const NavBar = ({ isUserAdmin }) => {
                     p='1rem'>
                     <IconButton onClick={handleOpenMenu}>
                       {/* <Close /> */}
-                      <MenuIcon
-             />                    </IconButton>
+                      <MenuIcon />      
+                      </IconButton>
+                                    
                   </Box>
 
                   {/* MENU ITEMS */}
@@ -423,9 +433,9 @@ const NavBar = ({ isUserAdmin }) => {
                   <Box
                     display='flex'
                     flexDirection='column'
-                     justifyContent='space-between'
+                    justifyContent='space-between'
                     gap='3rem'
-                     
+
                     alignItems='center'>
                     {/* <UserIconNoLogged
                       onLoginClick={handleLoginClick}
@@ -439,17 +449,17 @@ const NavBar = ({ isUserAdmin }) => {
                       </IconButton>
                     </RouterLink> */}
                     {/* <ThemeProvider theme={theme}> */}
-                      {/* <CssBaseline /> */}
-                        {/* <Box sx={{ display: "flex", flexDirection: "column" }}> */}
-                        <NavLink to='/register' style={{ textDecoration: "none", color: "inherit" }}  >
-                          <Typography sx={{ color: "orange",fontWeight:"700" }}>Registrarme</Typography>
-                        </NavLink >
-                        <NavLink to='/login' style={{ textDecoration: "none", color: "inherit" }}>
-                          <Typography sx={{ color: "orange",fontWeight:"700" }}>Inicio Sesión</Typography>
-                        </NavLink >
-                      {/* </Box>      */}
- {/* </ThemeProvider>  */}
-                  </Box>
+                    {/* <CssBaseline /> */}
+                    {/* <Box sx={{ display: "flex", flexDirection: "column" }}> */}
+                    <NavLink to='/register' style={{ textDecoration: "none", color: "inherit" }}  >
+                      <Typography sx={{ color: "orange", fontWeight: "700" }}>Registrarme</Typography>
+                    </NavLink >
+                    <NavLink to='/login' style={{ textDecoration: "none", color: "inherit" }}>
+                      <Typography sx={{ color: "orange", fontWeight: "700" }}>Iniciar Sesión</Typography>
+                    </NavLink >
+                    {/* </Box>      */}
+                    {/* </ThemeProvider>  */}
+                  </Box>  
                 </Box>
               </Drawer>
             )}
