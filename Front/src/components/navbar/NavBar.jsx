@@ -383,7 +383,7 @@ const NavBar = ({ isUserAdmin }) => {
                 //   <MenuHamb />  
                 // </IconButton>
                 <IconButton
-                  color="black"
+                  // color="black"
                   onClick={handleOpenMenu}
                 >
                   <MenuIcon
@@ -402,6 +402,11 @@ const NavBar = ({ isUserAdmin }) => {
                 open={isMobileMenuToggled}
                 onClose={handleCloseMenu}
                 TransitionComponent={Slide}
+                ModalProps={{
+                  disableScrollLock: true,
+                  disableBackdropClick: true,
+                  disableEscapeKeyDown: true,
+                }}
                 transitionprops={{
                   direction: 'left',
                   timeout: { enter: 500, exit: 500 },
@@ -418,9 +423,9 @@ const NavBar = ({ isUserAdmin }) => {
                   {/* CLOSE ICON */}
                   <Box
                     display='flex'
-                    // justifyContent='flex-end'
+                    justifyContent='flex-end'
                     p='1rem'>
-                    <IconButton onClick={handleOpenMenu}>
+                    <IconButton onClick={handleCloseMenu}>
                       {/* <Close /> */}
                       <MenuIcon />      
                       </IconButton>
