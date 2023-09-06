@@ -234,13 +234,13 @@ const NavBar = ({ isUserAdmin }) => {
                 }}
                 >
                   <Box
-                    position='fixed'
+                    // position='fixed'
                     right='0'
                     bottom='0'
                     height='100%'
-                    zIndex='10'
-                    maxWidth='500px'
-                    minWidth='250px'
+                    // zIndex='10'
+                    maxWidth='31.25rem'
+                    minWidth='15.63rem'
                     backgroundColor={alt}>
                     {/* CLOSE ICON */}
 
@@ -421,16 +421,16 @@ const NavBar = ({ isUserAdmin }) => {
                   minWidth='15.63rem'
                   backgroundColor={alt}>  
                   {/* CLOSE ICON */}
-                  {/* <Box
+                   <Box
                     display='flex'
                     justifyContent='flex-end'
                     p='1rem'>
                     <IconButton onClick={handleCloseMenu}>
                      <Close />  
-                      <MenuIcon />      
+                      {/* <MenuIcon />       */}
                       </IconButton>
                                     
-                  </Box> */}
+                  </Box> 
 
                   {/* MENU ITEMS */}
 
@@ -458,13 +458,13 @@ const NavBar = ({ isUserAdmin }) => {
                    
                    
                    
-                    {/* <NavLink to='/register' style={{ textDecoration: "none", color: "inherit" }}  >
+                     <NavLink to='/register' style={{ textDecoration: "none", color: "inherit" }}  >
                       <Typography sx={{ color: "orange", fontWeight: "700" }}>Registrarme</Typography>
                     </NavLink >
                     <NavLink to='/login' style={{ textDecoration: "none", color: "inherit" }}>
                       <Typography sx={{ color: "orange", fontWeight: "700" }}>Iniciar Sesión</Typography>
                     </NavLink >
-                     */}
+                      
                     
                     
                     {/* </Box>      */}
