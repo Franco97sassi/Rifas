@@ -384,8 +384,7 @@ const NavBar = ({ isUserAdmin }) => {
                 // </IconButton>
                 <IconButton
                   color="black"
-                  aria-label="open drawer"
-                  onTouchStart={handleOpenMenu}
+                  onClick={handleOpenMenu}
                 >
                   <MenuIcon
                   />
