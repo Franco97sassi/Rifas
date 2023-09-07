@@ -74,6 +74,9 @@ const RifaDetailCard = ({ rifaDetail }) => {
 
 
   const addToCart = (selectedNumbers) => {
+    if (selectedNumbers.length === 0) {
+      // Mostrar un mensaje de error o realizar alguna acción aquí
+     } else {
     dispatch(
       addNumbersToCart(
         selectedNumbers,
@@ -84,8 +87,8 @@ const RifaDetailCard = ({ rifaDetail }) => {
       ),
     );
     setSelectedNumbers([]);
-
-  };
+    navigate('/cart');
+  } };
 
   // Ordenar los números en función de su valor
   const sortedNumeros = [...rifaDetail?.rifa?.numeros].sort(
@@ -342,7 +345,7 @@ const RifaDetailCard = ({ rifaDetail }) => {
                 onClick={() => {
                   // Realizar acción con los números seleccionados
                   addToCart(selectedNumbers);
-                  navigate('/cart');
+                   
                 }}>Agregar al Carrito
 
               </Button>

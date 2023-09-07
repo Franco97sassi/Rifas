@@ -44,7 +44,14 @@ const calcularTotalCompra = (cart) => {
   // console.log(ordenes)
 
 
-
+  const groupedCart = {};
+  if (ordenes.cart){  
+  ordenes.cart.forEach((el) => {
+    if (!groupedCart[el.productName]) {
+      groupedCart[el.productName] = [];
+    }
+    groupedCart[el.productName].push(el);
+  });}
 
 
 
@@ -153,7 +160,7 @@ const calcularTotalCompra = (cart) => {
                   </Typography>
 
 
-                  {ordenes?.cart?.map((el,i) => {
+                  {/* {ordenes?.cart?.map((el,i) => {
                     return (
                       <div key={i} > 
                       
@@ -353,17 +360,17 @@ const calcularTotalCompra = (cart) => {
                                     >
                                       {/* <Box
                                       > */}
-                                        Subtotal: ${
-                                          // e.numbers.length * 
-                                          el.numbersPrice}
+                                        {/* Subtotal: ${ */}
+                                          {/* // e.numbers.length *  */}
+                                          {/* el.numbersPrice} */}
                                       {/* </Box> */}
-                                    </Typography>
+                                    {/* </Typography>
                                   }
                                   style={{ textAlign: "right" }}
                                 />
 
                               </Box> </Box>
-                          </ListItem>
+                          </ListItem> */}
 
 
 
@@ -375,16 +382,179 @@ const calcularTotalCompra = (cart) => {
 
 
 
-                          </div>
+                          {/* </div>
                     )
-                  })}
+                  })} */}
 
 
 
+ {/* } */}
 
 
+ {Object.entries(groupedCart).map(([productName, productItems], i) => (
+                    <div key={i}>
+                      <ListItem
+                        sx={{
+                          display: "flex",
+                          flexDirection: isNonMobileScreens ? "row" : "column",
+                          justifyContent: "center",
+                          alignContent: "center",
+                        }}
+                      >
+                        <Box sx={{
+                          display: "flex",
+                          flexDirection: isNonMobileScreens ? "row" : "column",
+                          justifyContent: "center",
+                          alignContent: "center"
+                        }}>
+                          <Box
+                            sx={{
+                              width: isNonMobileScreens ? "230px" : "100%",
+                              background: isNonMobileScreens ? "rgba(30, 30, 30, 0.54)" : null,
+                              backgroundSize: "contain",
+                              backgroundPosition: "center",
+                              backgroundRepeat: "no-repeat",
+                              padding: isNonMobileScreens ? "1rem" : "0rem",
+                              textAlign: "center",
+                              display: "flex",
+                              flexDirection: "column",
+                              justifyContent: "center",
+                              alignContent: "center",
+                              transition: "0.3s",
+                              "&:hover": {
+                                boxShadow: " 0px 5px 61px 6px #D9D9D9",
+                              },
+                            }}
+                          >
+                            <Typography
+                              variant="body1"
+                              fontSize="1.5rem"
+                              style={{
+                                fontWeight: "600", fontFamily: 'Work Sans'
+                              }}
+                            >
+                              {productName}
+                            </Typography>
+                            <img
+                              src={productItems[0].imgProduct}
+                              alt={productName}
+                              style={{
+                                width: "172px",
+                                height: "190px",
+                                marginBottom: "1rem",
+                              }}
+                            />
 
-
+                            <Box
+                              sx={{
+                                display: 'flex',
+                                flexDirection: 'column',
+                                justifyContent: 'space-evenly',
+                                alignItems: 'center',
+                                border: '0.2em solid #213911d2',
+                                borderRadius: '20px',
+                                bgcolor: '#D9D9D9',
+                                height: "60px",
+                                width: isNonMobileScreens ? "100%" : "100%",
+                                background: "rgba(66, 62, 63, 1)"
+                              }}
+                            >
+                              <Typography
+                                variant='h6'
+                                color="rgba(217, 217, 217, 0.9)"
+                                style={{
+                                  color: 'rgba(217, 217, 217, 0.9)',
+                                  textAlign: 'center', fontWeight: "700", fontSize: "20px", fontFamily: 'Work Sans'
+                                }}>
+                                Valor por número
+                              </Typography>
+                              <Typography
+                                variant='h6'
+                                style={{ color: 'rgba(217, 217, 217, 0.9)', textAlign: 'center', fontWeight: "700", fontSize: "15px", fontFamily: 'Work Sans' }}>
+                                ${productItems[0].numbersPrice}
+                              </Typography>
+                            </Box>
+                          </Box>
+                          <Box
+                            sx={{
+                              width: isNonMobileScreens ? "50rem" : "100%",
+                              height: "334px",
+                              background: isNonMobileScreens ? "rgba(30, 30, 30, 0.54) " : null,
+                              backgroundSize: "contain",
+                              backgroundPosition: "center",
+                              backgroundRepeat: "no-repeat",
+                              display: "flex",
+                              flexDirection: isNonMobileScreens ? "row" : "column",
+                              justifyContent: "center",
+                              paddingTop: "1.1rem",
+                            }}
+                          >
+                            <Box
+                              sx={{
+                                display: "flex",
+                                flexDirection: "column",
+                                justifyContent: "flex-start",
+                                alignItems: "center",
+                                paddingTop: "1px",
+                                paddingBottom: "1rem",
+                                maxHeight: "282",
+                                paddingRight: "0.1rem",
+                              }}
+                            >
+                              <Typography
+                                variant="body1"
+                                fontSize={20}
+                                style={{ fontWeight: "bold", fontFamily: 'Work Sans' }}
+                              >
+                                Números:
+                              </Typography>
+<Box sx={{display:"flex",gap: "0.5rem",flexDirection:"row"}}>  
+                              {productItems.map((item, index) => (
+                                <Box
+ 
+                                  color="#D9D9D9"
+                                  backgroundColor='#423E3F'
+                                  borderRadius='50%'
+                                  fontSize='20px'
+                                  width="46px"
+                                  fontWeight="700"
+                                  height="46px"
+                                  display="flex"
+                                  flexDirection="row"
+                                  justifyContent="center"
+                                  alignItems="center"
+                                  style={{ marginBottom: '10px' }}
+                                >
+                                  {item.number}
+                                </Box>
+                              ))}</Box>
+                            </Box>
+                            <ListItemText
+                              primary={
+                                <Typography
+                                  variant="h5"
+                                  style={{
+                                    textAlign: "center",
+                                    display: "flex",
+                                    flexDirection: "row",
+                                    justifyContent: "flex-end",
+                                    paddingTop: isNonMobileScreens ? "275px" : "15px",
+                                    fontSize: "20px",
+                                    fontWeight: "bold",
+                                    fontFamily: 'Work Sans',
+                                    paddingRight: "5px"
+                                  }}
+                                >
+                                  Subtotal: ${productItems.reduce((subtotal, item) => subtotal + item.numbersPrice, 0)}
+                                </Typography>
+                              }
+                              style={{ textAlign: "right" }}
+                            />
+                          </Box>
+                        </Box>
+                      </ListItem>
+                    </div>
+                  ))}
 
 
 

@@ -88,11 +88,16 @@ function RegisterForm() {
     component='main'
     sx={{ alignItems: 'center', background: loginbackground }}>
     <Grid
-     item
-     md={7}
-     sx={{
-      display: { xs: 'none', md: 'flex', sm: 'none' },
-      }}>
+          item
+          xs={12}
+          sm={12}
+          md={7}
+          sx={{
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center', // Centrar verticalmente en pantallas pequeñas
+          }}
+        >
      <Grid
       sx={{
        display: 'flex',
@@ -108,7 +113,7 @@ function RegisterForm() {
          maxWidth: '100%',
          maxHeight: '100%',
          width: 'auto',
-         height: '394px',
+         height: '454px',
         }}
        />
       </Box>

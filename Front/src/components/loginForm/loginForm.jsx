@@ -93,18 +93,23 @@ function LogInForm() {
     sx={{ alignItems: 'center'   
      ,background: loginbackground  }}>
     <Grid
-     item
-     md={7}
-     sx={{
-      display: { xs: 'none', md: 'flex', sm: 'none'   }  } }
-       
-      >
+          item
+          xs={12}
+          sm={12}
+          md={7}
+          sx={{
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center', // Centrar verticalmente en pantallas pequeñas
+          }}
+        >
      <Grid
       sx={{
        display: 'flex',
        maxWidth: '100%',
-       maxHeight: '700px'  
-       }}>
+       maxHeight: '700px',
+       justifyContent: 'center',
+      }}>
       <Box minWidth={'500px'}>
        <img
         src={imageLogin}
@@ -113,7 +118,7 @@ function LogInForm() {
          maxWidth: '100%',
          maxHeight: '100%',
          width: 'auto',
-         height: '394px',
+         height: '454px',
         }}
        />
       </Box>

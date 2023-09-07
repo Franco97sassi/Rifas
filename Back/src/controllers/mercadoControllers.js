@@ -30,7 +30,7 @@ const {
       const items = cart.map((producto) => ({
         title: `${producto.productName} - ${producto.number}`,
         quantity: 1,
-        currency_id: 'MXN',
+        currency_id: 'ARS',
         unit_price: producto.numbersPrice
         ,
       }));
@@ -44,8 +44,10 @@ const {
             pending: `${NOTIFICATION_MERCADOPAGO_FRONT}success?preferenceId=${preferenceId}`,
           // pending: `http://localhost:5173/success?preferenceId=${preferenceId}`,
           // failure: `http://localhost:5173/success?preferenceId=${preferenceId}`,
-            failure: `${NOTIFICATION_MERCADOPAGO_FRONT}success?preferenceId=${preferenceId}`,
-        },
+            // failure: `${NOTIFICATION_MERCADOPAGO_FRONT}success?preferenceId=${preferenceId}`,
+            failure: `${NOTIFICATION_MERCADOPAGO_FRONT}home`,
+
+          },
           notification_url: `${NOTIFICATION_MERCADOPAGO_BACK}rifas/webhook?preferenceId=${preferenceId}`,
         //  notification_url: `https://0723-186-136-152-49.ngrok-free.app/rifas/webhook?preferenceId=${preferenceId}`,
  

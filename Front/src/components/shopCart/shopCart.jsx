@@ -20,11 +20,13 @@ import "./shopCart.css"; // Importa el archivo CSS para las transiciones
 import { Wallet } from "@mercadopago/sdk-react";
 import axios from "axios";
 import { useTheme } from "@emotion/react";
- const host = import.meta.env.VITE_SV_HOST;
+ 
+ 
+const host = import.meta.env.VITE_SV_HOST;
 
 const ShopCart = (
   { isUserAdmin }
-  ) => {
+) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const cart = useSelector((state) => state.rifas.cart);
@@ -35,7 +37,7 @@ const ShopCart = (
   const theme1 = useTheme();
   // const isNonMobileScreens = useMediaQuery(theme1.breakpoints.up('md')); // Cambio de 'min-width' a 'up'
   const isNonMobileScreens = useMediaQuery('(min-width: 1000px)');
-
+ 
 
 
   //mercado pago
@@ -96,7 +98,9 @@ const ShopCart = (
 
 
 
- 
+
+
+
 
 
   return (
@@ -109,17 +113,17 @@ const ShopCart = (
       // width="80%" // Añadido para reducir el ancho del componente
       // margin="0 auto" // Centra el componente horizontalmente
       padding="0rem"
-      width="100%"  
+      width="100%"
     >
 
       <Typography
         marginTop="1em"
         paddingLeft={2.5}
-         style={{fontFamily: 'Work Sans', color: "#333333" }} // Aumenta el tamaño de la fuente
+        style={{ fontFamily: 'Work Sans', color: "#333333" }} // Aumenta el tamaño de la fuente
         //  fontWeight="1700px"
 
-         variant="h2"
-        gutterBottom  
+        variant="h2"
+        gutterBottom
       >
         Carrito de Compras
       </Typography>
@@ -137,9 +141,9 @@ const ShopCart = (
               return acc;
             }, [])
             .map((item) => (
-              <CSSTransition key={item.rifaId}   classNames="fade"   
-               timeout={300}  
-               >
+              <CSSTransition key={item.rifaId} classNames="fade"
+                timeout={300}
+              >
                 <ListItem  >
 
                   <Box
@@ -162,7 +166,7 @@ const ShopCart = (
                         background: "#D9D9D9",
                         borderRadius: 2,
                         padding: "1rem",
-                        transition: "0.3s",  paddingTop: "0rem",
+                        transition: "0.3s", paddingTop: "0rem",
                         "&:hover": {
                           boxShadow: " 0px 5px 61px 6px #D9D9D9",
                         },
@@ -176,7 +180,7 @@ const ShopCart = (
                         style={{
                           color: "#423E3F",
                           fontWeight: "600", fontFamily: 'Work Sans',
-                           // Agrega el marginTop aquí
+                          // Agrega el marginTop aquí
 
                         }}
                       >
@@ -202,7 +206,7 @@ const ShopCart = (
                           fontSize: "1rem", fontFamily: 'Work Sans',
                           fontWeight: "600",
                           color: "#423E3F",
-                           
+
                         }}
                       >
                         $ {item.numbersPrice}
@@ -262,7 +266,7 @@ const ShopCart = (
                           paddingLeft={isNonMobileScreens ? "2" : "0"}
                           textAlign={isNonMobileScreens ? "left" : "center"}
 
-                          style={{ color: "#423E3F", fontWeight: "bold",fontFamily: 'Work Sans' }}
+                          style={{ color: "#423E3F", fontWeight: "bold", fontFamily: 'Work Sans' }}
                         >
                           Números Seleccionados:
                         </Typography>
@@ -323,7 +327,7 @@ const ShopCart = (
                       <Box
                         sx={{
                           display: "flex", flexDirection: "column",
-                          paddingRight:"0.5rem",
+                          paddingRight: "0.5rem",
                           alignItems: isNonMobileScreens ? "flex-end" : "center",
                         }}>
 
@@ -361,7 +365,7 @@ const ShopCart = (
                                 marginTop: isNonMobileScreens ? "8rem" : "1rem",
                                 padding: isNonMobileScreens ? "0.5rem" : "1rem",
                                 fontSize: "20px",
-                                fontWeight: "bold",fontFamily: 'Work Sans'
+                                fontWeight: "bold", fontFamily: 'Work Sans'
                               }}
 
                             >
@@ -384,16 +388,16 @@ const ShopCart = (
             ))
         ) : (
 
- <Box sx={{height:"100vh"}}  >  
-          <Typography
-            variant="body1"
-            align="center"
-            fontSize="20px"
-            color="textSecondary"
-            style={{ margin: "1em 0" }}
-           >
-            Sin ítems
-          </Typography> </Box>
+          <Box sx={{ height: "100vh" }}  >
+            <Typography
+              variant="body1"
+              align="center"
+              fontSize="20px"
+              color="textSecondary"
+              style={{ margin: "1em 0" }}
+            >
+              Sin ítems
+            </Typography> </Box>
         )}
       </TransitionGroup>
 
@@ -419,13 +423,13 @@ const ShopCart = (
               justifyContent: "flex-end",
               width: isNonMobileScreens ? "50rem" : "15rem",
               padding: isNonMobileScreens ? "1rem" : "1rem",
-              paddingRight: isNonMobileScreens ?"30px":"20px"
+              paddingRight: isNonMobileScreens ? "30px" : "20px"
             }}
           >
             <Typography
               variant="h4"
               sx={{
-                color: "#423E3F", fontWeight: "bold",fontFamily: 'Work Sans'
+                color: "#423E3F", fontWeight: "bold", fontFamily: 'Work Sans'
               }}
             >
               Total: {" $" + cart.reduce((acc, item) => acc + item.numbersPrice, 0)}
@@ -453,7 +457,7 @@ const ShopCart = (
             </Button>
           </Box>
 
-          {preferenceId && <Wallet initialization={{ preferenceId }} />}
+         {preferenceId && <Wallet initialization={{ preferenceId }} />} 
         </Box>
       )}
     </Box>
