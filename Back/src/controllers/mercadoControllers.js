@@ -43,13 +43,12 @@ const {
         back_urls: {
             success: `${NOTIFICATION_MERCADOPAGO_FRONT}ordenes`,
           // success: `http://localhost:5173/ordenes`,
-            // pending: `${NOTIFICATION_MERCADOPAGO_FRONT}success?preferenceId=${preferenceId}`,
+            pending: `${NOTIFICATION_MERCADOPAGO_FRONT}success?preferenceId=${preferenceId}`,
           // pending: `http://localhost:5173/success?preferenceId=${preferenceId}`,
           // failure: `http://localhost:5173/success?preferenceId=${preferenceId}`,
             // failure: `${NOTIFICATION_MERCADOPAGO_FRONT}success?preferenceId=${preferenceId}`,
                         // pending: `${NOTIFICATION_MERCADOPAGO_FRONT}success?preferenceId=${preferenceId}`,
-                        pending: `${NOTIFICATION_MERCADOPAGO_FRONT}success {preferenceId}`,
-
+ 
             failure: `${NOTIFICATION_MERCADOPAGO_FRONT}home`,
 
           },
