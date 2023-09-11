@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { Box, Button, Container, Grid, ListItem, ListItemText, Typography, useMediaQuery } from '@mui/material';
+import { Box, Button, Container, Divider, Grid, ListItem, ListItemText, Typography, useMediaQuery } from '@mui/material';
 import Footer from '../../components/footer/footer';
 import NavBar from '../../components/navbar/NavBar.jsx';
 import { useParams } from "react-router-dom";
 import { useTheme } from '@emotion/react';
 import '../../index.css'
-
+import "./index.css"
 const host = import.meta.env.VITE_SV_HOST;
 
 const OrdenesDetail = () => {
@@ -74,7 +74,8 @@ const calcularTotalCompra = (cart) => {
               marginBottom: "28px",
               marginTop: "28px",
               borderRadius: "5px", 
-              
+              padding: '20px', // Añadir un espacio adicional para el subtotal
+               
              }}
           >
 
@@ -438,7 +439,8 @@ const calcularTotalCompra = (cart) => {
                             <img
                               src={productItems[0].imgProduct}
                               alt={productName}
-                              style={{
+                              style={{ display: "block",
+                                margin: "0 auto",
                                 width: "172px",
                                 height: "190px",
                                 marginBottom: "1rem",
@@ -498,7 +500,7 @@ const calcularTotalCompra = (cart) => {
                                 paddingTop: "1px",
                                 paddingBottom: "1rem",
                                 maxHeight: "282",
-                                paddingRight: "0.1rem",
+                                paddingRight: "0.1rem",overflowY: 'auto'
                               }}
                             >
                               <Typography
@@ -508,7 +510,8 @@ const calcularTotalCompra = (cart) => {
                               >
                                 Números:
                               </Typography>
-<Box sx={{display:"flex",gap: "0.5rem",flexDirection:"row"}}>  
+<Box sx={{display:"flex",gap: "0.5rem",
+flexDirection:"row",flexFlow:"wrap",}}>  
                               {productItems.map((item, index) => (
                                 <Box
  
@@ -523,7 +526,8 @@ const calcularTotalCompra = (cart) => {
                                   flexDirection="row"
                                   justifyContent="center"
                                   alignItems="center"
-                                  style={{ marginBottom: '10px' }}
+                                   style={{ marginBottom: '10px' }}
+                                 
                                 >
                                   {item.number}
                                 </Box>
@@ -532,25 +536,37 @@ const calcularTotalCompra = (cart) => {
                             <ListItemText
                               primary={
                                 <Typography
-                                  variant="h5"
-                                  style={{
-                                    textAlign: "center",
-                                    display: "flex",
-                                    flexDirection: "row",
-                                    justifyContent: "flex-end",
-                                    paddingTop: isNonMobileScreens ? "275px" : "15px",
-                                    fontSize: "20px",
-                                    fontWeight: "bold",
-                                    fontFamily: 'Work Sans',
-                                    paddingRight: "5px"
-                                  }}
+                                variant="h5"
+                                style={{
+                                  color: "black",
+                                  // textAlign: "right",
+                                  // display: "flex",
+                                  // flexDirection: "row",
+                                  // justifyContent: "flex-end",
+                                  // alignItems: "flex-end",
+                                  marginTop: isNonMobileScreens ? "8rem" : "1rem",
+                                  padding: isNonMobileScreens ? "0.5rem" : "1rem",
+                                  fontSize: "20px",
+                                  fontWeight: "bold", fontFamily: 'Work Sans',
+                                    position: "absolute",
+                                  bottom: "0",
+                                  left: "0",
+                                  width: "100%",
+                                  paddingRight: "2.5rem",
+                                 display: "flex",
+                                   justifyContent:isNonMobileScreens ?" flex-end":"center", /* Alinea el contenido del subtotal a la derecha */
+                                    alignItems: "center",
+                                    overflowX: 'hidden',
+                                    paddingBottom:"10px"
+                                  }} 
                                 >
                                   Subtotal: ${productItems.reduce((subtotal, item) => subtotal + item.numbersPrice, 0)}
-                                </Typography>
+                                </Typography> 
+                                
                               }
-                              style={{ textAlign: "right" }}
-                            />
-                          </Box>
+                              style={{ textAlign: "right" }} 
+                            /> 
+{isNonMobileScreens ? null : <Divider sx={{ width: '100%' }} />}                          </Box>
                         </Box>
                       </ListItem>
                     </div>
@@ -576,18 +592,21 @@ const calcularTotalCompra = (cart) => {
 
 
 
-                  <Typography variant="h5" sx={{
+                  <Typography variant="h5" sx={{  overflowX: 'hidden',
+                    whiteSpace: 'nowrap',
+                    textOverflow: 'ellipsis',
+                    animation: 'scrollToLeft 5s linear infinite',
                     textAlign:  isNonMobileScreens? "right" :"center" , fontSize: "20px",
                     paddingRight: isNonMobileScreens?'3.5rem':"0rem", paddingBottom: "2rem", fontWeight: "bold",fontFamily: 'Work Sans'
                   }}>
                     Total: ${parseInt(calcularTotalCompra(ordenes.cart).toFixed(2))}
                   </Typography>
 
-                  <hr /> 
+                  
                 </Box>
 
 
-              </ul>
+              </ul> 
             )}
 
           </Box>

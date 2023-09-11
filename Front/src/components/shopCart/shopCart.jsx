@@ -114,6 +114,7 @@ const ShopCart = (
       // margin="0 auto" // Centra el componente horizontalmente
       padding="0rem"
       width="100%"
+ 
     >
 
       <Typography
@@ -152,12 +153,13 @@ const ShopCart = (
                       flexDirection: isNonMobileScreens ? "row" : "column",
                       alignItems: "center",
                       justifyContent: "center",
+ 
                     }}
                   >
                     <Box
                       sx={{
                         width: "14.38rem",
-                        height: "307px",
+                        height: isNonMobileScreens ?"307px":"auto",
                         display: "flex",
                         flexDirection: "column", marginTop: "5rem",
                         marginLeft: isNonMobileScreens ? "2rem" : "0rem",
@@ -165,7 +167,8 @@ const ShopCart = (
                         justifyContent: "center",
                         background: "#D9D9D9",
                         borderRadius: 2,
-                        padding: "1rem",
+                        padding: "1rem",            
+                  
                         transition: "0.3s", paddingTop: "0rem",
                         "&:hover": {
                           boxShadow: " 0px 5px 61px 6px #D9D9D9",
@@ -219,7 +222,9 @@ const ShopCart = (
 
                     <Box
                       sx={{
-                        width: isNonMobileScreens ? "50rem" : "15rem",
+                        // width: isNonMobileScreens ? "50rem" : "15rem",
+                        width: isNonMobileScreens ? "50rem" : "100%", // Ajusta el ancho para que sea 100% en pantallas pequeñas
+ 
                         display: "flex",
                         flexDirection: isNonMobileScreens ? "row" : "column",
                         // justifyContent: "center",
@@ -234,10 +239,24 @@ const ShopCart = (
                         marginLeft: isNonMobileScreens ? "5rem" : "0rem",
                         marginTop: "5rem",
                         minHeight: "6rem",
-                        height: isNonMobileScreens ? "max-content" : "max-content",
+                        height: isNonMobileScreens ? "19rem" : "auto",
                         // paddingRight: "0.7rem", // Añade un poco de espacio en la parte inferior
                         // paddingTop: "1.1rem", // Añade un poco de espacio en la parte inferior
+                         
+                        overflowX:"hidden", overflowY: 'auto', 
+                        maxWidth: isNonMobileScreens ?'100%':"15rem",
 
+    //                     width: "100%", // Establece el ancho del contenedor del subtotal al 100%
+    // display: "flex",
+    // flexDirection: "column",
+    // // Elimina el margen izquierdo
+    // // marginLeft: isNonMobileScreens ? "5rem" : "0rem",
+    // marginTop: "5rem",
+    // minHeight: "6rem",
+    // height: isNonMobileScreens ? "max-content" : "max-content",
+    // overflowY: 'scroll',
+    // height: '19rem',
+    // overflorX: "hidden",
                       }}
 
 
@@ -255,6 +274,17 @@ const ShopCart = (
                           // paddingRight: "0.1rem", // Añade un poco de espacio en la parte derecha
                           // Añade un poco de espacio en la parte superior
                           // Añade un poco de espacio en la parte inferior
+                          // display: "flex",
+                          // flexDirection: "column",
+                          // justifyContent: "center",
+
+                          paddingLeft: "20px",
+                          paddingTop: "1px",
+                          paddingBottom: "1rem",
+                          maxHeight: isNonMobileScreens?"maxContent":"auto", // Limita la altura máxima de la sección de números seleccionados
+                           height: "auto",
+                             alignItems: "center",
+                          marginTop:"10px"
                         }}
                       >
 
@@ -283,7 +313,7 @@ const ShopCart = (
                             alignItems: "center",
                             gap: "0.5rem",
                             marginLeft: isNonMobileScreens ? "1rem" : "0rem",
-                            marginTop: isNonMobileScreens ? "0.5rem" : "0rem",
+                            marginTop:   "0.5rem"  
 
                           }}
                         >
@@ -327,8 +357,9 @@ const ShopCart = (
                       <Box
                         sx={{
                           display: "flex", flexDirection: "column",
-                          paddingRight: "0.5rem",
+                          paddingRight: "0.5rem",padding:"2rem",
                           alignItems: isNonMobileScreens ? "flex-end" : "center",
+                          
                         }}>
 
 
@@ -357,16 +388,26 @@ const ShopCart = (
                               variant="h5"
                               style={{
                                 color: "#423E3F",
-                                textAlign: "right",
-                                display: "flex",
-                                flexDirection: "row",
-                                justifyContent: "flex-end",
-                                alignItems: "flex-end",
+                                // textAlign: "right",
+                                // display: "flex",
+                                // flexDirection: "row",
+                                // justifyContent: "flex-end",
+                                // alignItems: "flex-end",
                                 marginTop: isNonMobileScreens ? "8rem" : "1rem",
                                 padding: isNonMobileScreens ? "0.5rem" : "1rem",
                                 fontSize: "20px",
-                                fontWeight: "bold", fontFamily: 'Work Sans'
-                              }}
+                                fontWeight: "bold", fontFamily: 'Work Sans',
+                                  position: "absolute",
+                                bottom: "0",
+                                left: "0",
+                                width: "100%",
+                                paddingRight: isNonMobileScreens ?"2.5rem":"0rem",
+                               display: "flex",
+                                 justifyContent:isNonMobileScreens ?" flex-end":"center", /* Alinea el contenido del subtotal a la derecha */
+                                  alignItems: "center",
+                                  overflowX: 'hidden',
+                                  paddingBottom:"10px", fontWeight: "bold",
+                               }}
 
                             >
 

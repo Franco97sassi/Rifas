@@ -31,7 +31,7 @@ const Cart = ({isUserAdmin}) => {
        <Box
     sx={{ flex: '1 1 auto' }}
     bgcolor='#F5F5F5'> 
-        <ShopCart    />   
+        <ShopCart isUserAdmin={isUserAdmin}    />   
        
 
       </Box>  

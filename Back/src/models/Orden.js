@@ -24,7 +24,11 @@ module.exports = (sequelize) => {
             type:DataTypes.STRING,
             
           },
-          
+          createdAt: {
+            type: DataTypes.DATE,
+            allowNull: false,
+            defaultValue: DataTypes.NOW, // Se establece la fecha y hora actual al crear una orden
+          },
 
       });
 };

@@ -2,6 +2,8 @@ const mercadopago = require('mercadopago');
 const axios = require("axios")
  const { Orden, User } = require('../db')
 const { v4: uuidv4 } = require('uuid');
+const cron = require('node-cron');
+const { Op } = require('sequelize');
 
 const {
   NOTIFICATION_MERCADOPAGO_FRONT,
@@ -41,10 +43,13 @@ const {
         back_urls: {
             success: `${NOTIFICATION_MERCADOPAGO_FRONT}ordenes`,
           // success: `http://localhost:5173/ordenes`,
-            pending: `${NOTIFICATION_MERCADOPAGO_FRONT}success?preferenceId=${preferenceId}`,
+            // pending: `${NOTIFICATION_MERCADOPAGO_FRONT}success?preferenceId=${preferenceId}`,
           // pending: `http://localhost:5173/success?preferenceId=${preferenceId}`,
           // failure: `http://localhost:5173/success?preferenceId=${preferenceId}`,
             // failure: `${NOTIFICATION_MERCADOPAGO_FRONT}success?preferenceId=${preferenceId}`,
+                        // pending: `${NOTIFICATION_MERCADOPAGO_FRONT}success?preferenceId=${preferenceId}`,
+                        pending: `${NOTIFICATION_MERCADOPAGO_FRONT}success {preferenceId}`,
+
             failure: `${NOTIFICATION_MERCADOPAGO_FRONT}home`,
 
           },
@@ -158,7 +163,48 @@ const {
     }
   };
   
+  const eliminarOrdenesNoPagadas = async () => {
+    try {
+      const doceHorasAtras  = new Date(Date.now() - 12 * 60 * 60 * 1000); // Hace un minuto
+      const ordenesNoPagadas = await Orden.findAll({
+        where: {
+          estado: 'NO PAGADO', // Cambia esto según tu modelo
+          createdAt: {
+            [Op.lte]: doceHorasAtras ,
+          },
+        },
+      });
+  
+      // Elimina las órdenes no pagadas
+      for (const orden of ordenesNoPagadas) {
+        await orden.destroy();
+      }
+    } catch (error) {
+      console.error('Error al eliminar órdenes no pagadas:', error);
+    }
+  };
+  
+  // Programa la tarea para que se ejecute cada minuto
+  cron.schedule('* * * * *', () => {
+    eliminarOrdenesNoPagadas();
+  }, {
+    scheduled: true,
+    timezone: 'UTC', // Cambia esto a tu zona horaria si es diferente
+  });
+  
+  // Inicia la tarea programada
+    
+  // const express = require('express');
+  // const { sequelize } = require('./models'); // Asegúrate de importar tu instancia de Sequelize
+  // const eliminarOrdenesNoPagadas = require('./eliminarOrdenesNoPagadas'); // Importa la tarea programada
+  
+  // Resto de tu código de configuración de Express y rutas
+  
+  // Sincroniza la base de datos y comienza tu aplicación
  
+  
+  
+  
 
 
 

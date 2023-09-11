@@ -25,6 +25,7 @@
   "jsonwebtoken": "^9.0.0",
   "mercadopago": "^1.5.16",
   "morgan": "^1.10.0",
+  "node-cron": "^3.0.2",
   "nodemailer": "^6.9.2",
   "nodemon": "^2.0.22",
   "pg": "^8.11.0",

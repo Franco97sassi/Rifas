@@ -12,7 +12,7 @@ import '../../index.css'
 
 const Agregar = () => {
   const [product, setProduct] = useState('');
-  const [imgProduct, setImgProduct] = useState(null);
+  const [imgProduct, setImgProduct] = useState('https://i.imgur.com/IUuCxWl.jpg'); // Imagen predeterminada
   const [description, setDescription] = useState('');
   const [numbersPrice, setNumbersPrice] = useState('');
   const [totalNumbers, setTotalNumbers] = useState('');
@@ -58,7 +58,21 @@ const Agregar = () => {
   useEffect(() => {
     loadOtherRifas();
   }, []);
+  const handleImgProductChange = (e) => {
+    const imageUrl = e.target.value;
 
+    // Verificar si la URL de la imagen existe
+    const img = new Image();
+    img.src = imageUrl;
+    img.onload = () => {
+      // La imagen existe, actualiza el estado
+      setImgProduct(imageUrl);
+    };
+    img.onerror = () => {
+      // La imagen no existe, establece la imagen predeterminada
+      setImgProduct('https://i.imgur.com/IUuCxWl.jpg');
+    };
+  };
   return (
     <>
       <NavBar />
@@ -113,6 +127,7 @@ const Agregar = () => {
           >
             <img
               src={NavBarLogo}
+              
               style={{
                 width: isNonMobileScreens ? '172px' : '50%',
                 height: isNonMobileScreens ? '178px' : '50%',
@@ -202,7 +217,9 @@ const Agregar = () => {
                   <TextField required
                     name="name"
                     value={product.name}
-                    onChange={(e) => setImgProduct(e.target.value)}
+                    // onChange={(e) => setImgProduct(e.target.value)}
+                    onChange={handleImgProductChange}
+
                     sx={{ width: isNonMobileScreens ? 500 : "100%" }}
                   /> </Grid>
                 <Grid item xs={12}>    <Typography sx={
@@ -210,7 +227,7 @@ const Agregar = () => {
                   } variant="body1">Descripción:</Typography>
                   <TextField required
                     name="name"
-                    value={product.name}
+                    value={product.description}
                     onChange={(e) => setDescription(e.target.value)}
                     sx={{ width: isNonMobileScreens ? 500 : "100%" }}
                   /> </Grid>

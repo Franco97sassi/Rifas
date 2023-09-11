@@ -1,0 +1,15 @@
+/* @keyframes scrollToLeft {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }
+  
+  .scroll-subtotal {
+    animation: scrollToLeft 5s linear infinite; /* Aplica la animación */
+    overflow-x: hidden; /* Oculta el desbordamiento horizontal */
+    white-space: nowrap; /* Evita el salto de línea del contenido */
+    text-overflow: ellipsis; /* Agrega puntos suspensivos si el contenido es demasiado largo */
+  } */
