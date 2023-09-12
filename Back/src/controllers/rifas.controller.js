@@ -202,6 +202,8 @@ const rifaDetail = async (req, res) => {
     res.status(500).json({ 'Error en el servidor: ': error.message });
   }
 };
+
+
 const deleteRifa = async (req, res) => {
   const { id } = req.params; // Destructuramos el id directamente del req.params
 
