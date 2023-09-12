@@ -114,6 +114,7 @@ function RegisterForm() {
          maxHeight: '100%',
          width: 'auto',
          height: '454px',
+         display:isNonMobileScreens?"block":"none"
         }}
        />
       </Box>
