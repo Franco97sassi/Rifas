@@ -114,49 +114,94 @@ const buyRifa = async (req, res) => {
 //  }
 // };
  
+// const NUMBERS_PER_PAGE = 1000; // Número de números por página en los detalles de la rifa
+
+// const rifaDetail = async (req, res) => {
+//  try {
+//   const { id } = req.params;
+//   const page = req.query.page ? parseInt(req.query.page) : 1; // Parsea el número de página
+//   const offset = (page - 1) * NUMBERS_PER_PAGE;
+//   const numeroToSearch = parseInt(req.query.numero) || ''; // Parsea el número a buscar desde la query
+
+//   const whereClause = numeroToSearch ? { 'number': numeroToSearch } : {};
+
+//   const rifa = await Rifa.findByPk(id, {
+//     include: {
+//       model: Numero,
+//       as: 'numeros',
+//       where: whereClause,
+//       limit: NUMBERS_PER_PAGE,
+//       offset: offset
+//     }
+//   });
+
+//   // Obtén la cantidad total de números asociados a la rifa
+//   const totalNumeros = await Numero.count({ where: { RifaId: id } });
+
+//   // Calcula la cantidad total de páginas
+//   const totalPages = Math.ceil(totalNumeros / NUMBERS_PER_PAGE);
+
+//   // Crear el objeto de respuesta que incluye la rifa, la información de paginación y números
+//   const response = {
+//     rifa,
+//     pagination: {
+//       currentPage: page,
+//       totalPages,
+//       totalNumeros
+//     }
+//   };
+
+//   res.status(200).json(response);
+//  } catch (error) {
+//   res.status(500).json({ 'Error en el servidor: ': error.message });
+//  }
+// };
 const NUMBERS_PER_PAGE = 1000; // Número de números por página en los detalles de la rifa
 
 const rifaDetail = async (req, res) => {
- try {
-  const { id } = req.params;
-  const page = req.query.page ? parseInt(req.query.page) : 1; // Parsea el número de página
-  const offset = (page - 1) * NUMBERS_PER_PAGE;
-  const numeroToSearch = parseInt(req.query.numero) || ''; // Parsea el número a buscar desde la query
+  try {
+    const { id } = req.params;
+    const page = req.query.page ? parseInt(req.query.page) : 1; // Parsea el número de página
+    const offset = (page - 1) * NUMBERS_PER_PAGE;
+    const numeroToSearch = parseInt(req.query.numero) || ''; // Parsea el número a buscar desde la query
 
-  const whereClause = numeroToSearch ? { 'number': numeroToSearch } : {};
-
-  const rifa = await Rifa.findByPk(id, {
-    include: {
-      model: Numero,
-      as: 'numeros',
-      where: whereClause,
-      limit: NUMBERS_PER_PAGE,
-      offset: offset
+    let whereClause = {};
+    if (numeroToSearch) {
+      whereClause = { 'number': numeroToSearch };
     }
-  });
 
-  // Obtén la cantidad total de números asociados a la rifa
-  const totalNumeros = await Numero.count({ where: { RifaId: id } });
+    const rifa = await Rifa.findByPk(id, {
+      include: {
+        model: Numero,
+        as: 'numeros',
+        where: whereClause,
+        limit: NUMBERS_PER_PAGE,
+        offset: offset,
+        order: [['number', 'ASC']] // Ordenar por número de menor a mayor
+      }
+    });
 
-  // Calcula la cantidad total de páginas
-  const totalPages = Math.ceil(totalNumeros / NUMBERS_PER_PAGE);
+    // Obtén la cantidad total de números asociados a la rifa
+    const totalNumeros = await Numero.count({ where: { RifaId: id } });
 
-  // Crear el objeto de respuesta que incluye la rifa, la información de paginación y números
-  const response = {
-    rifa,
-    pagination: {
-      currentPage: page,
-      totalPages,
-      totalNumeros
-    }
-  };
+    // Calcula la cantidad total de páginas
+    const totalPages = Math.ceil(totalNumeros / NUMBERS_PER_PAGE);
 
-  res.status(200).json(response);
- } catch (error) {
-  res.status(500).json({ 'Error en el servidor: ': error.message });
- }
+    // Crear el objeto de respuesta que incluye la rifa, la información de paginación y números
+    const response = {
+      rifa,
+      pagination: {
+        currentPage: page,
+        totalPages,
+        totalNumeros
+      }
+    };
+
+    res.status(200).json(response);
+  } catch (error) {
+    res.status(500).json({ 'Error en el servidor: ': error.message });
+  }
 };
-
 const deleteRifa = async (req, res) => {
   const { id } = req.params; // Destructuramos el id directamente del req.params
 

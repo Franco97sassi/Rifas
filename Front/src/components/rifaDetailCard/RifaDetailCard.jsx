@@ -275,9 +275,9 @@ const RifaDetailCard = ({ rifaDetail }) => {
                       justifyContent="center"
                       alignItems="center"
                       width="46px
-            "
+  "
                       height="46px
-            "
+  "
                       fontFamily="Work Sans, sans-serif"
                       fontWeight="700"
                       fontSize="15px"

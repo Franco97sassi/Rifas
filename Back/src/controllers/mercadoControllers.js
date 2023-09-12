@@ -81,9 +81,7 @@ const {
     }
   };
 
-
-
-
+ 
   const getMercado = async (req, res) => {
     try {
       const payment = req.query;
@@ -129,12 +127,7 @@ const {
     }
   };
 
-
-
-
-
-
-
+ 
   const Ordenes = async (req, res) => {
     try {
       const { userId } = req.params; // Obtener el ID de usuario desde los parámetros de URL
@@ -201,15 +194,7 @@ const {
   
   // Sincroniza la base de datos y comienza tu aplicación
  
-  
-  
-  
-
-
-
-
-
-
+ 
 
   const ordenesId = async (req, res) => {
 

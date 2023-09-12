@@ -31,8 +31,7 @@ export const getRifaDetail = (id,page,numero) => async (dispatch) => {
  }
 };
 
-export const addNumbersToCart =
- (selectedNumbers, rifaId, numbersPrice, productName, imgProduct) =>
+export const addNumbersToCart =(selectedNumbers, rifaId, numbersPrice, productName, imgProduct) =>
  async (dispatch) => {
   let { id } = JSON.parse(sessionStorage.getItem('userData')).user;
 
