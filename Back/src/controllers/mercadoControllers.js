@@ -106,7 +106,7 @@ const {
   
             // Llamar a la ruta PUT buyRifa con los datos necesarios
             try {
-              const response = await axios.put(`${SERVER_PORT}/rifas/buyRifa`, {
+              const response = await axios.put(`${SERVER_PORT}rifas/buyRifa`, {
                 rifaId,
                 number,
                 userId,
