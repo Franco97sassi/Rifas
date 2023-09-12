@@ -85,7 +85,7 @@ const {
   const getMercado = async (req, res) => {
     try {
       const payment = req.query;
-  
+      //
       // console.log(req.query);
       if (payment.type === "payment") {
         const data = await mercadopago.payment.findById(payment['data.id']);
