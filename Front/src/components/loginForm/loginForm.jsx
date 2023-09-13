@@ -69,10 +69,10 @@ function LogInForm() {
   for (let value in values) {
    data.append(value, values[value]);
   }
-  console.log({
-   email: data.get('email'),
-   password: data.get('password'),
-  });
+  // console.log({
+  //  email: data.get('email'),
+  //  password: data.get('password'),
+  // });
 
   let email = data.get('email');
   let password = data.get('password');

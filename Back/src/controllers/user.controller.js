@@ -137,9 +137,9 @@ const sendConfirmationEmail = (user) => {
  const mailOptions = {
   from: `${EMAIL}`,
   to: user.email,
-  subject: '¡Su cuenta en RifasMX fué creada con éxito!',
+  subject: '¡Su cuenta en Rifas El Venado fué creada con éxito!',
   html: `
-      <h1>Bienvenido a RifasMX.</h1>
+      <h1>Bienvenido a Rifas Ek Venado.</h1>
       <p>Gracias por registrarte. Para activar tu cuenta y comenzar a comprar rifas, haz clic en el siguiente enlace:</p>
       <a href="${activationLink}">Activa tu cuenta presionando aquí</a>
     `,
