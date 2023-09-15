@@ -15,7 +15,7 @@ import { CSSTransition, TransitionGroup } from "react-transition-group";
 import { useNavigate } from "react-router-dom";
 import DeleteIcon from "@mui/icons-material/Delete";
 
-import { removeNumbersToCart, buyRifas,buyRifasAdmin } from "../../store/state/actions/rifas";
+import { removeNumbersToCart, buyRifas  } from "../../store/state/actions/rifas";
 import "./shopCart.css"; // Importa el archivo CSS para las transiciones
 import { Wallet } from "@mercadopago/sdk-react";
 import axios from "axios";
@@ -44,9 +44,82 @@ const ShopCart = (
   const [preferenceId, setPreferenceId] = useState(null);
   // initMercadoPago("TEST-b3944798-0320-4a5f-9f12-f95c52c42fd5");
 
+//   const createPreference = async () => {
+//     // console.log(createPreference)
+      
+//     try {
+//       const response = await axios.post(`${host}/rifas/mercadoPago`, {
+//         cart
+
+//       })
+//       const { id } = response.data;
+//       // console.log("soy response", response)
+//       if(!isUserAdmin){ 
+//       if (response.data.response && response.data.response.body) {
+//         // if (isUserAdmin) {
+//         //   // Si el usuario es un administrador, redirige a la página de inicio
+//         //   navigate("/ordenesAdmin");
+//         //   return;
+//         // } else {
+//           const initPoint = response.data.response.body.sandbox_init_point
+
+//           // console.log("soy initPoint", initPoint)
+//           window.location.href = initPoint
+//          }
+//       }
+//       return id;
+//     } catch (error) {
+//       console.error(error);
+//     } }
+//     // else
+//     // {
+//     //   const response = await axios.post(`${host}/rifas/ordenAdmin`, {
+//     //     cart
+
+//     //   })
+//     // }
+ 
+
+
+//   const handleBuyClick =  () => {
+
+//     const { id } =   createPreference();
+
+//     if (id) {
+//       setPreferenceId(id);
+//     }
+//     //  Filtrar y transformar el carrito según los campos necesarios
+//     const filteredCart = cart.map((item) => {
+//       return {
+//         rifaId: item.rifaId,
+//         number: item.number,
+//         userId: item.userId,
+//       };
+//     });
+//     // console.log("filtrado", filteredCart);
+//     // Llamar a la acción buyRifas con el carrito filtrado
+//      //  ;
+// // if(isUserAdmin) 
+// // {
+// //   dispatch(buyRifasAdmin(filteredCart))
+// //   navigate("/ordenesAdmin")
+// // }else{
+   
+  
+//     if(isUserAdmin){
+//       dispatch(buyRifasAdmin(filteredCart));
+
+//       navigate("/ordenesAdmin")
+//      }else{
+//       dispatch(buyRifas(filteredCart));
+//     }
+ 
+ 
+// // }
+//   };
+  // console.log("soy cart", cart)
   const createPreference = async () => {
     // console.log(createPreference)
-      
     try {
       const response = await axios.post(`${host}/rifas/mercadoPago`, {
         cart
@@ -54,7 +127,7 @@ const ShopCart = (
       })
       const { id } = response.data;
       // console.log("soy response", response)
-      if(!isUserAdmin){ 
+      if (!isUserAdmin) {  
       if (response.data.response && response.data.response.body) {
         // if (isUserAdmin) {
         //   // Si el usuario es un administrador, redirige a la página de inicio
@@ -65,25 +138,20 @@ const ShopCart = (
 
           // console.log("soy initPoint", initPoint)
           window.location.href = initPoint
-         }
-      }
+        // }
+      }}
       return id;
     } catch (error) {
-      console.error(error);
-    } }
-    // else
-    // {
-    //   const response = await axios.post(`${host}/rifas/ordenAdmin`, {
-    //     cart
-
-    //   })
-    // }
- 
+      console.log(error);
+    } 
+  
+  }
+   
 
 
-  const handleBuyClick =  () => {
+  const handleBuyClick = () => {
 
-    const { id } =   createPreference();
+    const { id } = createPreference();
 
     if (id) {
       setPreferenceId(id);
@@ -98,27 +166,18 @@ const ShopCart = (
     });
     // console.log("filtrado", filteredCart);
     // Llamar a la acción buyRifas con el carrito filtrado
-     //  ;
-// if(isUserAdmin) 
-// {
-//   dispatch(buyRifasAdmin(filteredCart))
-//   navigate("/ordenesAdmin")
-// }else{
-   
-  
+    dispatch(buyRifas(filteredCart));
+    // navigate("");
     if(isUserAdmin){
-      dispatch(buyRifasAdmin(filteredCart));
+      // dispatch(buyRifasAdmin(filteredCart));
 
       navigate("/ordenesAdmin")
-     }else{
-      dispatch(buyRifas(filteredCart));
-    }
- 
- 
-// }
+     }
+    //  else{
+    //   dispatch(buyRifas(filteredCart));
+    // }
   };
-  // console.log("soy cart", cart)
-
+  // consol
 
 
 

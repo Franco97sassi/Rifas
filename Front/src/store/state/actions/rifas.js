@@ -111,20 +111,20 @@ export const removeNumbersToCart = (rifaId) => async (dispatch) => {
     }
   };
   
-export const buyRifas = (cartItems) => async (dispatch) => {
- try {
-  const userData = JSON.parse(sessionStorage.getItem('userData'));
-  const token = userData.token;
+// export const buyRifas = (cartItems) => async (dispatch) => {
+//  try {
+//   const userData = JSON.parse(sessionStorage.getItem('userData'));
+//   const token = userData.token;
 
 
-  dispatch(clearCart());
+//   dispatch(clearCart());
   
-  // dispatch(setRifaDetail(/* Pass the appropriate data here */));
- } catch (err) {
-  console.log(err.message);
- }
-};
-export const buyRifasAdmin = (cartItems) => async (dispatch) => {
+//   // dispatch(setRifaDetail(/* Pass the appropriate data here */));
+//  } catch (err) {
+//   console.log(err.message);
+//  }
+// };
+export const buyRifas = (cartItems) => async (dispatch) => {
   try {
    const userData = JSON.parse(sessionStorage.getItem('userData'));
    const token = userData.token;
