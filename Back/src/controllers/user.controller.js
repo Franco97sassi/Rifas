@@ -68,8 +68,8 @@ const userSignIn = async (req, res) => {
  } catch (err) {
   console.log(err.message);
   res.status(400).send(err);
-  console.log('Password:', password);
-  console.log('Rounds:', AUTH_ROUNDS);
+  // console.log('Password:', password);
+  // console.log('Rounds:', AUTH_ROUNDS);
  }
 };
 
@@ -158,9 +158,10 @@ const sendConfirmationEmail = (user) => {
  transporter.sendMail(mailOptions, (error, info) => {
   if (error) {
    console.log('Error al enviar el correo electrónico:', error.message);
-  } else {
-   console.log('Correo electrónico enviado:', info.response);
   }
+  //  else {
+  //  console.log('Correo electrónico enviado:', info.response);
+  // }
  });
 };
 

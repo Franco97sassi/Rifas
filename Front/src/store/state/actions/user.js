@@ -46,7 +46,7 @@ export const register = (email, password, username) => async (dispatch) => {
 export const confirmAccount = (token) => async (dispatch) => {
  try {
   let res = await axios.get(`${svHost}/user/confirm/${token}`);
-  console.log(res);
+//   console.log(res);
  } catch (err) {
   console.log(err.message);
  }
@@ -87,7 +87,7 @@ export const changeEmailConfirm = (id) => async (dispatch) => {
   await dispatch(getUsers());
   //dispatch(getUser(res.data))
   swal('', 'Usuario modificado correctamente!', 'success');
-  console.log(res);
+//   console.log(res);
  } catch (e) {
   console.log(e);
  }
@@ -111,7 +111,7 @@ export const banear = (id) => async (dispatch) => {
   await dispatch(getUsers());
   //dispatch(getUser(res.data))
   swal('', 'Usuario eliminado correctamente!', 'success');
-  console.log(res);
+//   console.log(res);
  } catch (e) {
   console.log(e);
  }

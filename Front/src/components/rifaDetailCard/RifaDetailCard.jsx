@@ -18,7 +18,7 @@ import '../../index.css'
 ///////////////////////////////
 const RifaDetailCard = ({ rifaDetail }) => {
 
-  console.log(rifaDetail, "aca")
+  // console.log(rifaDetail, "aca")
 
   const navigate = useNavigate();
   const dispatch = useDispatch();

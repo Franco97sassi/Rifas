@@ -49,7 +49,7 @@ const {
             // failure: `${NOTIFICATION_MERCADOPAGO_FRONT}success?preferenceId=${preferenceId}`,
                         // pending: `${NOTIFICATION_MERCADOPAGO_FRONT}success?preferenceId=${preferenceId}`,
  
-            failure: `${NOTIFICATION_MERCADOPAGO_FRONT}home`,
+            failure: `${NOTIFICATION_MERCADOPAGO_FRONT}success?preferenceId=${preferenceId}`,
 
           },
           notification_url: `${NOTIFICATION_MERCADOPAGO_BACK}rifas/webhook?preferenceId=${preferenceId}`,

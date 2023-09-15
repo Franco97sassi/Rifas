@@ -6,8 +6,7 @@ const { DB_USER, DB_PASSWORD, DB_HOST, DB_NAME, DB_PORT } = process.env;
 
 // Seteamos la Base de datos con sus configuraciones
 
-console.log();
-let sequelize =
+ let sequelize =
  process.env.NODE_ENV === 'production'
   ? new Sequelize({
      database: DB_NAME,
