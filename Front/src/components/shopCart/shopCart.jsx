@@ -15,7 +15,7 @@ import { CSSTransition, TransitionGroup } from "react-transition-group";
 import { useNavigate } from "react-router-dom";
 import DeleteIcon from "@mui/icons-material/Delete";
 
-import { removeNumbersToCart, buyRifas  } from "../../store/state/actions/rifas";
+import { removeNumbersToCart, buyRifas,buyRifasAdmin  } from "../../store/state/actions/rifas";
 import "./shopCart.css"; // Importa el archivo CSS para las transiciones
 import { Wallet } from "@mercadopago/sdk-react";
 import axios from "axios";
@@ -166,12 +166,14 @@ const ShopCart = (
     });
     // console.log("filtrado", filteredCart);
     // Llamar a la acción buyRifas con el carrito filtrado
-    dispatch(buyRifas(filteredCart));
-    // navigate("");
+     // navigate("");
     if(isUserAdmin){
-      // dispatch(buyRifasAdmin(filteredCart));
+       dispatch(buyRifasAdmin(filteredCart));
 
       navigate("/ordenesAdmin")
+     }else{
+      dispatch(buyRifas(filteredCart));
+
      }
     //  else{
     //   dispatch(buyRifas(filteredCart));

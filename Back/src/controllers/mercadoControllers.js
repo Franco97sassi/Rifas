@@ -15,7 +15,8 @@ const {
     
     mercadopago.configure({
     access_token: ACCESS_TOKEN_MP,
-     sandbox:false
+    sandbox:true
+    //  sandbox:false
 });
 
     const preferenceId = uuidv4();
@@ -32,7 +33,7 @@ const {
       const items = cart.map((producto) => ({
         title: `${producto.productName} - ${producto.number}`,
         quantity: 1,
-        currency_id: 'MXN',
+        currency_id: 'ARS',
         unit_price: producto.numbersPrice
         ,
       }));
@@ -49,7 +50,7 @@ const {
             // failure: `${NOTIFICATION_MERCADOPAGO_FRONT}success?preferenceId=${preferenceId}`,
                         // pending: `${NOTIFICATION_MERCADOPAGO_FRONT}success?preferenceId=${preferenceId}`,
  
-            failure: `${NOTIFICATION_MERCADOPAGO_FRONT}home`,
+            failure: `${NOTIFICATION_MERCADOPAGO_FRONT}success?preferenceId=${preferenceId}`,
 
           },
           notification_url: `${NOTIFICATION_MERCADOPAGO_BACK}rifas/webhook?preferenceId=${preferenceId}`,
