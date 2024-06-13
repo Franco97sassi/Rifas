@@ -10,4 +10,25 @@ Rifas El Venado is a full-stack project dedicated to the sale of clothing and th
 3. Install dependencies:
    - npm install
 
+## Key Features
+- **Profile:**
+  A brief overview of the developer, including background, skills, and experience.
+- **Products:**
+ Sale of t-shirts, caps, and raffle tickets numbered from 1 to 100.
+- **Cart:**
+  You can purchase with Mercado Pago.
 
+## Stack
+- React
+- Material UI
+- Js
+- Redux
+  
+## Contact
+- **Email:**
+
+  franco.sassi97@gmail.com
+
+- **Linkedin:**
+
+  <a href="https://www.linkedin.com/in/sassifranco/">Franco Sassi </a>
