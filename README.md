@@ -11,8 +11,6 @@ Rifas El Venado is a full-stack project dedicated to the sale of clothing and th
    - npm install
 
 ## Key Features
-- **Profile:**
-  A brief overview of the developer, including background, skills, and experience.
 - **Products:**
  Sale of t-shirts, caps, and raffle tickets numbered from 1 to 100.
 - **Cart:**
