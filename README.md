@@ -1,7 +1,7 @@
 # Rifas El Venado
 
  <a href="https://www.rifaselvenado.com//">
- <img src="https://imgur.com/UNfInAZ" alt="Fondo" width="100%" />
+ <img src="https://i.imgur.com/BOV3hvw.png" alt="Fondo" width="100%" />
 </a>
 
 ## Description
