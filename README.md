@@ -1,5 +1,10 @@
 # Rifas El Venado
 
+ <a href="https://www.rifaselvenado.com//">
+ <img src="https://imgur.com/UNfInAZ" alt="Fondo" width="100%" />
+</a>
+
+## Description
 Rifas El Venado is a full-stack project dedicated to the sale of clothing and the organization of online raffles, seamlessly integrated with Mercado Pago.
 
 ## Installation
